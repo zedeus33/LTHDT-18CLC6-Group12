@@ -30,6 +30,13 @@ void Date::input() {
     cout << this->output() << endl;
 }
 
+//Date::Date()
+//{
+//	m_day = 1;
+//	m_month = 1;
+//	m_year = 1900;
+//}
+
 int Date::getMDay() const {
     return m_day;
 }

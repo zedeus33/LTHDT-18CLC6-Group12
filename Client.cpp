@@ -7,6 +7,9 @@ Client::Client()
 	numOfAccount = 0;
 	SocialID = "";
 	UserID = "";
+	Email = "";
+	Sex = 0;
+	Salary = 0;
 }
 
 void Client::input()
@@ -23,6 +26,7 @@ void Client::input()
 	getline(cin, SocialID, '\n');
 	cout << "Enter User ID: ";
 	getline(cin,UserID,'\n');
+	//TODO: Email
 	
 }
 

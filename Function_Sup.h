@@ -1,8 +1,8 @@
 #pragma once
-#include "iostream"
-#include "string"
-#include "vector"
-#include "iomanip"
+#include <iostream>
+#include <string>
+#include <vector>
+#include<iomanip>
 #include <conio.h>
 #include <fstream>
 #include <cstring>

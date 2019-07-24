@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Client_h
-#define Client_h
 #include <vector>
 #include <sstream>
 #include <iomanip>
@@ -24,7 +22,7 @@ private:
 	
 //	Bank*
 public:
-	Client();
+	explicit Client();
 	//~Client();
 	void input();
 	void output();
@@ -38,4 +36,3 @@ public:
 	string createUserName();
 	
 };
-#endif // !Client_h
