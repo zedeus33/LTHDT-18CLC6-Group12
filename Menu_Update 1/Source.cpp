@@ -81,10 +81,11 @@ void MenuSignIn()
 
 		string id;
 		string password;
-		cout << "Input ID : ";
+		/*cout << "Input ID : ";
 		cin >> id;
 		cout << "Input password : ";
-		cin >> password;
+		cin >> password;*/
+		inputIDPassword(id,password);
 		bool CheckPass;
 		system("cls");
 		CheckPass = checkLogin(id, password, CLIENT_PASSWORD);
@@ -180,6 +181,46 @@ bool checkLogin(string& account, string& password, const char* path) {
 		}
 	}
 	return false;
+}
+void inputIDPassword(string& id, string& password)
+{
+	cout << "\n\n\n" << endl;
+	system("color a");
+	std::cout << "\t\t\tInput ID :       ";
+	cin >> id;
+	std::cout << "\t\t\tInput password : ";
+
+
+	char pass;
+	string temp;
+	do
+	{
+		pass = _getch();
+		if (pass == '\n' || pass == '\r')
+		{
+			cout << "\n";
+			break;
+		}
+		else if (pass == '\b')
+		{
+			cout << "\b \b";
+			if (temp.empty() == false)
+			{
+				temp.erase(temp.size() - 1);
+			}
+		}
+		else if (pass == -32)
+		{
+			_getch();
+		}
+		else if (isprint(pass) && temp.size() < 10)
+		{
+			cout << "*";
+			temp = temp + pass;
+		}
+	} while (true);
+	password = temp;
+	system("color f");
 }
 void main()
 {
