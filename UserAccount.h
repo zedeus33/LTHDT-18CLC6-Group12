@@ -1,5 +1,4 @@
-#ifndef UserAccount_h
-#define UserAccount_h
+#pragma once
 #include "Account.h"
 class Client;
 class UserAccount : public Account
@@ -24,5 +23,5 @@ public:
 	~UserAccount();
 
 };
-#endif // !UserAccount_h
+
 

@@ -14,13 +14,13 @@ void MainMenu();
 void MenuSignIn();
 void secondMenu(string id);
 bool checkLogin(string& account, string& password, const char* path);
-void MenuUserInfor();
-void MenuTransfer();
-void MenuPayment();
-void MenuDealHistory();
-void MenuOthertasks();
-void MenuAdjustLimit();
-void MenuSaving();
+//void MenuUserInfor();
+//void MenuTransfer();
+//void MenuPayment();
+//void MenuDealHistory();
+//void MenuOthertasks();
+//void MenuAdjustLimit();
+//void MenuSaving();
 
 #endif // !Sup_Function
 

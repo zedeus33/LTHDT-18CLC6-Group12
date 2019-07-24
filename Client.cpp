@@ -1,6 +1,4 @@
 #include "Client.h"
-#include "input.cpp"
-
 
 Client::Client()
 {
