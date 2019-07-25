@@ -16,6 +16,7 @@ public:
 	double getBalance();
 	double getLimit();
 	string getLevel();
+	void minus(double a);
 	void Input();
 	void Output();
 	~UserAccount();

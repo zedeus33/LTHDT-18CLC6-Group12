@@ -67,6 +67,11 @@ string UserAccount::getLevel()
 	else return "Platinum";
 }
 
+void UserAccount::minus(double a)
+{
+	this->Balance = this->Balance - a;
+}
+
 void UserAccount::Input()
 {
 	Account::Input();

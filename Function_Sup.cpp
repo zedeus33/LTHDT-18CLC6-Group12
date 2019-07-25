@@ -128,7 +128,7 @@ void MenuSignIn()
 		}
 		else {
 			system("color c");
-			cout << "Wrong id or password!! Please try again" << endl;
+			cout << "\n\nWrong id or password!! Please try again" << endl;
 			system("pause");
 
 			system("color f");
