@@ -1,11 +1,13 @@
 #pragma once
 #include "Account.h"
+class Client;
 class UserAccount : public Account
 {
 private:
 	string numID;
 	double Balance;
 	double limit;
+	Client *RefClient;
 public:
 	UserAccount();
 	UserAccount(string n, double b, double l);
@@ -16,12 +18,11 @@ public:
 	double getBalance();
 	double getLimit();
 	string getLevel();
-	void minus(double a);
+	bool changeBalance(double value);
 	void Input();
 	void Output();
 	~UserAccount();
 
 };
-
 
 

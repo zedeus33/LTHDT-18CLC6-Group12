@@ -1,4 +1,5 @@
 #include "Client.h"
+#include "Function.h"
 
 
 Client::Client()
@@ -8,35 +9,29 @@ Client::Client()
 	numOfAccount = 0;
 	SocialID = "";
 	UserID = "";
-}
-
-Client::Client(string name, string addr, string SocialID, string UserID, string email, Date dob, bool sex, float salary)
-{
-	this->name = name;
-	this->address = addr;
-	this->SocialID = SocialID;
-	this->UserID = UserID;
-	this->Email = email;
-	this->DoB = dob;
-	this->Sex = sex;
-	this->Salary = salary;
+	Email = "";
+	Sex = 0;
+	Salary = 0;
 }
 
 void Client::input()
 {
-	/*cout << "Enter name: ";
-	getline(cin, name, '\n');
+	cout << "Enter name: ";
+	getline(cin,name,'\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
-	Sex = in(Sex, "Enter sex(0:female, 1 : male): ");
+	Sex = InputBool(Sex, "Sex (0:Male,1:Female):");
 	DoB.input();
-	Salary = in(Salary, "Enter Salary: ");
+	cin.ignore();
+	Salary = InputDouble(Salary, "Enter Salary: ");
 	cout << "Enter Social ID: ";
 	cin.ignore();
 	getline(cin, SocialID, '\n');
 	cout << "Enter User ID: ";
-	getline(cin, UserID, '\n');*/
-
+	getline(cin,UserID,'\n');
+	cout << "Enter Email: ";
+	getline(cin, Email, '\n');
+	
 }
 
 void Client::output()
@@ -45,6 +40,18 @@ void Client::output()
 	cout << "Address: " << address << endl;
 	cout << "Social ID: " << SocialID << endl;
 	cout << "User ID: " << UserID << endl;
+	cout << "Email: " << Email << endl;
+	cout << "Day of Birth: " << DoB.output()<< endl;
+	cout << "Sex: ";
+	if (Sex == 1)
+	{
+		cout << "Female" << endl;
+	}
+	else
+	{
+		cout << "Male" << endl;
+	}
+	cout << "Salary: " << Salary << endl;
 	cout << "Number of account: " << numOfAccount << endl;
 	for (int i = 0; i < BankAccount.size(); i++)
 	{
@@ -90,7 +97,7 @@ bool Client::CloseAccount()
 	cout << "Choice your account: ";
 	cin >> selection;
 	it = BankAccount.begin();
-	BankAccount.erase(it + n - 1);
+	BankAccount.erase(it+n-1);
 	numOfAccount--;
 	cout << "Erase successfully" << endl;
 	return true;
@@ -113,7 +120,7 @@ string Client::createPassword()
 	{
 		password << SocialID[i];
 	}
-	password << setfill('0') << setw(2) << DoB.getMDay();
+	password << setfill('0') << setw(2) << DoB.getMDay() ;
 	password << setfill('0') << setw(2) << DoB.getMMonth();
 
 	return password.str();
@@ -126,7 +133,7 @@ char asciitolower(char in) {
 }
 
 string Client::createUserName()
-{
+{	
 	stringstream temp;
 	temp << name;
 	temp << setfill('0') << setw(2) << DoB.getMDay();
@@ -134,11 +141,11 @@ string Client::createUserName()
 	string UserName = temp.str();
 	for (int i = 0; i < UserName.length(); i++)
 	{
-
+		
 
 		if (UserName[i] == ' ')
 		{
-			UserName.erase(UserName.begin() + i);
+			UserName.erase(UserName.begin()+i);
 			i--;
 			continue;
 
@@ -149,15 +156,43 @@ string Client::createUserName()
 	return UserName;
 }
 
-Client::Client(const Client & rha)
+void Client::display()
 {
-	this->name = rha.name;
-	this->address = rha.address;
-	this->SocialID = rha.SocialID;
-	this->UserID = rha.UserID;
-	this->Email = rha.Email;
-	this->DoB = rha.DoB;
-	this->Sex = rha.Sex;
-	this->Salary = rha.Salary;
+	cout << "Name: " << name << endl;
+	cout << "Social ID: " << SocialID << endl;
+	cout << "Address: " << address << endl;
+
 }
 
+UserAccount* Client::findAccount(string numID)
+{
+	for (vector <UserAccount*>::iterator it = BankAccount.begin(); it != BankAccount.end(); it++)
+	{
+		if ((*it)->getNumID() == numID)
+		{
+			return *it;
+		}
+	}
+	return NULL;
+}
+
+bool Client::changeBalance(string numID, double value)
+{
+	UserAccount* a = Client::findAccount(numID);
+	if (a == NULL)
+	{
+		cout << "Does not have any account with this number ID" << endl;
+		return 0;
+	}
+	if (a->changeBalance(value) == 0)
+	{
+		cout << "Balance does not have enought!!" << endl;
+		return 0;
+	}
+	cout << "Successfully" << endl;
+	return 1;
+}
+
+
+
+	
