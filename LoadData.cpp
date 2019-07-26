@@ -1,14 +1,5 @@
-#pragma warning(disable:4996)
-#include "File.h"
-#include "conio.h"
-#include "sstream"
-#include <ctime>
-#include <vector>
-#include "Bank.h"
-const string DATA_BANK = "D:/TaLangBanking/Data/Bank/";
-const string DATA_ACCOUNTCLIENT = "D:/TaLangBanking/Data/Client/Account/";
-const string DATA_PROFILECLIENT = "../TaLangBanking/Data/Client/Profile/";
-using namespace std;
+#include "LoadData.h"
+
 
 Date convertToDate(string x)
 {
@@ -30,7 +21,8 @@ Date convertToDate(string x)
 	year = stoi(x);
 	return Date(day, month, year);
 }
-Client * loadDataClient(string UserID)
+
+Client* loadDataClient(string UserID)
 {
 	// Load information of Cus
 	string file_path = DATA_PROFILECLIENT + UserID + ".txt";
@@ -72,7 +64,7 @@ Client * loadDataClient(string UserID)
 	cl->setbankaccount(bankAcc);
 	return cl;
 }
-void loadDataBank(vector <Bank*> &b)
+void loadDataBank(vector <Bank*> &bank)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -103,42 +95,6 @@ void loadDataBank(vector <Bank*> &b)
 			j++;
 		}
 		x->setCustomer(cl);
-		b.push_back(x);
+		bank.push_back(x);
 	}
-}
-
-//bool checkExist(vector <long long> a, long long x)
-//{
-//	for (int i = 0; i < a.size(); i++)
-//	{
-//		if (a[i] == (x))
-//		{
-//			return true;
-//		}
-//	}
-//	return false;
-//}
-//
-//string deleteChar(string content, char character)
-//{
-//	stringstream temp;
-//	for (int i = 0; i < content.size(); i++)
-//	{
-//		if (content[i]!=character)
-//		{
-//			temp << content[i];
-//		}
-//	}
-//	return temp.str();
-//}
-
-void main()
-{
-	vector <Bank*> b;
-	loadDataBank(b);
-	for (int i = 0; i < b.size(); i++)
-	{
-		b[i]->show_infor();
-	}
-	_getch();
 }

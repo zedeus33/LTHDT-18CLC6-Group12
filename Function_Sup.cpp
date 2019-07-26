@@ -1,14 +1,16 @@
 #include "Function_Sup.h"
+
 #define CLIENT_PASSWORD "D:/StaffPassword.txt"
-vector<Bank*> a;
-void notice(string sentence,string horizontal = "=",string vertical = "=")
+
+vector<Bank*> bank;
+void notice(string sentence, string horizontal = "=", string vertical = "=")
 {
 	cout << setw(90);
-	for (int i = 0; i < ((sentence.size() + 4) /horizontal.size()); i++)
+	for (int i = 0; i < ((sentence.size() + 4) / horizontal.size()); i++)
 	{
 		cout << horizontal;
 	}
-	if (horizontal.size()==2 && sentence.size()%2!=0)
+	if (horizontal.size() == 2 && sentence.size() % 2 != 0)
 	{
 		cout << horizontal[0];
 	}
@@ -51,7 +53,8 @@ int chooseInt(int m)
 }
 void MainMenu()
 {
-	loadDataBank(a);
+
+	loadDataBank(bank);
 	cout << "***TA LANG BANKING***" << endl;
 	cout << "\n1.Sign in" << endl;
 	cout << "2.Sign up" << endl;
@@ -226,13 +229,13 @@ bool checkLogin(string& account, string& password, const char* path) {
 }
 void MenuUserInfor()
 {
-	
+
 }
 void MenuBankInfor()
 {
-	for (int i = 0; i < a.size(); i++)
+	for (int i = 0; i < bank.size(); i++)
 	{
-		a[i]->show_infor();
+		bank[i]->show_infor();
 	}
 }
 void inputIDPassword(string& id, string& password)

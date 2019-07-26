@@ -149,3 +149,15 @@ string Client::createUserName()
 	return UserName;
 }
 
+Client::Client(const Client & rha)
+{
+	this->name = rha.name;
+	this->address = rha.address;
+	this->SocialID = rha.SocialID;
+	this->UserID = rha.UserID;
+	this->Email = rha.Email;
+	this->DoB = rha.DoB;
+	this->Sex = rha.Sex;
+	this->Salary = rha.Salary;
+}
+

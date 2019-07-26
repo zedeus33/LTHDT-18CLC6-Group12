@@ -1,4 +1,4 @@
-#include <iostream>
+#pragma once
 #include <string>
 #include <vector>
 #include<iomanip>
@@ -7,8 +7,8 @@
 #include <cstring>
 #include "Bank.h"
 #include "LoadData.h"
+
 //#include "sha1.h"
-using namespace std;
 //template <class T>
 //T in(T& a, const char* text)
 //{
@@ -32,7 +32,7 @@ using namespace std;
 //	a = T(temp);
 //	return a;
 //}
-void notice(string sentence,string horizontal, string vertical);
+void notice(string sentence, string horizontal, string vertical);
 void inputIDPassword(string& id, string& password);
 void MenuSignIn();
 void secondMenu(string id);
@@ -49,4 +49,4 @@ void MenuUserInfor();
 //void MenuOthertasks();
 //void MenuAdjustLimit();
 //void MenuSaving();
-void MenuBankInfor();
+void MenuBankInfor(); 

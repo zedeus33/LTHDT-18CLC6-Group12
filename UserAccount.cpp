@@ -15,7 +15,7 @@ UserAccount::UserAccount(string n, double b, double l) : Account()
 
 }
 
-UserAccount::UserAccount(string u, string p, string n, double b, double l) : Account(u,p)
+UserAccount::UserAccount(string u, string p, string n, double b, double l) : Account(u, p)
 {
 	numID = n;
 	Balance = 50000 + b;
@@ -76,7 +76,7 @@ void UserAccount::Input()
 {
 	Account::Input();
 	cout << "Enter number ID : ";
-	getline(cin, numID); 
+	getline(cin, numID);
 	cout << "Enter balance : ";
 	cin >> Balance;
 	Balance += 50000;

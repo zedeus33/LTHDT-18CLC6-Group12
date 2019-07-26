@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Client_h
-#define Client_h
 #include <vector>
 #include <sstream>
 #include <iomanip>
@@ -28,7 +26,7 @@ private:
 public:
 	Client();
 	//~Client();
-	void setbankaccount(vector <UserAccount*> x) 
+	void setbankaccount(vector <UserAccount*> x)
 	{
 		this->numOfAccount = x.size();
 		this->BankAccount.swap(x);
@@ -44,6 +42,5 @@ public:
 	bool operator ==(const Client *& a);
 	string createPassword();
 	string createUserName();
-
+	Client(const Client &rha);
 };
-#endif // !Client_h
