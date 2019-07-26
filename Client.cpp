@@ -1,4 +1,6 @@
 #include "Client.h"
+
+
 Client::Client()
 {
 	name = "";
@@ -6,15 +8,24 @@ Client::Client()
 	numOfAccount = 0;
 	SocialID = "";
 	UserID = "";
-	Email = "";
-	Sex = 0;
-	Salary = 0;
+}
+
+Client::Client(string name, string addr, string SocialID, string UserID, string email, Date dob, bool sex, float salary)
+{
+	this->name = name;
+	this->address = addr;
+	this->SocialID = SocialID;
+	this->UserID = UserID;
+	this->Email = email;
+	this->DoB = dob;
+	this->Sex = sex;
+	this->Salary = salary;
 }
 
 void Client::input()
 {
 	cout << "Enter name: ";
-	getline(cin,name,'\n');
+	getline(cin, name, '\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
 	Sex = in(Sex, "Enter sex(0:female, 1 : male): ");
@@ -24,9 +35,8 @@ void Client::input()
 	cin.ignore();
 	getline(cin, SocialID, '\n');
 	cout << "Enter User ID: ";
-	getline(cin,UserID,'\n');
-	//TODO: Email
-	
+	getline(cin, UserID, '\n');
+
 }
 
 void Client::output()
@@ -80,7 +90,7 @@ bool Client::CloseAccount()
 	cout << "Choice your account: ";
 	cin >> selection;
 	it = BankAccount.begin();
-	BankAccount.erase(it+n-1);
+	BankAccount.erase(it + n - 1);
 	numOfAccount--;
 	cout << "Erase successfully" << endl;
 	return true;
@@ -103,7 +113,7 @@ string Client::createPassword()
 	{
 		password << SocialID[i];
 	}
-	password << setfill('0') << setw(2) << DoB.getMDay() ;
+	password << setfill('0') << setw(2) << DoB.getMDay();
 	password << setfill('0') << setw(2) << DoB.getMMonth();
 
 	return password.str();
@@ -116,7 +126,7 @@ char asciitolower(char in) {
 }
 
 string Client::createUserName()
-{	
+{
 	stringstream temp;
 	temp << name;
 	temp << setfill('0') << setw(2) << DoB.getMDay();
@@ -124,11 +134,11 @@ string Client::createUserName()
 	string UserName = temp.str();
 	for (int i = 0; i < UserName.length(); i++)
 	{
-		
+
 
 		if (UserName[i] == ' ')
 		{
-			UserName.erase(UserName.begin()+i);
+			UserName.erase(UserName.begin() + i);
 			i--;
 			continue;
 
