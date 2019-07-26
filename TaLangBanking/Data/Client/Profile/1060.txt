@@ -1,0 +1,7 @@
+Name: Huynh Thi Anh
+SocialID: 100017035
+Mail: huynhthianh@gmail.com
+DoB: 25/8/1980
+Address: Nguyen Van Tiet, Ho Chi Minh
+Sex: Female
+Salary: 19000000

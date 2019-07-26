@@ -1,0 +1,7 @@
+Name: Lieu Huu Trong
+SocialID: 100023811
+Mail: lieuhuutrong@gmail.com
+DoB: 12/12/1990
+Address: 214/19/56 Nguyen Huu Canh, Tan Dinh, Quan 1, Ho Chi Minh
+Sex: Male
+Salary: 19000000

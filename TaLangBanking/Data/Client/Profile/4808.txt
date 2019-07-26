@@ -1,0 +1,7 @@
+Name: Vinh Ket Loan
+SocialID: 100022190
+Mail: vinhketloan@gmail.com
+DoB: 1/5/1983
+Address: 107 Hoa Hung ,quan 10, Ho Chi Minh
+Sex: Male
+Salary: 28000000

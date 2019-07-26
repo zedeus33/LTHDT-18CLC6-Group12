@@ -1,0 +1,7 @@
+Name: Nguyen Cong Phuc
+SocialID: 100031322
+Mail: nguyencongphuc@gmail.com
+DoB: 19/11/1974
+Address: 153/15 Truong Dinh, Ho Chi Minh
+Sex: Male
+Salary: 34500000

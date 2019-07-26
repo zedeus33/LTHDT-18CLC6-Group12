@@ -1,0 +1,7 @@
+Name: Vang Qui Trung
+SocialID: 100026777
+Mail: vangquitrung@gmail.com
+DoB: 10/10/1988
+Address: 04 Ph?m C? Lu?ng, Son Tra
+Sex: Male
+Salary: 9000000

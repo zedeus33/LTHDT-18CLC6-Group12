@@ -1,0 +1,7 @@
+Name: Khong Huu Thanh
+SocialID: 100026500
+Mail: khonghuuthanh@gmail.com
+DoB: 19/12/1983
+Address: 1 Ly Tu Trong , quan 1, Ho Chi Minh
+Sex: Male
+Salary: 99000000

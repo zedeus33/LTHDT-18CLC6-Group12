@@ -1,0 +1,7 @@
+Name: Tien Thi Lan
+SocialID: 100024626
+Mail: tienthilan@gmail.com
+DoB: 23/3/1997
+Address: 201 Dinh Bo Linh, Ho Chi Minh
+Sex: Female
+Salary: 9000000

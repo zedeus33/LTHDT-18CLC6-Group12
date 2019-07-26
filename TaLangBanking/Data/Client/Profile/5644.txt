@@ -1,0 +1,7 @@
+Name: Chan Thi Hanh
+SocialID: 100015573
+Mail: chanthihanh@gmail.com
+DoB: 9/6/1995
+Address: 298 Nguyen Trong Tuyen , quan 1, Ho Chi Minh
+Sex: Female
+Salary: 50000000

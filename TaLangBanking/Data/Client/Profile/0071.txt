@@ -1,0 +1,7 @@
+Name: Doan Van Vuong
+SocialID: 100019895
+Mail: doanvanluong@gmail.com
+DoB: 28/10/1972
+Address: 102 Le Thi Rieng , Ho Chi Minh
+Sex: Male
+Salary: 10000000

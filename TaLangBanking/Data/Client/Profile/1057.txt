@@ -1,0 +1,7 @@
+Name: Vu Duc Trieu
+SocialID: 100007376
+Mail: vuductrieu@gmail.com
+DoB: 29/10/1994
+Address: 18a Nguyen Van Troi, Ho Chi Minh
+Sex: Male
+Salary: 190909909

@@ -1,0 +1,7 @@
+Name: Tham Thi Lan
+SocialID: 100028253
+Mail: thamthilan@gmail.com
+DoB: 8/1/1981
+Address: 297 Ngo Gia Tu, phuong 3, quan 10, ho chi minh
+Sex: Female
+Salary: 40000000

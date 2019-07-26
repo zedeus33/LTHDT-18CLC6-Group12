@@ -1,0 +1,7 @@
+Name: Khong Thi Kim Ly
+SocialID: 100016827
+Mail: khongthikimly@gmail.com
+DoB: 20/8/1971
+Address: 39, Ngu Hanh Son, Ngu Hanh Son , Da Nang
+Sex: Female
+Salary: 6000000

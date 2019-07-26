@@ -1,0 +1,7 @@
+Name: Danh Trong Khan
+SocialID: 100013030
+Mail: danhtrongkhan@gmail.com
+DoB: 9/6/1972
+Address: 64 Dien Bien Phu, DaKao, Quan 1, Ho Chi Minh
+Sex: Female
+Salary: 26000000

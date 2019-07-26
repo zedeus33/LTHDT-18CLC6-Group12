@@ -1,0 +1,7 @@
+Name: Lo Ngoc Trong
+SocialID: 100031673
+Mail: longoctrong@gmail.com
+DoB: 23/1/1985
+Address: 116 Nguyen Van Luong, Quan 10, Ho Chi Minh
+Sex: Female
+Salary: 46000000

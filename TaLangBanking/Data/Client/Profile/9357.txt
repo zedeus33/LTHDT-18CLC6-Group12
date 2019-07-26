@@ -1,0 +1,7 @@
+Name: Hoang Cong Binh
+SocialID: 100024767
+Mail: hoangcongbinh@gmail.com
+DoB: 8/7/1991
+Address: 248 Vo Van Tan, Quan 3, Ho Chi Minh
+Sex: Female
+Salary: 14000000

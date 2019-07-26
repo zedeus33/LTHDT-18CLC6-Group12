@@ -1,0 +1,7 @@
+Name: Trang Dinh Minh
+SocialID: 100002995
+Mail: trangdinhminh@gmail.com
+DoB: 18/6/1988
+Address: E44 Hoang Quoc Viet, Phu Nhuan, Ho Chi Minh
+Sex: Male
+Salary: 26000000

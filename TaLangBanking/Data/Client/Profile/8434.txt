@@ -1,0 +1,7 @@
+Name: Van Huu Tung
+SocialID: 100003548
+Mail: vanhuutung@gmail.com
+DoB: 6/7/1983
+Address: 59-61 Nguyen Thai Hoc, Ba Dinh, Ha Noi
+Sex: Male
+Salary: 99000000

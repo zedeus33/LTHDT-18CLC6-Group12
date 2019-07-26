@@ -1,0 +1,7 @@
+Name: Hy Thi Phuong
+SocialID: 100009040
+Mail: hythiphuong@gmail.com
+DoB: 11/2/1977
+Address: 25B Phan Dang Luu, Binh Thanh, Ho Chi Minh
+Sex: Female
+Salary: 65000000

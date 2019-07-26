@@ -1,0 +1,7 @@
+Name: Ngo Hong Canh
+SocialID: 100004827
+Mail: ngohongcanh@gmail.com
+DoB: 20/9/1965
+Address: 14 Ngo Quyen Ha Noi
+Sex: Female
+Salary: 36000000

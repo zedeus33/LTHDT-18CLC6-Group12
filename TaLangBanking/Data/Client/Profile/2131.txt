@@ -1,0 +1,7 @@
+Name: Diep Trong Tuan
+SocialID: 100029358
+Mail: dieptrongtuan@gmail.com
+DoB: 31/10/1988
+Address: 54 Luong Dinh Cua, quan 1, Ho Chi Minh
+Sex: Male
+Salary: 8000000

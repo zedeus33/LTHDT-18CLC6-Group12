@@ -1,0 +1,7 @@
+Name: Can Duc Trung
+SocialID: 100009930
+Mail: canductrung@gmail.com
+DoB: 21/9/1994
+Address: Room 103, K5 Bach Khoa,Hai Ba Trung, Ha Noi
+Sex: Male
+Salary: 9000000

@@ -1,0 +1,7 @@
+Name: Mach Thi Chi
+SocialID: 100018716
+Mail: machthichi@gmail.com
+DoB: 24/2/1971
+Address: 120 Phan Dinh Giot, Ha Noi
+Sex: Female
+Salary: 10000000

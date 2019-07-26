@@ -1,0 +1,7 @@
+Name: Le Thi Lam
+SocialID: 100012859
+Mail: lethilam@gmail.com
+DoB: 15/4/1980
+Address: Khu Cong Nghiep Chau Khe, Tu Son , Bac Ninh
+Sex: Female
+Salary: 45000000

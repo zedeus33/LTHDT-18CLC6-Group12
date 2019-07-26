@@ -1,0 +1,7 @@
+Name: Banh Xuan Sinh
+SocialID: 100014771
+Mail: banhxuansinh@gmail.com
+DoB: 16/9/1968
+Address: 16 Quach Van Tuan, Tan Binh , Ho Chi Minh
+Sex: Female
+Salary: 96000000

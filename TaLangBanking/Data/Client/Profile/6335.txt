@@ -1,0 +1,7 @@
+Name: Kim Thi Phuong
+SocialID: 100027506
+Mail: kimthiphuong@gmail.com
+DoB: 30/9/1987
+Address: 315 Huynh Van Banh, Phu Nhuan, Ho Chi Minh
+Sex: Male
+Salary: 91000000

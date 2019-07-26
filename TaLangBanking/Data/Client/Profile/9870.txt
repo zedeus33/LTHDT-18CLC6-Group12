@@ -1,0 +1,7 @@
+Name: Dao Quang Huy
+SocialID: 100003430
+Mail: daoquanghuy@gmail.com
+DoB: 12/7/1985
+Address:  27 Nguyen Trai, Thanh Xuan, Ha Noi
+Sex: Male
+Salary: 85000000
