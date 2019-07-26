@@ -1,5 +1,4 @@
 #include "Client.h"
-
 Client::Client()
 {
 	name = "";
@@ -14,19 +13,19 @@ Client::Client()
 
 void Client::input()
 {
-	//cout << "Enter name: ";
-	//getline(cin,name,'\n');
-	//cout << "Enter Address: ";
-	//getline(cin, address, '\n');
-	//Sex = in(Sex, "Enter sex(0:female, 1 : male): ");
-	//DoB.input();
-	//Salary = in(Salary, "Enter Salary: ");
-	//cout << "Enter Social ID: ";
-	//cin.ignore();
-	//getline(cin, SocialID, '\n');
-	//cout << "Enter User ID: ";
-	//getline(cin,UserID,'\n');
-	////TODO: Email
+	cout << "Enter name: ";
+	getline(cin,name,'\n');
+	cout << "Enter Address: ";
+	getline(cin, address, '\n');
+	Sex = in(Sex, "Enter sex(0:female, 1 : male): ");
+	DoB.input();
+	Salary = in(Salary, "Enter Salary: ");
+	cout << "Enter Social ID: ";
+	cin.ignore();
+	getline(cin, SocialID, '\n');
+	cout << "Enter User ID: ";
+	getline(cin,UserID,'\n');
+	//TODO: Email
 	
 }
 

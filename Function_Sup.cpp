@@ -1,5 +1,6 @@
 #include "Function_Sup.h"
 #define CLIENT_PASSWORD "D:/StaffPassword.txt"
+
 void notice(string sentence,string horizontal = "=",string vertical = "=")
 {
 	cout << setw(90);
@@ -256,26 +257,4 @@ void inputIDPassword(string& id, string& password)
 	password = temp;
 	system("color f");
 }
-template <class T>
-T in(T& a, const char* text)
-{
-	string b;
-	T temp;
-	do
-	{
-		cout << text;
-		cin >> b;
-		try
-		{
-			temp = stod(b);
-			break;
-		}
-		catch (exception& error)
-		{
-			cout << "ERROR:WRONG TYPE\nType expected:" << typeid(a).name() << endl;
-			continue;
-		}
-	} while (1);
-	a = T(temp);
-	return a;
-}
+
