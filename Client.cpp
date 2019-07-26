@@ -24,7 +24,7 @@ Client::Client(string name, string addr, string SocialID, string UserID, string 
 
 void Client::input()
 {
-	cout << "Enter name: ";
+	/*cout << "Enter name: ";
 	getline(cin, name, '\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
@@ -35,7 +35,7 @@ void Client::input()
 	cin.ignore();
 	getline(cin, SocialID, '\n');
 	cout << "Enter User ID: ";
-	getline(cin, UserID, '\n');
+	getline(cin, UserID, '\n');*/
 
 }
 

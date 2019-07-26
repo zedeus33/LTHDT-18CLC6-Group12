@@ -1,6 +1,6 @@
 #include "Function_Sup.h"
 #define CLIENT_PASSWORD "D:/StaffPassword.txt"
-
+vector<Bank*> a;
 void notice(string sentence,string horizontal = "=",string vertical = "=")
 {
 	cout << setw(90);
@@ -51,6 +51,7 @@ int chooseInt(int m)
 }
 void MainMenu()
 {
+	loadDataBank(a);
 	cout << "***TA LANG BANKING***" << endl;
 	cout << "\n1.Sign in" << endl;
 	cout << "2.Sign up" << endl;
@@ -152,14 +153,15 @@ void secondMenu(string id)
 	cout << "5.Other tasks" << endl;
 	cout << "6.Adjust limit" << endl;
 	cout << "7.Saving" << endl;
-	cout << "8.Sign out" << endl;
-	int choose = chooseInt(8);
+	cout << "8.Bank system's address" << endl;
+	cout << "9.Sign out" << endl;
+	int choose = chooseInt(9);
 	switch (choose)
 	{
 	case 1:
 	{
 		system("cls");
-		//MenuUserInfor();
+		MenuUserInfor();
 	}break;
 	case 2:
 	{
@@ -195,6 +197,11 @@ void secondMenu(string id)
 	case 8:
 	{
 		system("cls");
+		MenuBankInfor();
+	}
+	case 9:
+	{
+		system("cls");
 		MainMenu();
 	}
 	}
@@ -216,6 +223,17 @@ bool checkLogin(string& account, string& password, const char* path) {
 		}
 	}
 	return false;
+}
+void MenuUserInfor()
+{
+	
+}
+void MenuBankInfor()
+{
+	for (int i = 0; i < a.size(); i++)
+	{
+		a[i]->show_infor();
+	}
 }
 void inputIDPassword(string& id, string& password)
 {

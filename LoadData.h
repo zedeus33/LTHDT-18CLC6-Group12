@@ -1,3 +1,4 @@
+#pragma once
 #pragma warning(disable:4996)
 #include "File.h"
 #include "conio.h"
@@ -30,7 +31,8 @@ Date convertToDate(string x)
 	year = stoi(x);
 	return Date(day, month, year);
 }
-Client * loadDataClient(string UserID)
+
+Client* loadDataClient(string UserID)
 {
 	// Load information of Cus
 	string file_path = DATA_PROFILECLIENT + UserID + ".txt";
@@ -72,7 +74,7 @@ Client * loadDataClient(string UserID)
 	cl->setbankaccount(bankAcc);
 	return cl;
 }
-void loadDataBank(vector <Bank*> &b)
+void loadDataBank(vector <Bank*> &bank)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -103,7 +105,7 @@ void loadDataBank(vector <Bank*> &b)
 			j++;
 		}
 		x->setCustomer(cl);
-		b.push_back(x);
+		bank.push_back(x);
 	}
 }
 
@@ -132,13 +134,13 @@ void loadDataBank(vector <Bank*> &b)
 //	return temp.str();
 //}
 
-void main()
-{
-	vector <Bank*> b;
-	loadDataBank(b);
-	for (int i = 0; i < b.size(); i++)
-	{
-		b[i]->show_infor();
-	}
-	_getch();
-}
+//void main()
+//{
+//	vector <Bank*> b;
+//	loadDataBank(b);
+//	for (int i = 0; i < b.size(); i++)
+//	{
+//		b[i]->show_infor();
+//	}
+//	_getch();
+//}
