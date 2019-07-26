@@ -69,7 +69,7 @@ string read(const char * path, int pos_begin, int pos_end)
 		fin.seekg(pos_begin);
 		char x;
 		string temp;
-		for (int i = 0; i < pos_end - pos_begin + 1; i++)
+		for (int i = 0; i < pos_end - pos_begin; i++)
 		{
 			fin >> x;
 			temp = temp + x;
@@ -93,6 +93,10 @@ string readline(const char * path, int line)
 		while (fin.eof() == false)
 		{
 			getline(fin, temp, '\n');
+			if (temp == "")
+			{
+				continue;
+			}
 			if (line == i)
 			{
 				fin.close();
