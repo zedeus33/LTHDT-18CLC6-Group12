@@ -6,6 +6,7 @@
 #include <fstream>
 #include <cstring>
 //#include "sha1.h"
+
 using namespace std;
 template <class T>
 T in(T& a, const char* text)
