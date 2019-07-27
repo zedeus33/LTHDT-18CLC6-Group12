@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <cstring>
+#include <sstream>
 #include <vector>
 #include<iomanip>
 #include <conio.h>
-#include "sstream"
+#include "Bank.h"
 using namespace std;
 
 
@@ -27,3 +29,8 @@ bool checkLogin(string& account, string& password, const char* path);
 //void MenuOthertasks();
 //void MenuAdjustLimit();
 //void MenuSaving();
+
+
+float InputFloat(float& a, const char* text);
+int InputInt(int& a, const char* text);
+bool InputBool(bool& a, const char* text);

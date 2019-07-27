@@ -28,15 +28,16 @@ void Client::input()
 	getline(cin, name, '\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
-	/*Sex = in(Sex, "Enter sex(0:female, 1 : male): ");*/
+	Sex = InputBool(Sex, "Sex (0:Male,1:Female):");
 	DoB.input();
-	//Salary = in(Salary, "Enter Salary: ");
-	cout << "Enter Social ID: ";
 	cin.ignore();
+	Salary = InputFloat(Salary, "Enter Salary: ");
+	cout << "Enter Social ID(Social ID must have 9 numbers) : "; //  9 numbers only
 	getline(cin, SocialID, '\n');
-	cout << "Enter User ID: ";
+	cout << "Enter User ID: ";// 4 numbers only
 	getline(cin, UserID, '\n');
-
+	cout << "Enter Email: ";// must have "@" character
+	getline(cin, Email, '\n');
 }
 
 void Client::output()
@@ -45,6 +46,18 @@ void Client::output()
 	cout << "Address: " << address << endl;
 	cout << "Social ID: " << SocialID << endl;
 	cout << "User ID: " << UserID << endl;
+	cout << "Email: " << Email << endl;
+	cout << "Day of Birth: " << DoB.output() << endl;
+	cout << "Sex: ";
+	if (Sex == 1)
+	{
+		cout << "Female" << endl;
+	}
+	else
+	{
+		cout << "Male" << endl;
+	}
+	cout << "Salary: " << fixed <<setprecision(2) <<Salary << endl;
 	cout << "Number of account: " << numOfAccount << endl;
 	for (int i = 0; i < BankAccount.size(); i++)
 	{
@@ -64,6 +77,7 @@ bool Client::OpenNewAccount()
 	else
 	{
 		UserAccount * _new = new UserAccount;
+		_new->setClient(this);
 		_new->Input();
 		BankAccount.push_back(_new);
 		numOfAccount++;
@@ -148,4 +162,55 @@ string Client::createUserName()
 	}
 	return UserName;
 }
+
+void Client::display()
+{
+	cout << "Name: " << name << endl;
+	cout << "Social ID: " << SocialID << endl;
+	cout << "Address: " << address << endl;
+}
+
+UserAccount* Client::findAccount(string numID)
+{
+	for (vector <UserAccount*>::iterator it = BankAccount.begin(); it != BankAccount.end(); it++)
+	{
+		if ((*it)->getNumID() == numID)
+		{
+			return *it;
+		}
+	}
+	return NULL;
+}
+
+int Client::changeBalance(string numID, double value)
+{
+		UserAccount* a = Client::findAccount(numID);
+		if (a == NULL)
+		{
+			return 0;
+		}
+		if (a->changeBalance(value) == 0)
+		{
+			cout << "Balance does not have enought!!" << endl;
+			return -1;
+		}
+		cout << "Successfully" << endl;
+		return 1;
+}
+
+Client::Client(const Client& rha)
+{
+	this->name = rha.name;
+	this->address = rha.address;
+	this->SocialID = rha.SocialID;
+	this->UserID = rha.UserID;
+	this->Email = rha.Email;
+	this->DoB = rha.DoB;
+	this->Sex = rha.Sex;
+	this->Salary = rha.Salary;
+}
+
+
+
+
 

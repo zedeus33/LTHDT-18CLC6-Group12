@@ -1,4 +1,5 @@
 #include "UserAccount.h"
+#include "Client.h"
 
 UserAccount::UserAccount() : Account()
 {
@@ -39,6 +40,11 @@ UserAccount & UserAccount::operator=(const UserAccount & a)
 	return *this;
 }
 
+void UserAccount::setClient(Client* a)
+{
+	RefClient = a;
+}
+
 string UserAccount::getNumID()
 {
 	return numID;
@@ -67,9 +73,22 @@ string UserAccount::getLevel()
 	else return "Platinum";
 }
 
+bool UserAccount::changeBalance(double value)
+{
+	if (-value > Balance)
+	{
+		return 0;
+	}
+	else
+	{
+		Balance += value;
+		return 1;
+	}
+}
+
 void UserAccount::Input()
 {
-	Account::Input();
+	//Account::Input();
 	cout << "Enter number ID : ";
 	getline(cin, numID);
 	cout << "Enter balance : ";
@@ -78,6 +97,8 @@ void UserAccount::Input()
 	cout << "Enter limit : ";
 	cin >> limit;
 	limit += 10000000;
+	password = RefClient->createPassword();
+	username = RefClient->createUserName();
 }
 
 void UserAccount::Output()

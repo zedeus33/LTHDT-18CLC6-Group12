@@ -5,7 +5,7 @@
 using namespace std;
 class Account
 {
-private:
+protected:
 	string username;
 	string password;
 public:
@@ -13,8 +13,8 @@ public:
 	Account(string u, string p);
 	Account(const Account &a);
 	Account& operator=(const Account &a);
-	virtual string getUsername();
-	virtual string getPassword();
+	string getUsername();
+	string getPassword();
 	virtual void Encrypt();
 	virtual bool Authetication(string u, string p);
 	virtual void Input();

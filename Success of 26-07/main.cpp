@@ -145,7 +145,12 @@ void main()
 	//	cout << *x[i] << endl;
 	//}
 	
-	MainMenu();
 
+	//MainMenu();
+	Client *x=new Client;
+	x->input();
+	x->OpenNewAccount();
+	x->output();
+	x->CloseAccount();
 	system("pause");
 }
