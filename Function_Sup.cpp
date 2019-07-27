@@ -1,14 +1,16 @@
 #include "Function_Sup.h"
+
 #define CLIENT_PASSWORD "D:/StaffPassword.txt"
 
-void notice(string sentence,string horizontal = "=",string vertical = "=")
+vector<Bank*> bank;
+void notice(string sentence, string horizontal = "=", string vertical = "=")
 {
 	cout << setw(90);
-	for (int i = 0; i < ((sentence.size() + 4) /horizontal.size()); i++)
+	for (int i = 0; i < ((sentence.size() + 4) / horizontal.size()); i++)
 	{
 		cout << horizontal;
 	}
-	if (horizontal.size()==2 && sentence.size()%2!=0)
+	if (horizontal.size() == 2 && sentence.size() % 2 != 0)
 	{
 		cout << horizontal[0];
 	}
@@ -51,6 +53,8 @@ int chooseInt(int m)
 }
 void MainMenu()
 {
+
+	loadDataBank(bank);
 	cout << "***TA LANG BANKING***" << endl;
 	cout << "\n1.Sign in" << endl;
 	cout << "2.Sign up" << endl;
@@ -152,14 +156,15 @@ void secondMenu(string id)
 	cout << "5.Other tasks" << endl;
 	cout << "6.Adjust limit" << endl;
 	cout << "7.Saving" << endl;
-	cout << "8.Sign out" << endl;
-	int choose = chooseInt(8);
+	cout << "8.Bank system's address" << endl;
+	cout << "9.Sign out" << endl;
+	int choose = chooseInt(9);
 	switch (choose)
 	{
 	case 1:
 	{
 		system("cls");
-		//MenuUserInfor();
+		MenuUserInfor();
 	}break;
 	case 2:
 	{
@@ -195,6 +200,11 @@ void secondMenu(string id)
 	case 8:
 	{
 		system("cls");
+		MenuBankInfor();
+	}
+	case 9:
+	{
+		system("cls");
 		MainMenu();
 	}
 	}
@@ -216,6 +226,17 @@ bool checkLogin(string& account, string& password, const char* path) {
 		}
 	}
 	return false;
+}
+void MenuUserInfor()
+{
+
+}
+void MenuBankInfor()
+{
+	for (int i = 0; i < bank.size(); i++)
+	{
+		bank[i]->show_infor();
+	}
 }
 void inputIDPassword(string& id, string& password)
 {

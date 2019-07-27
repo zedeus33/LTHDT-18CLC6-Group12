@@ -1,5 +1,6 @@
 #include "Bank.h"
 #include "Function_Sup.h"
+
 Bank::Bank()
 {
 	name = address = president_name = phone_number = "Default";

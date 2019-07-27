@@ -13,67 +13,68 @@ using namespace std;
 
 class Date {
 private:
-    int m_day;
-    int m_month;
-    int m_year;
+	int m_day;
+	int m_month;
+	int m_year;
 public:
-    //Setter & getter are auto implement by IDE :>
-    static int s_DayRemain[12];
-    static int s_LeafYear_DayRemain[12];
+	//Setter & getter are auto implement by IDE :>
+	static int s_DayRemain[12];
+	static int s_LeafYear_DayRemain[12];
 
 
-    int getMDay() const;
+	int getMDay() const;
 
-    void setMDay(int mDay);
+	void setMDay(int mDay);
 
-    int getMMonth() const;
+	int getMMonth() const;
 
-    void setMMonth(int mMonth);
+	void setMMonth(int mMonth);
 
-    int getMYear() const;
+	int getMYear() const;
 
-    void setMYear(int mYear);
+	void setMYear(int mYear);
 
 
 public:
-    explicit Date(int day = 0, int month = 0, int year = 0);
+	explicit Date(int day = 0, int month = 0, int year = 0);
 
-    Date(const Date &p);
+	Date(const Date &p);
 
-    void input();
+	void input();
 
-    string output();
+	string output();
 
-    bool isValid();
+	bool isValid();
 
-    bool isLeafYear();
+	bool isLeafYear();
 
-    void increase(int n);
+	void increase(int n);
 
-    void decrease(int n);
+	void decrease(int n);
 
-    void increase();
+	void increase();
 
-    void decrease();
+	void decrease();
 
-    int compare(const Date p);
+	int compare(const Date p);
 
-    int diffFrom111();
-    int diff(Date p = Date(1,1,0));
+	int diffFrom111();
+	int diff(Date p = Date(1, 1, 0));
 
-    int getRemainDay();
+	int getRemainDay();
 
-    int calcAge();
+	int calcAge();
 
-    ~Date();
+	~Date();
 
 private:
-    bool isLastDay();
+	bool isLastDay();
 
-    bool isFirstDay();
+	bool isFirstDay();
 
-    int lastDayofMonth();
+	int lastDayofMonth();
 };
 
 
 #endif //ASSIGNMENT01_DATE_H
+

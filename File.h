@@ -4,14 +4,9 @@
 #include "fstream"
 using namespace std;
 bool checkFileExist(const char *path);
-template <class T>
-bool write(const char *path,T content, string endline);
-template <class T>
-bool addFile(const char *path,T content, string endline);
 string read(const char *path, int pos_begin, int pos_end);
 string readline(const char *path, int line);
 void copyBinary(const char *from, const char *to);
-
 
 bool checkFileExist(const char * path)
 {
@@ -20,38 +15,6 @@ bool checkFileExist(const char * path)
 	if (file.is_open() == true)
 	{
 		file.close();
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-template <class T>
-bool write(const char * path, T content, string endline = "")
-{
-	ofstream fout;
-	fout.open(path);
-	if (fout.is_open() == true)
-	{
-		fout << content << endline;
-		fout.close();
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-template <class T>
-bool addFile(const char * path, T content, string endline = "")
-{
-	ofstream fout;
-	fout.open(path, ios::app);
-	if (fout.is_open() == true)
-	{
-		fout << content << endline;
-		fout.close();
 		return true;
 	}
 	else
@@ -105,7 +68,7 @@ string readline(const char * path, int line)
 			i++;
 		}
 		fin.close();
-		return "No this line\n";
+		return "This line doesn't exist!\n";
 	}
 	else
 	{
@@ -126,4 +89,5 @@ void copyBinary(const char * from, const char * to)
 	source.close();
 	dest.close();
 }
+
 

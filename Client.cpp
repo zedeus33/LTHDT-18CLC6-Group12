@@ -24,7 +24,7 @@ Client::Client(string name, string addr, string SocialID, string UserID, string 
 
 void Client::input()
 {
-	cout << "Enter name: ";
+	/*cout << "Enter name: ";
 	getline(cin, name, '\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
@@ -35,7 +35,7 @@ void Client::input()
 	cin.ignore();
 	getline(cin, SocialID, '\n');
 	cout << "Enter User ID: ";
-	getline(cin, UserID, '\n');
+	getline(cin, UserID, '\n');*/
 
 }
 
@@ -147,5 +147,17 @@ string Client::createUserName()
 
 	}
 	return UserName;
+}
+
+Client::Client(const Client & rha)
+{
+	this->name = rha.name;
+	this->address = rha.address;
+	this->SocialID = rha.SocialID;
+	this->UserID = rha.UserID;
+	this->Email = rha.Email;
+	this->DoB = rha.DoB;
+	this->Sex = rha.Sex;
+	this->Salary = rha.Salary;
 }
 
