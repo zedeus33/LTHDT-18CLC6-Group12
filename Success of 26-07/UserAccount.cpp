@@ -16,11 +16,12 @@ UserAccount::UserAccount(string n, double b, double l) : Account()
 
 }
 
-UserAccount::UserAccount(string u, string p, string n, double b, double l) : Account(u, p)
+UserAccount::UserAccount(string u, string p, string n, double b, double l,Client *&Ref) : Account(u, p)
 {
 	numID = n;
 	Balance = 50000 + b;
 	limit = 10000000 + l;
+	RefClient = Ref;
 }
 
 UserAccount::UserAccount(const UserAccount & a)
@@ -73,6 +74,21 @@ string UserAccount::getLevel()
 	else return "Platinum";
 }
 
+Client* UserAccount::getRefClient()
+{
+	return this->RefClient;
+}
+
+//string UserAccount::getPassword()
+//{
+//	return Account::getPassword();
+//}
+
+void UserAccount::setPassword(string pass)
+{
+	password = pass;
+}
+
 bool UserAccount::changeBalance(double value)
 {
 	if (-value > Balance)
@@ -105,8 +121,8 @@ void UserAccount::Output()
 {
 	Account::Output();
 	cout << "Num ID : " << numID << endl;
-	cout << "Balance : " << Balance << endl;
-	cout << "Limit : " << limit << endl;
+	cout << "Balance : " << fixed << setprecision(2) << Balance << endl;
+	cout << "Limit : " << fixed << setprecision(2) << limit << endl;
 	cout << "Level : " << this->getLevel() << endl;
 }
 
@@ -116,3 +132,4 @@ UserAccount::~UserAccount()
 	Balance = 50000;
 	limit = 0;
 }
+

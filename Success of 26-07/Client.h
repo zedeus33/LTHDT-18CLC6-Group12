@@ -26,7 +26,7 @@ private:
 	//	Bank*
 public:
 	Client();
-	void setbankaccount(vector <UserAccount*> &x) 
+	void setBankAccount(vector <UserAccount*> &x) 
 	{
 		this->numOfAccount = x.size();
 		this->BankAccount.swap(x);
@@ -46,5 +46,6 @@ public:
 	void display();
 	UserAccount* findAccount(string numID);
 	int changeBalance(string numID, double value);
+	string getEmail();
 };
 #endif // !Client_h

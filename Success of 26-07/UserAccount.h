@@ -12,7 +12,7 @@ private:
 public:
 	UserAccount();
 	UserAccount(string n, double b, double l);
-	UserAccount(string u, string p, string n, double b, double l);
+	UserAccount(string u, string p, string n, double b, double l,Client* &Ref);
 	UserAccount(const UserAccount &a);
 	UserAccount& operator=(const UserAccount &a);
 	void setClient(Client* a);
@@ -20,6 +20,9 @@ public:
 	double getBalance();
 	double getLimit();
 	string getLevel();
+	Client* getRefClient();
+	/*string getPassword();*/
+	void setPassword(string pass);
 	bool changeBalance(double value);
 	void Input();
 	void Output();

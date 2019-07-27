@@ -13,8 +13,8 @@ public:
 	Account(string u, string p);
 	Account(const Account &a);
 	Account& operator=(const Account &a);
-	string getUsername();
-	string getPassword();
+	virtual string getUsername();
+	virtual string getPassword();
 	virtual void Encrypt();
 	virtual bool Authetication(string u, string p);
 	virtual void Input();

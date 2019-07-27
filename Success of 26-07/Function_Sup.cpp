@@ -1,10 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
 #include "Function_Sup.h"
 #include "File.h"
+#include "Transaction.h"
 #define STAFF_PASSWORD "D:/StaffPassword.txt"
 const string DATA_BANK = "D:/TaLangBanking/Data/Bank/";
 const string DATA_ACCOUNTCLIENT = "D:/TaLangBanking/Data/Client/Account/";
 const string DATA_PROFILECLIENT = "D:/TaLangBanking/Data/Client/Profile/";
+const string DATA_BEHAVIORS = "D:/TaLangBanking/Data/Behaviors";
 vector <Bank*> b;
 
 Date convertToDate(string x)
@@ -27,6 +30,7 @@ Date convertToDate(string x)
 	year = stoi(x);
 	return Date(day, month, year);
 }
+
 Client * loadDataClient(string UserID)
 {
 	// Load information of Cus
@@ -48,6 +52,7 @@ Client * loadDataClient(string UserID)
 	string salary = readline(file_path.c_str(), 7);
 	salary.erase(salary.begin(), salary.begin() + 8);
 	// Load Account Bank of Cus
+	Client* cl = new Client(name, addr, socialID, UserID, mail, day, sexual, stof(salary));
 	file_path = DATA_ACCOUNTCLIENT + UserID + ".txt";
 	string amount = readline(file_path.c_str(), 1);
 	vector <UserAccount*> bankAcc;
@@ -61,12 +66,12 @@ Client * loadDataClient(string UserID)
 			work[j] = line.substr(0, stop);
 			line.erase(line.begin(), line.begin() + stop + 1);
 		}
-		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line));
+		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line),cl);
 		bankAcc.push_back(useracc);
 	}
 
-	Client *cl = new Client(name, addr, socialID, UserID, mail, day, sexual, stof(salary));
-	cl->setbankaccount(bankAcc);
+
+	cl->setBankAccount(bankAcc);
 	return cl;
 }
 void loadDataBank(vector <Bank*> &b)
@@ -136,20 +141,52 @@ void notice(string sentence, string horizontal = "=", string vertical = "=")
 	cout << "\n";
 }
 
+bool isNum(string in)
+{
+	for (char c : in)
+	{
+		if (c < '0' || c > '9')
+			return false;
+	}
+	return true;
+}
+
+int toInt(string in)
+{
+	stringstream is;
+	is << in;
+	int ans;
+	is >> ans;
+	return ans;
+}
 
 int chooseInt(int m)
 {
-	int n;
+	string n;
 	cout << "\n\nEnter your choice : ";
 	cin >> n;
-	while (n <= 0 || n > m)
+	/*while (n <= 0 || n > m)
 	{
 		cout << "\nWrong choice! Please try again!" << endl;
 		system("pause");
 		cout << "\nEnter your choice : ";
 		cin >> n;
+	}*/
+	try {
+		if (toInt(n) > 0 && toInt(n) <= m && isNum(n))
+		{
+			return toInt(n);
+		}
+		else {
+			throw "\nSomething went wrong!";
+		}
 	}
-	return n;
+	catch (const char* a)
+	{
+		cout << a << endl;
+		return chooseInt(m);
+	}
+	
 }
 void MainMenu()
 {
@@ -173,7 +210,8 @@ void MainMenu()
 	}break;
 	case 2:
 	{
-
+		system("cls");
+		MenuSignUp();
 	}break;
 	case 3:
 	{
@@ -219,22 +257,49 @@ void MenuSignIn()
 
 		string id;
 		string password;
-		/*cout << "Input ID : ";
-		cin >> id;
-		cout << "Input password : ";
-		cin >> password;*/
 		inputIDPassword(id, password);
+		UserAccount* cus = NULL;
 		bool CheckPass;
 		system("cls");
-		CheckPass = checkLogin(id, password, STAFF_PASSWORD);
-		if (CheckPass) 
+		if (id[0] == 'a')
 		{
+			CheckPass = checkLoginAdmin(id, password, STAFF_PASSWORD);
+			if (CheckPass)
+			{
+				AdminMenu(id);
+			}
+			else {
+				system("color c");
+				cout << "\n\nWrong id or password!! Please try again" << endl;
+				system("pause");
 
-			secondMenu(id);
+				system("color f");
+				MenuSignIn();
+			}
 		}
-		else {
+		else if ((id[0] - '0') >= 0 && (id[0] - '0') <= 9)
+		{
+			cus = checkLoginUser(id, password);
+			Transaction* p = new LoginBehavior();
+			p->Export(DATA_BEHAVIORS.c_str());
+			p->sentOTP(cus->getRefClient()->getEmail());
+			if (cus != NULL && checkOTP(p) == true)
+			{
+
+				UserMenu(cus);
+			}
+			else {
+				system("color c");
+				cout << "\n\nWrong id or password!! Please try again" << endl;
+				system("pause");
+				system("color f");
+				MenuSignIn();
+			}
+		}
+		else
+		{
 			system("color c");
-			cout << "\n\nWrong id or password!! Please try again" << endl;
+			cout << "\n\nWrong input!! Please try again" << endl;
 			system("pause");
 
 			system("color f");
@@ -248,27 +313,23 @@ void MenuSignIn()
 	}
 	}
 }
-void secondMenu(string id)
+void UserMenu(UserAccount*& customer)
 {
-	cout << "1.User's information" << endl;
-	cout << "2.Transfer" << endl;
-	cout << "3.Payment" << endl;
-	cout << "4.Deal history" << endl;
-	cout << "5.Other tasks" << endl;
-	cout << "6.Adjust limit" << endl;
-	cout << "7.Saving" << endl;
-	cout << "8.Sign out" << endl;
+	cout << "[1]. User's information" << endl;
+	cout << "[2]. Transfer" << endl;
+	cout << "[3]. Payment" << endl;
+	cout << "[4]. Deal history" << endl;
+	cout << "[5]. Other tasks" << endl;
+	cout << "[6]. Adjust limit" << endl;
+	cout << "[7]. Saving" << endl;
+	cout << "[8]. Sign out" << endl;
 	int choose = chooseInt(8);
 	switch (choose)
 	{
 	case 1:
 	{
 		system("cls");
-		for (int i = 0; i < b.size(); i++)
-		{
-			cout << "\t\t\tBANK 1\n";
-			b[i]->show_infor();
-		}
+		customer->Output();
 		//MenuUserInfor();
 	}break;
 	case 2:
@@ -289,7 +350,7 @@ void secondMenu(string id)
 	case 5:
 	{
 		system("cls");
-		//MenuOthertasks();
+		MenuOthertasks(customer);
 	}break;
 	case 6:
 	{
@@ -310,10 +371,11 @@ void secondMenu(string id)
 	}
 	}
 }
-bool checkLogin(string& account, string& password, const char* path) {
+
+bool checkLoginAdmin(string& account, string& password, const char* path)
+{
 	ifstream fout;
 	fout.open(path);
-	//int aos; /*aos: Amount of firstStudentMenu,firstLectureMenu*/
 	string id, pw;
 	while (!fout.eof())
 	{
@@ -327,6 +389,113 @@ bool checkLogin(string& account, string& password, const char* path) {
 		}
 	}
 	return false;
+}
+UserAccount* checkLoginUser(string id, string password)
+{
+	vector <Client*> User;
+	vector <UserAccount*> bankAccount;
+	UserAccount* temp = NULL;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(User);
+		for (int j = 0; j < User.size(); j++)
+		{
+			User[j]->setBankAccount(bankAccount);
+			for (int k = 0; k < bankAccount.size(); k++)
+			{
+
+				if (bankAccount[k]->getUsername() == id && bankAccount[k]->getPassword() == password)
+				{
+					temp = bankAccount[k];
+					User[j]->setBankAccount(bankAccount);
+					b[i]->setCustomer(User);
+					return temp;
+				}
+			}
+			User[j]->setBankAccount(bankAccount);
+		}
+		b[i]->setCustomer(User);
+	}
+	return temp;
+}
+void AdminMenu(string id)
+{
+
+}
+void MenuOthertasks(UserAccount*& customer)
+{
+	cout << "[1]. Change password" << endl;
+	cout << "[2]. Bank system's address" << endl;
+	cout << "[3]. News" << endl;
+	cout << "[4]. Exchange rate" << endl;
+	cout << "[5]. Interest rate" << endl;
+	cout << "[6]. Return" << endl;
+	int n = chooseInt(6);
+	switch (n)
+	{
+		case 1:
+		{
+			system("cls");
+			changePassword(customer);
+			MenuOtherTasksContinue(customer);
+		}break;
+		case 2:
+		{
+			system("cls");
+			for (int i = 0; i < b.size(); i++)
+			{
+				b[i]->show_infor();
+			}
+			MenuOtherTasksContinue(customer);
+		}break;
+		case 3:
+		{
+
+		}break;
+		case 4:
+		{
+
+		}break;
+		case 5:
+		{
+
+		}break;
+		case 6:
+		{
+			system("cls");
+			UserMenu(customer);
+		}
+	
+	}
+
+}
+void MenuSignUp()
+{
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->show_infor();
+	}
+	int n = chooseInt(4);
+	switch (n)
+	{
+		case 1:
+		{
+			b[0]->addNewUser();
+		}break;
+		case 2:
+		{
+			b[1]->addNewUser();
+		}break;
+		case 3:
+		{
+			b[2]->addNewUser();
+		}break;
+		case 4:
+		{
+			b[3]->addNewUser();
+		}
+	}
+	MainMenuContinue();
 }
 float InputFloat(float& a, const char* text)
 {
@@ -407,6 +576,56 @@ bool InputBool(bool& a, const char* text)
 		}
 	} while (true);
 }
+void MainMenuContinue()
+{
+	cout << "\nDo you want to continue? (y = Yes , n= No)";
+	string YesOrNo;
+	cin >> YesOrNo;
+	if (YesOrNo == "y")
+	{
+		MainMenu();
+	}
+	else if (YesOrNo == "n")
+	{
+		system("cls");
+		cout << "Goodbye, Have a nice day!" << endl;
+		system("pause");
+		char temp = getchar();
+		exit(0);
+	}
+	else
+	{
+		system("cls");
+		notice("Wrong input! Please try again", "+", "+");
+		system("pause");
+		MainMenuContinue();
+	}
+}
+void MenuOtherTasksContinue(UserAccount *&cus)
+{
+	cout << "\nDo you want to continue? (y = Yes , n = No) : ";
+	string YesOrNo;
+	cin >> YesOrNo;
+	if (YesOrNo == "y")
+	{
+		MenuOthertasks(cus);
+	}
+	else if (YesOrNo == "n")
+	{
+		system("cls");
+		cout << "Goodbye, Have a nice day!" << endl;
+		system("pause");
+		char temp = getchar();
+		exit(0);
+	}
+	else
+	{
+		system("cls");
+		notice("Wrong input! Please try again", "+", "+");
+		system("pause");
+		MainMenuContinue();
+	}
+}
 void inputIDPassword(string& id, string& password)
 {
 	cout << "\n\n\n" << endl;
@@ -438,7 +657,7 @@ void inputIDPassword(string& id, string& password)
 		{
 			_getch();
 		}
-		else if (isprint(pass) && temp.size() < 10)
+		else if (isprint(pass) && temp.size() < 8)
 		{
 			cout << "*";
 			temp = temp + pass;
@@ -446,5 +665,39 @@ void inputIDPassword(string& id, string& password)
 	} while (true);
 	password = temp;
 	system("color f");
+}
+
+void changePassword(UserAccount*& a)
+{
+	cout << "Enter new password : ";
+	char pass;
+	string temp;
+	do
+	{
+		pass = _getch();
+		if (pass == '\n' || pass == '\r')
+		{
+			cout << "\n";
+			break;
+		}
+		else if (pass == '\b')
+		{
+			cout << "\b \b";
+			if (temp.empty() == false)
+			{
+				temp.erase(temp.size() - 1);
+			}
+		}
+		else if (pass == -32)
+		{
+			_getch();
+		}
+		else if (isprint(pass) && temp.size() < 8)
+		{
+			cout << "*";
+			temp = temp + pass;
+		}
+	} while (true);
+	a->setPassword(temp);
 }
 

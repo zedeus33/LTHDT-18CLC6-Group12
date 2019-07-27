@@ -24,6 +24,8 @@ Client::Client(string name, string addr, string SocialID, string UserID, string 
 
 void Client::input()
 {
+	if (cin.get() != '\n')
+		cin.ignore();
 	cout << "Enter name: ";
 	getline(cin, name, '\n');
 	cout << "Enter Address: ";
@@ -196,6 +198,11 @@ int Client::changeBalance(string numID, double value)
 		}
 		cout << "Successfully" << endl;
 		return 1;
+}
+
+string Client::getEmail()
+{
+	return this->Email;
 }
 
 Client::Client(const Client& rha)
