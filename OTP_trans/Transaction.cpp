@@ -9,6 +9,11 @@ using namespace std;
 #include <string>
 #include <windows.h>
 
+string OTP::toString()
+{
+	return nd;
+}
+
 OTP::OTP()
 {
 	this->randOTP();
@@ -81,6 +86,15 @@ LoginBehavior::LoginBehavior()
 	trans = time(0);
 }
 
+bool LoginBehavior::sentOTP(string email)
+{
+	stringstream cont;
+	cont <<  "Your otp code is " << this->otp.toString() << endl;
+	cont << "This otp will experied in 5 minutes." << endl;
+	_EmailHandle(cont.str(), email);
+	return false;
+}
+
 void _EmailHandle(string cont, string email)
 {
 	string command = "curl -s -o nul -v --output \"/dev/null\" smtp://smtp.gmail.com:587 -v --mail-from \"task.toandoan@gmail.com\" --mail-rcpt " + email + " --ssl -u task.toandoan@gmail.com:142857Toan! -T " + string(ATFILE) + " -k --anyauth";
@@ -92,4 +106,14 @@ void _EmailHandle(string cont, string email)
 	system("cls");
 	cout << "A OTP has been sent to your mail at: " << email << endl;
 	cout << "OTP will expired in 5 minutes" << endl;
+}
+
+bool checkOTP(Transaction* p)
+{
+	string inOTP;
+	cout << "Please enter your otp we have sent to your email: ";
+	cin >> inOTP;
+	if (p->otp.isaAuthenticate(inOTP))
+		return true;
+	return false;
 }

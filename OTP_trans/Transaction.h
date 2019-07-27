@@ -10,6 +10,7 @@ class OTP
 	string nd;
 	time_t o;
 public:
+	string toString();
 	OTP();
 	bool isaAuthenticate(string otp);
 	string randOTP();
@@ -20,13 +21,14 @@ public:
 class Transaction
 {
 protected:
-	OTP otp;
 	float value;
 	time_t trans;
 public:
+	OTP otp;
 	virtual void saveLog(const char *content,const char *path) = 0;
 	virtual void Export(const char *path) = 0;
 	virtual string toString() = 0;
+	virtual bool sentOTP() = 0;
 };
 
 
@@ -37,11 +39,9 @@ public:
 	void Export(const char* path);
 	string toString();
 	LoginBehavior();
+	bool sentOTP(string email);
 };
   
-
-
-
 
 //Transaction modified
 #include <utility>
@@ -63,3 +63,4 @@ public:
 		return _strdup(stream.str().c_str());
 	}
 };
+
