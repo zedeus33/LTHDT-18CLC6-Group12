@@ -105,7 +105,7 @@ string readline(const char * path, int line)
 			i++;
 		}
 		fin.close();
-		return "No this line\n";
+		return "This line doesn't exist\n";
 	}
 	else
 	{

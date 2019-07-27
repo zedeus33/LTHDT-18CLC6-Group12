@@ -1,16 +1,12 @@
+#pragma warning(disable:4996)
 #include "Function_Sup.h"
 #include "Bank.h"
-#pragma warning(disable:4996)
 #include "File.h"
-#include "conio.h"
-#include "sstream"
-#include <ctime>
-#include <vector>
-#define CLIENT_PASSWORD "D:/StaffPassword.txt"
+#define STAFF_PASSWORD "D:/StaffPassword.txt"
 const string DATA_BANK = "D:/TaLangBanking/Data/Bank/";
 const string DATA_ACCOUNTCLIENT = "D:/TaLangBanking/Data/Client/Account/";
 const string DATA_PROFILECLIENT = "D:/TaLangBanking/Data/Client/Profile/";
-using namespace std;
+vector <Bank*> b;
 
 Date convertToDate(string x)
 {
@@ -58,15 +54,15 @@ Client * loadDataClient(string UserID)
 	vector <UserAccount*> bankAcc;
 	for (int i = 0; i < stoi(amount); i++)
 	{
-		string work[4];
+		string work[3];
 		string line = readline(file_path.c_str(), i + 3);
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < 3; j++)
 		{
 			auto stop = line.find_first_of('|');
 			work[j] = line.substr(0, stop);
 			line.erase(line.begin(), line.begin() + stop + 1);
 		}
-		UserAccount *useracc = new UserAccount(work[1], work[2], work[0], stod(work[3]), stod(line));
+		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line));
 		bankAcc.push_back(useracc);
 	}
 
@@ -86,11 +82,11 @@ void loadDataBank(vector <Bank*> &b)
 		president.erase(president.begin(), president.begin() + 10);
 		string phone = readline(file_path.c_str(), 4);
 		phone.erase(phone.begin(), phone.begin() + 7);
-		Bank *x = new Bank("TaLang Bank", addr, president, phone);
+		Bank *x = new Bank("TaLang iBanking", addr, president, phone);
 		vector <Client*> cl;
 		int j = 6;
 		string UserID;
-		while ((UserID = readline(file_path.c_str(), j)) != "No this line\n")
+		while ((UserID = readline(file_path.c_str(), j)) != "This line doesn't exist\n")
 		{
 			if (j >= 6 && j <= 14)
 			{
@@ -158,6 +154,7 @@ int chooseInt(int m)
 }
 void MainMenu()
 {
+	loadDataBank(b);
 	cout << "***TA LANG BANKING***" << endl;
 	cout << "\n1.Sign in" << endl;
 	cout << "2.Sign up" << endl;
@@ -230,8 +227,10 @@ void MenuSignIn()
 		inputIDPassword(id, password);
 		bool CheckPass;
 		system("cls");
-		CheckPass = checkLogin(id, password, CLIENT_PASSWORD);
-		if (CheckPass) {
+		CheckPass = checkLogin(id, password, STAFF_PASSWORD);
+		if (CheckPass) 
+		{
+
 			secondMenu(id);
 		}
 		else {
@@ -266,8 +265,6 @@ void secondMenu(string id)
 	case 1:
 	{
 		system("cls");
-		vector <Bank*> b;
-		loadDataBank(b);
 		for (int i = 0; i < b.size(); i++)
 		{
 			cout << "\t\t\tBANK 1\n";

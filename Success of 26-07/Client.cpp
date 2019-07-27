@@ -28,9 +28,9 @@ void Client::input()
 	getline(cin, name, '\n');
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
-	Sex = in(Sex, "Enter sex(0:female, 1 : male): ");
+	/*Sex = in(Sex, "Enter sex(0:female, 1 : male): ");*/
 	DoB.input();
-	Salary = in(Salary, "Enter Salary: ");
+	//Salary = in(Salary, "Enter Salary: ");
 	cout << "Enter Social ID: ";
 	cin.ignore();
 	getline(cin, SocialID, '\n');
