@@ -15,11 +15,12 @@ UserAccount::UserAccount(string n, double b, double l) : Account()
 
 }
 
-UserAccount::UserAccount(string u, string p, string n, double b, double l) : Account(u, p)
+UserAccount::UserAccount(string u, string p, string n, double b, double l,Client* &Ref) : Account(u, p)
 {
 	numID = n;
 	Balance = 50000 + b;
 	limit = 10000000 + l;
+	RefClient = Ref;
 }
 
 UserAccount::UserAccount(const UserAccount & a)
@@ -37,6 +38,11 @@ UserAccount & UserAccount::operator=(const UserAccount & a)
 	Balance = a.Balance;
 	limit = a.limit;
 	return *this;
+}
+
+Client * UserAccount::getRef()
+{
+	return this->RefClient;
 }
 
 string UserAccount::getNumID()
@@ -89,6 +95,19 @@ void UserAccount::Output()
 	cout << "Level : " << this->getLevel() << endl;
 }
 
+bool UserAccount::transfer(UserAccount *&numIDTranferTo,double value)
+{
+	if (value > Balance || value >limit)
+	{
+		return false;
+	}
+	else
+	{
+		numIDTranferTo->Balance = numIDTranferTo->Balance + value;
+		this->Balance = this->Balance - value;
+		return true;
+	}
+}
 UserAccount::~UserAccount()
 {
 	numID = "";

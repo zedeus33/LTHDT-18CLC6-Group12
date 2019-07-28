@@ -120,33 +120,30 @@ string Client::createPassword()
 	return password.str();
 }
 
+string Client::getName()
+{
+	return name;
+}
+
+string Client::getUserID()
+{
+	return UserID;
+}
+
 char asciitolower(char in) {
 	if (in <= 'Z' && in >= 'A')
 		return in - ('Z' - 'z');
 	return in;
 }
 
-string Client::createUserName()
+UserAccount* Client::findAccount(string numID)
 {
-	stringstream temp;
-	temp << name;
-	temp << setfill('0') << setw(2) << DoB.getMDay();
-	temp << setfill('0') << setw(2) << DoB.getMMonth();
-	string UserName = temp.str();
-	for (int i = 0; i < UserName.length(); i++)
+	for (vector <UserAccount*>::iterator it = BankAccount.begin(); it != BankAccount.end(); it++)
 	{
-
-
-		if (UserName[i] == ' ')
+		if ((*it)->getNumID() == numID)
 		{
-			UserName.erase(UserName.begin() + i);
-			i--;
-			continue;
-
+			return *it;
 		}
-		UserName[i] = asciitolower(UserName[i]);
-
 	}
-	return UserName;
+	return NULL;
 }
-

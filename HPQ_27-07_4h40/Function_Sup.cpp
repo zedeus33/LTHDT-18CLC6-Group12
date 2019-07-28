@@ -49,6 +49,7 @@ Client * loadDataClient(string UserID)
 	string salary = readline(file_path.c_str(), 7);
 	salary.erase(salary.begin(), salary.begin() + 8);
 	// Load Account Bank of Cus
+	Client *cl = new Client(name, addr, socialID, UserID, mail, day, sexual, stof(salary));
 	file_path = DATA_ACCOUNTCLIENT + UserID + ".txt";
 	string amount = readline(file_path.c_str(), 1);
 	vector <UserAccount*> bankAcc;
@@ -62,11 +63,10 @@ Client * loadDataClient(string UserID)
 			work[j] = line.substr(0, stop);
 			line.erase(line.begin(), line.begin() + stop + 1);
 		}
-		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line));
+		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line),cl);
 		bankAcc.push_back(useracc);
 	}
 
-	Client *cl = new Client(name, addr, socialID, UserID, mail, day, sexual, stof(salary));
 	cl->setBankAccount(bankAcc);
 	return cl;
 }
@@ -135,6 +135,178 @@ void notice(string sentence, string horizontal = "=", string vertical = "=")
 		cout << horizontal[0];
 	}
 	cout << "\n";
+}
+
+bool checkStringExist(vector<string> x,string y)
+{
+	for (int i = 0; i < x.size(); i++)
+	{
+		if (x[i] == y)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+string fun_randomChar(int amount)
+{
+	char c;
+	int r;
+	string temp;
+	srand(time(NULL));    // initialize the random number generator
+	for (int i = 0; i < amount; i++)
+	{
+		r = rand() % 10;   // generate a random number
+		c = '0' + r;            // Convert to a character from a-z
+		temp = temp + c;
+	}
+	return temp;
+}
+
+string createDefaultUserID()
+{
+	vector <Client*> User;
+	vector <string> UserID_Exist;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(User);
+		for (int j = 0; j < User.size(); j++)
+		{
+			UserID_Exist.push_back(User[j]->getUserID());
+		}
+		b[i]->setCustomer(User);
+	}
+	string UserID;
+	{
+		UserID = fun_randomChar(4);
+	} while (checkStringExist(UserID_Exist,UserID)==true);
+	return UserID;
+}
+
+string createDefaultNumID()
+{
+	vector <Client*> User;
+	vector <UserAccount*> bankAccount;
+	vector <string> NumID_Exist;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(User);
+		for (int j = 0; j < User.size(); j++)
+		{
+			User[j]->setBankAccount(bankAccount);
+			for (int k = 0; k < bankAccount.size(); k++)
+			{
+				NumID_Exist.push_back(bankAccount[k]->getNumID());
+			}
+			User[j]->setBankAccount(bankAccount);
+		}
+		b[i]->setCustomer(User);
+	}
+	string NumID;
+	do
+	{
+		NumID = fun_randomChar(12);
+	} while (checkStringExist(NumID_Exist, NumID) == true);
+	return NumID;
+}
+
+bool isDouble(string in)
+{
+	std::istringstream iss(in);
+	double f;
+	iss >> noskipws >> f; // noskipws considers leading whitespace invalid
+	// Check the entire string was consumed and if either failbit or badbit is set
+	return iss.eof() && !iss.fail();
+}
+
+double toDouble(string in)
+{
+	std::istringstream iss(in);
+	double f;
+	iss >> noskipws >> f;
+	return f;
+}
+
+UserAccount * findUserAccount(string numID)
+{
+	vector <Client*> cus;
+	UserAccount *x = NULL;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(cus);
+		for (int j = 0; j < cus.size(); j++)
+		{
+			x = cus[j]->findAccount(numID);
+			if (x!=NULL)
+			{
+				b[i]->setCustomer(cus);
+				return x;
+			}
+		}
+		b[i]->setCustomer(cus);
+	}
+	return x;
+}
+
+void transfer(UserAccount * &customer)
+{
+	string numID;
+	cout << "Please enter ID number to transfer: ";
+	cin >> numID;
+	UserAccount *numIDTransferTo = findUserAccount(numID);
+	if (numIDTransferTo!=NULL)
+	{
+		system("cls");
+		cout << "*************************************************************" << endl;
+		cout << "\t\t\tINFORMATION NUMBER ID" << endl;
+		cout << "      Name: " << numIDTransferTo->getRef()->getName() << endl;
+		cout << " Number ID: " << numIDTransferTo->getNumID() << endl;
+		cout << "*************************************************************" << endl << endl;
+		string choice;
+		cout << "Are you sure to transfer(yes/no) >> ";
+		cin >> choice;
+		if (_stricmp(choice.c_str(),"yes") == 0)
+		{
+			system("cls");
+			bool ans;
+			double value;
+			do
+			{
+				string input;
+				cout << "Enter value to transfer: ";
+				cin >> input;
+				ans = isDouble(input);
+				if (ans == true)
+				{
+					value = toDouble(input);
+				}
+				else
+				{
+					notice("Error type,Please try again", "-", "-");
+				}
+			} while (ans == false);
+			ans = customer->transfer(numIDTransferTo, value);
+			if (ans == true)
+			{
+				notice("Transfer Successfully");
+			}
+			else
+			{
+				notice("Your input value is not allowed", "+", "-");
+				notice("The transfer money need to be bigger than your balance and smaller than limit of transfer/time ", "+", "-");
+			}
+		}
+		else
+		{
+			return;
+		}
+		
+	}
+	else
+	{
+		notice("This ID number doesn't exist -.-", "+", "-");
+	}
 }
 
 
@@ -288,8 +460,20 @@ void UserMenu(UserAccount *&customer)
 	}break;
 	case 2:
 	{
+		
 		system("cls");
+		transfer(customer);
 		//MenuTransfer();
+		string ans;
+		cout << "Do you want to continue?";
+		cin >> ans;
+		if (ans == "yes")
+		{
+			UserMenu(customer);
+		}
+		else {
+			MainMenu();
+		}
 	}break;
 	case 3:
 	{

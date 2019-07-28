@@ -38,12 +38,10 @@ public:
 	void output();
 	bool OpenNewAccount();
 	bool CloseAccount();
-	//bool Deposit(float value);
-	//bool WithDraw(float value);
-	//bool Transfer(float value, string AccountID);
 	bool operator ==(const Client *& a);
 	string createPassword();
-	string createUserName();
-
+	string getName();
+	string getUserID();
+	UserAccount* findAccount(string numID);
 };
 #endif // !Client_h
