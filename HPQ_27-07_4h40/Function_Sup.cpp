@@ -274,6 +274,9 @@ void transfer(UserAccount * &customer)
 			do
 			{
 				string input;
+				cout << "*NOTE*" << endl;
+				cout << setw(30) <<"YOUR BALANCE: " << fixed << setprecision(2) <<customer->getBalance() << endl;
+				cout << setw(30) << "MAX MONEY TRANSFER ONCE: " << fixed << setprecision(2) << customer->getLimit() << endl << endl;
 				cout << "Enter value to transfer: ";
 				cin >> input;
 				ans = isDouble(input);
@@ -294,7 +297,6 @@ void transfer(UserAccount * &customer)
 			else
 			{
 				notice("Your input value is not allowed", "+", "-");
-				notice("The transfer money need to be bigger than your balance and smaller than limit of transfer/time ", "+", "-");
 			}
 		}
 		else
