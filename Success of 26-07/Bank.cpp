@@ -28,6 +28,7 @@ void Bank::addNewUser()
 {
 	Client *x = new Client;
 	x->input();
+	x->createDefaultUserAccount();
 	for (int i = 0; i < this->cus.size(); i++)
 	{
 		if (x == cus[i])

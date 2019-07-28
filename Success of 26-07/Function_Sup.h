@@ -17,13 +17,14 @@ bool isNum(string in);
 //bool checkLogin(string& account, string& password, const char* path);
 void notice(string sentence, string horizontal, string vertical);
 void inputIDPassword(string& id, string& password);
-void changePassword(UserAccount*& a);
+bool changePassword(UserAccount*& a);
+bool checkLoginAdmin(string& account, string& password, const char* path);
+UserAccount* checkLoginUser(string id, string password);
 
 void MenuSignIn();
 void MainMenu();
 void UserMenu(UserAccount*& customer);
-bool checkLoginAdmin(string& account, string& password, const char* path);
-UserAccount* checkLoginUser(string id, string password);
+
 void AdminMenu(string id);
 
 //void MenuUserInfor();
@@ -35,10 +36,18 @@ void MenuOthertasks(UserAccount*& customer);
 //void MenuSaving();
 void MenuSignUp();
 
+void MainMenuContinue();
+void MenuOtherTasksContinue(UserAccount*& cus);
 
+bool alnum(string s);
+void checkSocialID(const string& id);
+void checkEmail(const string& email);
+string inputSocialID(string SocialID, const char* text);
+string inputEmail(string Email, const char* text);
 float InputFloat(float& a, const char* text);
 int InputInt(int& a, const char* text);
 bool InputBool(bool& a, const char* text);
-
-void MainMenuContinue();
-void MenuOtherTasksContinue(UserAccount*& cus);
+bool checkStringExist(vector <string> x, string y);
+string fun_randomChar(int amount);
+string createDefaultUserID();
+string createDefaultNumID();

@@ -40,9 +40,14 @@ public:
 	//bool Deposit(float value);
 	//bool WithDraw(float value);
 	//bool Transfer(float value, string AccountID);
+	void createDefaultUserAccount();
 	bool operator ==(const Client *& a);
+	string getUserID()
+	{
+		return UserID;
+	}
 	string createPassword();
-	string createUserName();
+	//string createUserName();
 	void display();
 	UserAccount* findAccount(string numID);
 	int changeBalance(string numID, double value);

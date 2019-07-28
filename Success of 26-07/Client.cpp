@@ -1,6 +1,8 @@
 #include "Client.h"
 
 
+
+
 Client::Client()
 {
 	name = "";
@@ -31,19 +33,20 @@ void Client::input()
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
 	Sex = InputBool(Sex, "Sex (0:Male,1:Female):");
+	cout << "Enter day of birth" << endl;
 	DoB.input();
 	cin.ignore();
 	Salary = InputFloat(Salary, "Enter Salary: ");
-	cout << "Enter Social ID(Social ID must have 9 numbers) : "; //  9 numbers only
-	getline(cin, SocialID, '\n');
-	cout << "Enter User ID: ";// 4 numbers only
-	getline(cin, UserID, '\n');
-	cout << "Enter Email: ";// must have "@" character
-	getline(cin, Email, '\n');
+	SocialID = inputSocialID(SocialID, "Enter SocialID (9 numbers): ");
+	Email = inputEmail(Email, "Enter Email: ");
+	UserID = createDefaultUserID();
+	
+	cout << "Your User ID is:" << UserID << endl;
 }
 
 void Client::output()
 {
+	cout << "/t/tClient information" << endl;
 	cout << "Name: " << name << endl;
 	cout << "Address: " << address << endl;
 	cout << "Social ID: " << SocialID << endl;
@@ -59,7 +62,7 @@ void Client::output()
 	{
 		cout << "Male" << endl;
 	}
-	cout << "Salary: " << fixed <<setprecision(2) <<Salary << endl;
+	cout << "Salary: " << fixed << setprecision(2) << Salary << endl;
 	cout << "Number of account: " << numOfAccount << endl;
 	for (int i = 0; i < BankAccount.size(); i++)
 	{
@@ -78,8 +81,8 @@ bool Client::OpenNewAccount()
 	}
 	else
 	{
-		UserAccount * _new = new UserAccount;
-		_new->setClient(this);
+		UserAccount* _new = new UserAccount;
+		//_new->setClient(this);
 		_new->Input();
 		BankAccount.push_back(_new);
 		numOfAccount++;
@@ -112,7 +115,17 @@ bool Client::CloseAccount()
 	return true;
 }
 
-bool Client::operator==(const Client *&a)
+void Client::createDefaultUserAccount()
+{
+	Client* rha = this;
+	UserAccount* a = new UserAccount(createDefaultNumID(),this->createPassword(),createDefaultNumID(),double(0),double(0),rha);
+	cout << "Your new default user number ID is :" << a->getNumID() << endl;
+	cout << "Your new default username is : " << a->getUsername() << endl;
+	cout << "Your new default password is : " << a->getPassword() << endl;
+	BankAccount.push_back(a);
+}
+
+bool Client::operator==(const Client*& a)
 {
 	if (a->SocialID == this->SocialID)
 	{
@@ -141,29 +154,29 @@ char asciitolower(char in) {
 	return in;
 }
 
-string Client::createUserName()
-{
-	stringstream temp;
-	temp << name;
-	temp << setfill('0') << setw(2) << DoB.getMDay();
-	temp << setfill('0') << setw(2) << DoB.getMMonth();
-	string UserName = temp.str();
-	for (int i = 0; i < UserName.length(); i++)
-	{
-
-
-		if (UserName[i] == ' ')
-		{
-			UserName.erase(UserName.begin() + i);
-			i--;
-			continue;
-
-		}
-		UserName[i] = asciitolower(UserName[i]);
-
-	}
-	return UserName;
-}
+//string Client::createUserName()
+//{
+//	stringstream temp;
+//	temp << name;
+//	temp << setfill('0') << setw(2) << DoB.getMDay();
+//	temp << setfill('0') << setw(2) << DoB.getMMonth();
+//	string UserName = temp.str();
+//	for (int i = 0; i < UserName.length(); i++)
+//	{
+//
+//
+//		if (UserName[i] == ' ')
+//		{
+//			UserName.erase(UserName.begin() + i);
+//			i--;
+//			continue;
+//
+//		}
+//		UserName[i] = asciitolower(UserName[i]);
+//
+//	}
+//	return UserName;
+//}
 
 void Client::display()
 {
@@ -186,18 +199,18 @@ UserAccount* Client::findAccount(string numID)
 
 int Client::changeBalance(string numID, double value)
 {
-		UserAccount* a = Client::findAccount(numID);
-		if (a == NULL)
-		{
-			return 0;
-		}
-		if (a->changeBalance(value) == 0)
-		{
-			cout << "Balance does not have enought!!" << endl;
-			return -1;
-		}
-		cout << "Successfully" << endl;
-		return 1;
+	UserAccount* a = Client::findAccount(numID);
+	if (a == NULL)
+	{
+		return 0;
+	}
+	if (a->changeBalance(value) == 0)
+	{
+		cout << "Balance does not have enought!!" << endl;
+		return -1;
+	}
+	cout << "Successfully" << endl;
+	return 1;
 }
 
 string Client::getEmail()
@@ -216,8 +229,3 @@ Client::Client(const Client& rha)
 	this->Sex = rha.Sex;
 	this->Salary = rha.Salary;
 }
-
-
-
-
-

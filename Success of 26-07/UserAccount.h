@@ -23,6 +23,7 @@ public:
 	Client* getRefClient();
 	/*string getPassword();*/
 	void setPassword(string pass);
+	void setUserName();
 	bool changeBalance(double value);
 	void Input();
 	void Output();

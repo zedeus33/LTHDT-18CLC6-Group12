@@ -30,6 +30,7 @@ UserAccount::UserAccount(const UserAccount & a)
 	numID = a.numID;
 	Balance = a.Balance;
 	limit = a.limit;
+	
 }
 
 UserAccount & UserAccount::operator=(const UserAccount & a)
@@ -89,6 +90,11 @@ void UserAccount::setPassword(string pass)
 	password = pass;
 }
 
+void UserAccount::setUserName()
+{
+	username = numID;
+}
+
 bool UserAccount::changeBalance(double value)
 {
 	if (-value > Balance)
@@ -113,8 +119,8 @@ void UserAccount::Input()
 	cout << "Enter limit : ";
 	cin >> limit;
 	limit += 10000000;
-	password = RefClient->createPassword();
-	username = RefClient->createUserName();
+	//password = RefClient->createPassword();
+	//username = ();
 }
 
 void UserAccount::Output()

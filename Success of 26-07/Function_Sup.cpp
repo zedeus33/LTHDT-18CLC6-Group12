@@ -280,7 +280,30 @@ void MenuSignIn()
 		else if ((id[0] - '0') >= 0 && (id[0] - '0') <= 9)
 		{
 			cus = checkLoginUser(id, password);
-			Transaction* p = new LoginBehavior();
+			if (cus == NULL) {
+				system("color c");
+				cout << "\n\nWrong id or password!! Please try again" << endl;
+				system("pause");
+				system("color f");
+				MenuSignIn();
+			}
+			else {
+				Transaction* p = new LoginBehavior();
+				p->Export(DATA_BEHAVIORS.c_str());
+				p->sentOTP(cus->getRefClient()->getEmail());
+				if (checkOTP(p) == true)
+				{
+					UserMenu(cus);
+				}
+				else {
+					system("color c");
+					cout << "\n\nWrong OTP or OTP has been expired! Please try again!" << endl;
+					system("pause");
+					system("color f");
+					MenuSignIn();
+				}
+			}
+			/*Transaction* p = new LoginBehavior();
 			p->Export(DATA_BEHAVIORS.c_str());
 			p->sentOTP(cus->getRefClient()->getEmail());
 			if (cus != NULL && checkOTP(p) == true)
@@ -294,7 +317,7 @@ void MenuSignIn()
 				system("pause");
 				system("color f");
 				MenuSignIn();
-			}
+			}*/
 		}
 		else
 		{
@@ -436,8 +459,17 @@ void MenuOthertasks(UserAccount*& customer)
 		case 1:
 		{
 			system("cls");
-			changePassword(customer);
-			MenuOtherTasksContinue(customer);
+			if (changePassword(customer)) {
+				system("pause");
+				cout << "Your password has been changed succesfully! Please log out and log in again with new password!" << endl;
+				system("pause");
+				system("cls");
+				MenuSignIn();
+			}
+			else {
+				cout << "Something went wrong! Your new password is too short or too long! Please try again!" << endl;
+				MenuOtherTasksContinue(customer);
+			}
 		}break;
 		case 2:
 		{
@@ -480,109 +512,36 @@ void MenuSignUp()
 	{
 		case 1:
 		{
+			system("cls");
 			b[0]->addNewUser();
 		}break;
 		case 2:
 		{
+			system("cls");
 			b[1]->addNewUser();
 		}break;
 		case 3:
 		{
+			system("cls");
 			b[2]->addNewUser();
 		}break;
 		case 4:
 		{
+			system("cls");
 			b[3]->addNewUser();
 		}
 	}
 	MainMenuContinue();
 }
-float InputFloat(float& a, const char* text)
-{
-	bool check;
-	float  temp;
-	do
-	{
-		stringstream iss;
-		string sInput;
-		cout << text;
-		getline(cin, sInput, '\n');
-		iss << sInput;
-		iss >> temp;
-		check = iss.eof() && !iss.fail();
-		if (check == 0)
-		{
-			cout << "WRONG TYPE__TYPE EXPECTED: NUMBER" << endl;
-			cout << "Please try again!" << endl;
-			continue;
-		}
-		else
-		{
-			a = temp;
-			return a;
-		}
-	} while (true);
-}
-int InputInt(int& a, const char* text)
-{
-	int temp;
-	bool check;
-	do
-	{
-		string sInput;
-		stringstream iss;
-		cout << text;
-		getline(cin, sInput, '\n');
-		iss << sInput;
-		iss >> temp;
-		check = iss.eof() && !iss.fail();
-		if (check == 0)
-		{
-			cout << "WRONG TYPE__TYPE EXPECTED: NUMBER" << endl;
-			cout << "Please try again!" << endl;
-			continue;
-		}
-		else
-		{
-			a = temp;
-			return a;
-		}
-	} while (true);
-}
-bool InputBool(bool& a, const char* text)
-{
-	bool temp;
-	bool check;
-	do
-	{
-		string sInput;
-		cout << text;
-		getline(cin, sInput, '\n');
-		if (sInput == "0")
-		{
-			temp = 0;
-			a = temp;
-			return temp;
-		}
-		else if (sInput == "1")
-		{
-			temp = 1;
-			return a;
-		}
-		else
-		{
-			cout << "WRONG TYPE__TYPE EXPECTED: BOOL" << endl;
-			cout << "Please try again!" << endl;
-		}
-	} while (true);
-}
+
 void MainMenuContinue()
 {
-	cout << "\nDo you want to continue? (y = Yes , n= No)";
+	cout << "\nDo you want to continue? (y = Yes , n = No)";
 	string YesOrNo;
 	cin >> YesOrNo;
 	if (YesOrNo == "y")
 	{
+		system("cls");
 		MainMenu();
 	}
 	else if (YesOrNo == "n")
@@ -667,7 +626,7 @@ void inputIDPassword(string& id, string& password)
 	system("color f");
 }
 
-void changePassword(UserAccount*& a)
+bool changePassword(UserAccount*& a)
 {
 	cout << "Enter new password : ";
 	char pass;
@@ -692,12 +651,258 @@ void changePassword(UserAccount*& a)
 		{
 			_getch();
 		}
-		else if (isprint(pass) && temp.size() < 8)
+		else if (isprint(pass) && temp.size() <= 8)
 		{
 			cout << "*";
 			temp = temp + pass;
 		}
 	} while (true);
-	a->setPassword(temp);
+	if (temp.size() == 8)
+	{
+		a->setPassword(temp);
+		cout << "Your new password is : " << temp << endl;
+		return true;
+	}
+	else return false;
+	
 }
 
+bool alnum(string s)
+{
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (s[i] < '0' || s[i] > '9')
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void checkSocialID(const string& id)
+{
+	if (id.length() != 9)
+	{
+		throw "Length ERROR";
+	}
+	if (alnum(id) == 0)
+	{
+		throw "Type ERROR \n Type Expected: NUMBER";
+	}
+}
+
+void checkEmail(const string& email)
+{
+	for (int i = 0; i < email.length(); i++)
+	{
+		if (email[i] == '@')
+		{
+			if (i == 0)
+			{
+				throw "Invalid Email!!Please try again~";
+			}
+			else
+			{
+				return;
+			}
+		}
+
+	}
+	throw "Invalid Email!!Please try again~";
+
+}
+
+string inputSocialID(string SocialID, const char* text)
+{
+	do
+	{
+		cout << text;
+		getline(cin, SocialID, '\n');
+		try
+		{
+			checkSocialID(SocialID);
+			break;
+		}
+		catch (const char* error)
+		{
+			cout << error << endl;
+		}
+	} while (true);
+	return SocialID;
+}
+
+string inputEmail(string Email, const char* text)
+{
+	do
+	{
+		cout << text;
+		getline(cin, Email, '\n');
+		try
+		{
+			checkEmail(Email);
+			break;
+		}
+		catch (const char* error)
+		{
+			cout << error << endl;
+		}
+	} while (true);
+	return Email;
+}
+
+
+
+bool checkStringExist(vector<string> x, string y)
+{
+	for (int i = 0; i < x.size(); i++)
+	{
+		if (x[i] == y)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+string fun_randomChar(int amount)
+{
+	char c;
+	int r;
+	string temp;
+	srand(time(NULL));    // initialize the random number generator
+	for (int i = 0; i < amount; i++)
+	{
+		r = rand() % 10;   // generate a random number
+		c = '0' + r;            // Convert to a character from a-z
+		temp = temp + c;
+	}
+	return temp;
+}
+
+string createDefaultUserID()
+{
+	vector <Client*> User;
+	vector <string> UserID_Exist;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(User);
+		for (int j = 0; j < User.size(); j++)
+		{
+			UserID_Exist.push_back(User[j]->getUserID());
+		}
+		b[i]->setCustomer(User);
+	}
+	string UserID;
+	{
+		UserID = fun_randomChar(4);
+	} while (checkStringExist(UserID_Exist, UserID) == true);
+	return UserID;
+}
+
+string createDefaultNumID()
+{
+	vector <Client*> User;
+	vector <UserAccount*> bankAccount;
+	vector <string> NumID_Exist;
+	for (int i = 0; i < b.size(); i++)
+	{
+		b[i]->setCustomer(User);
+		for (int j = 0; j < User.size(); j++)
+		{
+			User[j]->setBankAccount(bankAccount);
+			for (int k = 0; k < bankAccount.size(); k++)
+			{
+				NumID_Exist.push_back(bankAccount[k]->getNumID());
+			}
+			User[j]->setBankAccount(bankAccount);
+		}
+		b[i]->setCustomer(User);
+	}
+	string NumID;
+	do
+	{
+		NumID = fun_randomChar(12);
+	} while (checkStringExist(NumID_Exist, NumID) == true);
+	return NumID;
+}
+float InputFloat(float& a, const char* text)
+{
+	bool check;
+	float  temp;
+	do
+	{
+		stringstream iss;
+		string sInput;
+		cout << text;
+		getline(cin, sInput, '\n');
+		iss << sInput;
+		iss >> temp;
+		check = iss.eof() && !iss.fail();
+		if (check == 0)
+		{
+			cout << "WRONG TYPE__TYPE EXPECTED: NUMBER" << endl;
+			cout << "Please try again!" << endl;
+			continue;
+		}
+		else
+		{
+			a = temp;
+			return a;
+		}
+	} while (true);
+}
+
+int InputInt(int& a, const char* text)
+{
+	int temp;
+	bool check;
+	do
+	{
+		string sInput;
+		stringstream iss;
+		cout << text;
+		getline(cin, sInput, '\n');
+		iss << sInput;
+		iss >> temp;
+		check = iss.eof() && !iss.fail();
+		if (check == 0)
+		{
+			cout << "WRONG TYPE__TYPE EXPECTED: NUMBER" << endl;
+			cout << "Please try again!" << endl;
+			continue;
+		}
+		else
+		{
+			a = temp;
+			return a;
+		}
+	} while (true);
+}
+
+bool InputBool(bool& a, const char* text)
+{
+	bool temp;
+	bool check;
+	do
+	{
+		string sInput;
+		cout << text;
+		getline(cin, sInput, '\n');
+		if (sInput == "0")
+		{
+			temp = 0;
+			a = temp;
+			return temp;
+		}
+		else if (sInput == "1")
+		{
+			temp = 1;
+			return a;
+		}
+		else
+		{
+			cout << "WRONG TYPE__TYPE EXPECTED: BOOL" << endl;
+			cout << "Please try again!" << endl;
+		}
+	} while (true);
+}

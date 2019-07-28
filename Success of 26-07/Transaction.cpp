@@ -23,27 +23,28 @@ bool OTP::isaAuthenticate(string otp)
 {
 	if (!this->isExpired())
 		return false;
-	
+
 	return (this->nd == otp);
 }
 string OTP::randOTP()
 {
-		// All possible characters of my OTP 
-		string str = "abcdefghijklmnopqrstuvwxyzABCD"
-			"EFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		int n = str.length();
+	srand(time(0));
+	// All possible characters of my OTP 
+	string str = "abcdefghijklmnopqrstuvwxyzABCD"
+		"EFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	int n = str.length();
 
-		// String to hold my OTP 
-		for (int i = 1; i <= lenOTP; i++)
-			nd.push_back(str[rand() % n]);
-		o = time(0);
-		return(nd);
+	// String to hold my OTP 
+	for (int i = 1; i <= lenOTP; i++)
+		nd.push_back(str[rand() % n]);
+	o = time(0);
+	return(nd);
 }
 
 bool OTP::isExpired()
 {
 	time_t t = time(0);
-	double dif = difftime(t,o) / (60);
+	double dif = difftime(t, o) / (60);
 	if (abs(dif) < 5)
 		return true;
 	return false;
@@ -52,7 +53,7 @@ bool OTP::isExpired()
 void LoginBehavior::saveLog(const char* content, const char* path)
 {
 	ofstream fout;
-	fout.open(path,std::ios_base::app);
+	fout.open(path, std::ios_base::app);
 	if (fout.is_open())
 		throw FileNotFoundException(path);
 	fout << content << endl;
@@ -63,7 +64,7 @@ void LoginBehavior::saveLog(const char* content, const char* path)
 void LoginBehavior::Export(const char* path)
 {
 	ofstream fout;
-	fout.open(path,ios_base::app);
+	fout.open(path, ios_base::app);
 	stringstream is;
 	tm* t = localtime(&this->trans);
 	is << "User Login" << ",";
@@ -90,7 +91,7 @@ LoginBehavior::LoginBehavior()
 bool LoginBehavior::sentOTP(string email)
 {
 	stringstream cont;
-	cont <<  "Your otp code is " << this->otp.toString() << endl;
+	cont << "Your otp code is " << this->otp.toString() << endl;
 	cont << "This otp will experied in 5 minutes." << endl;
 	_EmailHandle(cont.str(), email);
 	return false;
@@ -109,7 +110,7 @@ void _EmailHandle(string cont, string email)
 	cout << "OTP will expired in 5 minutes" << endl;
 }
 
-bool checkOTP(Transaction* &p)
+bool checkOTP(Transaction*& p)
 {
 	string inOTP;
 	cout << "Please enter your otp we have sent to your email: ";
