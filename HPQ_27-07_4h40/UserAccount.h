@@ -21,6 +21,7 @@ public:
 	string getLevel();
 	void Input();
 	void Output();
+	void setPassword(string pass);
 	bool transfer(UserAccount *&numIDTransferTo,double value);
 	~UserAccount();
 

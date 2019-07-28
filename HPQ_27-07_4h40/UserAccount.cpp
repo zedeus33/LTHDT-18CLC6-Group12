@@ -95,6 +95,11 @@ void UserAccount::Output()
 	cout << "Level : " << this->getLevel() << endl;
 }
 
+void UserAccount::setPassword(string pass)
+{
+	this->password = pass;
+}
+
 bool UserAccount::transfer(UserAccount *&numIDTranferTo,double value)
 {
 	if (value > Balance || value >limit)

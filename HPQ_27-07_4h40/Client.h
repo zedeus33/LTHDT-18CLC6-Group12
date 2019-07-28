@@ -41,7 +41,13 @@ public:
 	bool operator ==(const Client *& a);
 	string createPassword();
 	string getName();
+	string getAddress();
+	string getSocialID();
 	string getUserID();
+	string getEmail();
+	Date getDob();
+	bool getSex();
+	float getSalary();
 	UserAccount* findAccount(string numID);
 };
 #endif // !Client_h

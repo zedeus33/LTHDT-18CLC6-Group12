@@ -125,9 +125,39 @@ string Client::getName()
 	return name;
 }
 
+string Client::getAddress()
+{
+	return this->address;
+}
+
+string Client::getSocialID()
+{
+	return this->SocialID;
+}
+
 string Client::getUserID()
 {
 	return UserID;
+}
+
+string Client::getEmail()
+{
+	return this->Email;
+}
+
+Date Client::getDob()
+{
+	return DoB;
+}
+
+bool Client::getSex()
+{
+	return this->Sex;
+}
+
+float Client::getSalary()
+{
+	return this->Salary;
 }
 
 char asciitolower(char in) {

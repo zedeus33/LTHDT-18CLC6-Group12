@@ -1,4 +1,5 @@
 #include "Function_Sup.h"
+#include "string"
 //#pragma warning(disable:4996)
 //#include "File.h"
 //#include "conio.h"
@@ -138,13 +139,8 @@
 //}
 void main()
 {
-	//vector <int*> x{ new int(1),new int(2),new int(3) };
-	//load(x);
-	//for (int i = 0; i < x.size(); i++)
-	//{
-	//	cout << *x[i] << endl;
-	//}
-	
-	MainMenu();
+
+	//MainMenu();
+
 	system("pause");
 }
