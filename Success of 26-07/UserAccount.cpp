@@ -2,6 +2,7 @@
 #include "Client.h"
 #include "Account.h"
 #include "Behaviors.h"
+
 UserAccount::UserAccount() : Account()
 {
 	numID = "";

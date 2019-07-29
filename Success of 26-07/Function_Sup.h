@@ -27,16 +27,18 @@ void UserMenu(UserAccount*& customer);
 void AdminMenu(string id);
 //void MenuUserInfor();
 //void MenuTransfer();
-//void MenuPayment();
+void MenuPayment(UserAccount *&cus);
 //void MenuDealHistory();
 void MenuOthertasks(UserAccount*& customer);
 //void MenuAdjustLimit();
 //void MenuSaving();
 void MenuSignUp();
 void exit();
+
 void MainMenuContinue();
 void MenuOtherTasksContinue(UserAccount*& cus);
 void UserMenuContinue(UserAccount*& cus);
+void MenuPaymentContinue(UserAccount *&cus);
 
 bool alnum(string s);
 void checkSocialID(const string& id);

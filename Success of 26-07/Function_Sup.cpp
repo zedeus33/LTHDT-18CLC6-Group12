@@ -3,7 +3,8 @@
 #include "Function_Sup.h"
 #include "Behaviors.h"
 #include "LoadSaveData.h"
-
+#include "PaymentElectricBill.h"
+#include "PaymentWaterBill.h"
 vector <Bank*> b;
 
 void notice(string sentence, string horizontal = "=", string vertical = "=")
@@ -263,6 +264,8 @@ void UserMenu(UserAccount*& customer)
 	case 3:
 	{
 		system("cls");
+		//MenuPayment(customer);
+		MenuPayment(customer);
 		//MenuPayment();
 	}break;
 	case 4:
@@ -350,6 +353,44 @@ UserAccount* checkLoginUser(string id, string password)
 void AdminMenu(string id)
 {
 
+}
+void MenuPayment(UserAccount *& cus)
+{
+	cout << "[1]. Electric bill" << endl;
+	cout << "[2]. Water bill" << endl;
+	cout << "[3]. Return" << endl;
+	string note;
+	int n = chooseInt(3);
+	system("cls");
+	switch (n)
+	{
+	case 1:
+	{
+		Payment *p = new PaymentElectricBill();
+		note = p->paymentBill(cus);
+		if (note!="return")
+		{
+			notice(note, "+", "+");
+		}
+		MenuPaymentContinue(cus);
+	}break;
+	case 2:
+	{
+		Payment *p = new PaymentWaterBill();
+		note = p->paymentBill(cus);
+		if (note != "return")
+		{
+			notice(note, "+", "+");
+		}
+		MenuPaymentContinue(cus);
+	}break;
+	case 3:
+	{
+		UserMenu(cus);
+	}
+
+	}
+	
 }
 void MenuOthertasks(UserAccount*& customer)
 {
@@ -512,6 +553,27 @@ void UserMenuContinue(UserAccount *& cus)
 		notice("Wrong input! Please try again", "+", "+");
 		system("pause");
 		UserMenuContinue(cus);
+	}
+}
+void MenuPaymentContinue(UserAccount *& cus)
+{
+	cout << "\nDo you want to continue? (y = Yes , n = No) : ";
+	string YesOrNo;
+	cin >> YesOrNo;
+	if (YesOrNo == "y")
+	{
+		MenuPayment(cus);
+	}
+	else if (YesOrNo == "n")
+	{
+		exit();
+	}
+	else
+	{
+		system("cls");
+		notice("Wrong input! Please try again", "+", "+");
+		system("pause");
+		MenuPaymentContinue(cus);
 	}
 }
 void inputIDPassword(string& id, string& password)

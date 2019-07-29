@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Behaviors.h"
 #include "UserAccount.h"
-#define lenOTP 6
+#define lenOTP 1
 #include <ctime>
 #include <fstream>
 #include <iostream>
