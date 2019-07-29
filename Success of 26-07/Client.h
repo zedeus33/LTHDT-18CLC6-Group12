@@ -47,6 +47,7 @@ public:
 		return UserID;
 	}
 	string createPassword();
+	string getName();
 	//string createUserName();
 	void display();
 	UserAccount* findAccount(string numID);

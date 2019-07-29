@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Transaction.h"
-#define lenOTP 21
+#define lenOTP 6
 #include <ctime>
 #include <fstream>
 #include <iostream>

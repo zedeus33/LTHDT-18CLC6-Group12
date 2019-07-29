@@ -21,6 +21,7 @@ public:
 	double getLimit();
 	string getLevel();
 	Client* getRefClient();
+	bool transfer(UserAccount *&to, double value);
 	/*string getPassword();*/
 	void setPassword(string pass);
 	void setUserName();

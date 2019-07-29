@@ -6,7 +6,7 @@
 #include <vector>
 #include<iomanip>
 #include <conio.h>
-#include "Bank.h"
+#include "Bank.h" 
 using namespace std;
 
 
@@ -24,9 +24,7 @@ UserAccount* checkLoginUser(string id, string password);
 void MenuSignIn();
 void MainMenu();
 void UserMenu(UserAccount*& customer);
-
 void AdminMenu(string id);
-
 //void MenuUserInfor();
 //void MenuTransfer();
 //void MenuPayment();
@@ -35,9 +33,10 @@ void MenuOthertasks(UserAccount*& customer);
 //void MenuAdjustLimit();
 //void MenuSaving();
 void MenuSignUp();
-
+void exit();
 void MainMenuContinue();
 void MenuOtherTasksContinue(UserAccount*& cus);
+void UserMenuContinue(UserAccount*& cus);
 
 bool alnum(string s);
 void checkSocialID(const string& id);
@@ -51,3 +50,8 @@ bool checkStringExist(vector <string> x, string y);
 string fun_randomChar(int amount);
 string createDefaultUserID();
 string createDefaultNumID();
+
+bool isDouble(string in);
+double toDouble(string);
+UserAccount* findUserAccount(string numID);
+void transfer(UserAccount* &customer);

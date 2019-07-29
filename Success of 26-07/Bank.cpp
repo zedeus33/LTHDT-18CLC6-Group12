@@ -38,7 +38,8 @@ void Bank::addNewUser()
 		}
 	}
 	cus.push_back(x);
-	cout << "Create successfully\n";
+	cout << "Create successfully! You have 1 default account!" << endl; 
+	cout << "Please log in with new username and password to use our service!Thank you!\n" << endl;
 }
 
 

@@ -148,6 +148,11 @@ string Client::createPassword()
 	return password.str();
 }
 
+string Client::getName()
+{
+	return name;
+}
+
 char asciitolower(char in) {
 	if (in <= 'Z' && in >= 'A')
 		return in - ('Z' - 'z');

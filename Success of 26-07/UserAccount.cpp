@@ -1,5 +1,6 @@
 #include "UserAccount.h"
 #include "Client.h"
+#include "Account.h"
 
 UserAccount::UserAccount() : Account()
 {
@@ -33,7 +34,7 @@ UserAccount::UserAccount(const UserAccount & a)
 	
 }
 
-UserAccount & UserAccount::operator=(const UserAccount & a)
+UserAccount & UserAccount::operator=(const UserAccount &a)
 {
 	Account::operator=(a);
 	numID = a.numID;
@@ -78,6 +79,20 @@ string UserAccount::getLevel()
 Client* UserAccount::getRefClient()
 {
 	return this->RefClient;
+}
+
+bool UserAccount::transfer(UserAccount *& to, double value)
+{
+	if (value > Balance || value > limit)
+	{
+		return false;
+	}
+	else
+	{
+		to->Balance = to->Balance + value;
+		this->Balance = this->Balance - value;
+		return true;
+	}
 }
 
 //string UserAccount::getPassword()
@@ -126,6 +141,8 @@ void UserAccount::Input()
 void UserAccount::Output()
 {
 	Account::Output();
+	cout << "Name : " << RefClient->getName() << endl;
+	cout << "Email : " << RefClient->getEmail() << endl;
 	cout << "Num ID : " << numID << endl;
 	cout << "Balance : " << fixed << setprecision(2) << Balance << endl;
 	cout << "Limit : " << fixed << setprecision(2) << limit << endl;
