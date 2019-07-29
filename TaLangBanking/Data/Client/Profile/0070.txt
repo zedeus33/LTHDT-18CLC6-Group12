@@ -3,5 +3,5 @@ SocialID: 100032757
 Mail: zed331996@gmail.com
 DoB: 15/6/2000
 Address: 500 Le Van Quoi, Binh Tan, TPHCM
-Sex: Female
+Sex: Male
 Salary: 1000000

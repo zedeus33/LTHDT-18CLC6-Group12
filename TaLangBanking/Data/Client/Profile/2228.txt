@@ -3,5 +3,5 @@ SocialID: 100031322
 Mail: nguyencongphuc@gmail.com
 DoB: 19/11/1974
 Address: 153/15 Truong Dinh, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 34500000

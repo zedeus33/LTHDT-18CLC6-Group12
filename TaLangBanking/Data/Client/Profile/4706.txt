@@ -3,5 +3,5 @@ SocialID: 100006422
 Mail: hangdoanlan@gmail.com
 DoB: 12/11/1981
 Address: 12 Luong Huu Khanh, Pham Ngu Lao , quan 1, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 62000000

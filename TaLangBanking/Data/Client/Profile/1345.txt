@@ -3,5 +3,5 @@ SocialID: 100007711
 Mail: hongocthanh@gmail.com
 DoB: 12/12/1991
 Address: 376 / 24 Nguyen Dinh Chieu, Quan 3, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 19000000

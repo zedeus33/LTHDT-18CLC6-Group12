@@ -3,5 +3,5 @@ SocialID: 100030333
 Mail: nguyenducvan@gmail.com
 DoB: 23/7/1989
 Address: 80A Ly Chinh Thang , quan 3, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 11800000

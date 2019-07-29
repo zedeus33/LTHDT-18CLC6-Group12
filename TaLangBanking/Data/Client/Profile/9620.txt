@@ -3,5 +3,5 @@ SocialID: 100032591
 Mail: diepthivien@gmail.com
 DoB: 11/12/1997
 Address: 274-K3, Cau Dien, Tu Liem, Ha Noi
-Sex: Female
+Sex: Male
 Salary: 68000000
