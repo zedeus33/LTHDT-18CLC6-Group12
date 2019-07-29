@@ -234,3 +234,28 @@ Client::Client(const Client& rha)
 	this->Sex = rha.Sex;
 	this->Salary = rha.Salary;
 }
+
+string Client::getAddress()
+{
+	return this->address;
+}
+
+string Client::getSocialID()
+{
+	return this->SocialID;
+}
+
+Date Client::getDob()
+{
+	return DoB;
+}
+
+bool Client::getSex()
+{
+	return this->Sex;
+}
+
+float Client::getSalary()
+{
+	return this->Salary;
+}

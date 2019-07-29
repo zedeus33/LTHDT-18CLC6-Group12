@@ -53,5 +53,10 @@ public:
 	UserAccount* findAccount(string numID);
 	int changeBalance(string numID, double value);
 	string getEmail();
+	Date getDob();
+	bool getSex();
+	float getSalary();
+	string getAddress();
+	string getSocialID();
 };
 #endif // !Client_h

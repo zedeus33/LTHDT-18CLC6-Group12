@@ -1,7 +1,7 @@
 #include "UserAccount.h"
 #include "Client.h"
 #include "Account.h"
-
+#include "Behaviors.h"
 UserAccount::UserAccount() : Account()
 {
 	numID = "";
@@ -83,15 +83,22 @@ Client* UserAccount::getRefClient()
 
 bool UserAccount::transfer(UserAccount *& to, double value)
 {
+
 	if (value > Balance || value > limit)
 	{
 		return false;
 	}
 	else
 	{
-		to->Balance = to->Balance + value;
-		this->Balance = this->Balance - value;
-		return true;
+		Behaviors* p = new TransferBehavior(value);
+		p->sentOTP(this->getRefClient()->getEmail());
+		if (checkOTP(p) == true)
+		{
+			p->saveLog(p->toString().c_str(), bh_mkdir(this).c_str());
+			to->Balance = to->Balance + value;
+			this->Balance = this->Balance - value;
+			return true;
+		}
 	}
 }
 

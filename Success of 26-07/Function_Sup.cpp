@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
 #include "Function_Sup.h"
-#include "Transaction.h"
+#include "Behaviors.h"
 #include "LoadSaveData.h"
 
 vector <Bank*> b;
@@ -185,8 +185,8 @@ void MenuSignIn()
 				MenuSignIn();
 			}
 			else {
-				Transaction* p = new LoginBehavior();
-				p->Export(DATA_BEHAVIORS.c_str());
+				Behaviors* p = new LoginBehavior();
+				p->saveLog(p->toString().c_str(),bh_mkdir(cus).c_str());
 				p->sentOTP(cus->getRefClient()->getEmail());
 				if (checkOTP(p) == true)
 				{
@@ -269,6 +269,12 @@ void UserMenu(UserAccount*& customer)
 	{
 		system("cls");
 		//MenuDealHistory();
+		vector <Behaviors*> customer_behaviors;
+		customer_behaviors = ReadData(customer);
+		for (auto& i : customer_behaviors)
+		{
+			cout << i->toScreen() << endl;
+		}
 	}break;
 	case 5:
 	{
@@ -440,6 +446,7 @@ void exit()
 	cout << "Goodbye, Have a nice day!" << endl;
 	system("pause");
 	char temp = getchar();
+	saveDataBank(b);
 	exit(0);
 }
 
@@ -581,9 +588,16 @@ bool changePassword(UserAccount*& a)
 	} while (true);
 	if (temp.size() == 8)
 	{
-		a->setPassword(temp);
-		cout << "Your new password is : " << temp << endl;
-		return true;
+		Behaviors* p = new ChangePWBehavior();
+		p->sentOTP(a->getRefClient()->getEmail());
+		if (checkOTP(p) == true)
+		{
+			p->saveLog(p->toString().c_str(), bh_mkdir(a).c_str());
+			a->setPassword(temp);
+			cout << "Your new password is : " << temp << endl;
+			return true;
+		}
+		return false;
 	}
 	else return false;
 	
