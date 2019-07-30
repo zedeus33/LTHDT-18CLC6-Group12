@@ -1,5 +1,4 @@
 #include "Bank.h"
-
 Bank::Bank()
 {
 	name = address = president_name = phone_number = "Default";
@@ -27,19 +26,59 @@ void Bank::show_infor()
 void Bank::addNewUser()
 {
 	Client *x = new Client;
-	x->input();
-	x->createDefaultUserAccount();
-	for (int i = 0; i < this->cus.size(); i++)
+	x->inputDoB();
+	int n = x->getDob().calcAge();
+	if (n >= 18)
 	{
-		if (x == cus[i])
+		x->input();
+		x->createDefaultUserAccount();
+		for (int i = 0; i < this->cus.size(); i++)
 		{
-			notice("This account has already existed!!!", "=", "=");
-			return;
+			if (x == cus[i])
+			{
+				notice("This account has already existed!!!", "=", "=");
+				return;
+			}
 		}
+		cus.push_back(x);
+		cout << "Create successfully! You have 1 default account!" << endl;
+		cout << "Please log in with new username and password to use our service!Thank you!\n" << endl;
 	}
-	cus.push_back(x);
-	cout << "Create successfully! You have 1 default account!" << endl; 
-	cout << "Please log in with new username and password to use our service!Thank you!\n" << endl;
+	else if (n >= 16 && n < 18) {
+		UserAccount *p;
+		cout << "Your age are enought to be our client! But your activities will be under your parent's control" << endl;
+		string a;
+		do {
+			cout << "Enter one of your family's number ID : ";
+			cin >> a;
+			p = findUserAccount(a);
+			if (p == NULL) {
+				cout << "This number ID doesn't exist! Please try again!" << endl;
+			}
+			else
+			{
+				cout << "Your parent's information : " << endl;
+				cout << "\tName : " << p->getRefClient()->getName() << endl;
+				cout << "\tEmail : " << p->getRefClient()->getEmail() << endl;
+			}
+		} while (p == NULL);
+		x->input2(p);
+		x->createDefaultUserAccount();
+		for (int i = 0; i < this->cus.size(); i++)
+		{
+			if (x == cus[i])
+			{
+				notice("This account has already existed!!!", "=", "=");
+				return;
+			}
+		}
+		cus.push_back(x);
+		cout << "Create successfully! You have 1 default account!" << endl;
+		cout << "Please log in with new username and password to use our service!Thank you!\n" << endl;
+	}
+	else {
+		cout << "Your age are not enought to be our client! Please try again later!" << endl;
+	}
 }
 
 

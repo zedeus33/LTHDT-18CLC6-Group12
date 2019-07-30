@@ -157,6 +157,8 @@ void UserAccount::Output()
 	cout << "Level : " << this->getLevel() << endl;
 }
 
+
+
 UserAccount::~UserAccount()
 {
 	numID = "";
