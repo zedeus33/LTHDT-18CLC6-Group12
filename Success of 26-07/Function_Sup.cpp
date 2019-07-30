@@ -64,13 +64,6 @@ int chooseInt(int m)
 	string n;
 	cout << "\n\nEnter your choice : ";
 	cin >> n;
-	/*while (n <= 0 || n > m)
-	{
-		cout << "\nWrong choice! Please try again!" << endl;
-		system("pause");
-		cout << "\nEnter your choice : ";
-		cin >> n;
-	}*/
 	try {
 		if (toInt(n) > 0 && toInt(n) <= m && isNum(n))
 		{
@@ -93,14 +86,14 @@ void MainMenu()
 	{
 		loadDataBank(b);
 	}
-	cout << "***TA LANG BANKING***" << endl;
-	cout << "\n1.Sign in" << endl;
-	cout << "2.Sign up" << endl;
-	cout << "3.News" << endl;
-	cout << "4.Exchange rate" << endl;
-	cout << "5.Interest rate" << endl;
-	cout << "6.Contact" << endl;
-	cout << "7.Exit" << endl;
+	cout << "***TA LANG iBANKING***" << endl;
+	cout << "\n[1]. Sign in" << endl;
+	cout << "[2]. Sign up" << endl;
+	cout << "[3]. News" << endl;
+	cout << "[4]. Exchange rate" << endl;
+	cout << "[5]. Interest rate" << endl;
+	cout << "[6]. Contact" << endl;
+	cout << "[7]. Exit" << endl;
 	int  choose;
 	choose = chooseInt(7);
 	switch (choose)
@@ -134,12 +127,7 @@ void MainMenu()
 	case 7:
 	{
 		exit();
-	}/*break;*/
-	/*default:
-	{
-		cout << "Wrong choice! Please try again!" << endl;
-		MainMenu();
-	}*/
+	}
 	}
 }
 void MenuSignIn()
@@ -164,6 +152,7 @@ void MenuSignIn()
 			CheckPass = checkLoginAdmin(id, password, STAFF_PASSWORD);
 			if (CheckPass)
 			{
+				system("cls");
 				AdminMenu(id);
 			}
 			else {
@@ -191,6 +180,8 @@ void MenuSignIn()
 				p->sentOTP(cus->getRefClient()->getEmail());
 				if (checkOTP(p) == true)
 				{
+					system("cls");
+					notice("Welcome", "+", "+");
 					UserMenu(cus);
 				}
 				else {
@@ -263,6 +254,8 @@ void UserMenu(UserAccount*& customer)
 		{
 			cout << i->toScreen() << endl;
 		}
+		cout << endl;
+		UserMenuContinue(customer);
 	}break;
 	case 5:
 	{
@@ -371,12 +364,14 @@ void MenuPayment(UserAccount *& cus)
 	}break;
 	case 3:
 	{
+		system("cls");
 		UserMenu(cus);
 	}
 
 	}
 	
 }
+
 void MenuOthertasks(UserAccount*& customer)
 {
 	cout << "[1]. Change password" << endl;
@@ -505,6 +500,7 @@ void MenuOtherTasksContinue(UserAccount *&cus)
 	cin >> YesOrNo;
 	if (YesOrNo == "y")
 	{
+		system("cls");
 		MenuOthertasks(cus);
 	}
 	else if (YesOrNo == "n")
@@ -526,6 +522,7 @@ void UserMenuContinue(UserAccount *& cus)
 	cin >> YesOrNo;
 	if (YesOrNo == "y")
 	{
+		system("cls");
 		UserMenu(cus);
 	}
 	else if (YesOrNo == "n")
@@ -547,6 +544,7 @@ void MenuPaymentContinue(UserAccount *& cus)
 	cin >> YesOrNo;
 	if (YesOrNo == "y")
 	{
+		system("cls");
 		MenuPayment(cus);
 	}
 	else if (YesOrNo == "n")

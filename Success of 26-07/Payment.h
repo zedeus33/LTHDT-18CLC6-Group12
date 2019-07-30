@@ -36,7 +36,7 @@ string function_paymentsup(string file_path,string code, UserAccount *&customer)
 		context[i] = readline(file_path.c_str(), i + 1);
 		if (context[i] == "Can't open file\n")
 		{
-			return "THIS BILL CODE DOESN'T EXIST";
+			return "THIS CODE DOESN'T EXIST";
 		}
 		if (context[i].size() > max)
 		{

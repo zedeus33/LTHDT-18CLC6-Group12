@@ -44,6 +44,34 @@ void Client::input()
 	cout << "Your User ID is:" << UserID << endl;
 }
 
+void Client::input2(UserAccount* a)
+{
+	if (cin.get() != '\n')
+		cin.ignore();
+	cout << "Enter name: ";
+	getline(cin, name, '\n');
+	cout << "Enter Address: ";
+	getline(cin, address, '\n');
+	Sex = InputBool(Sex, "Sex (0:Male,1:Female):");
+	Salary = a->getRefClient()->getSalary();
+	/*cout << "Enter day of birth" << endl;
+	DoB.input();
+	cin.ignore();*/
+	//Salary = InputFloat(Salary, "Enter Salary: ");
+	SocialID = inputSocialID(SocialID, "Enter SocialID (9 numbers): ");
+	//Email = inputEmail(Email, "Enter Email: ");
+	Email = a->getRefClient()->getEmail();
+	UserID = createDefaultUserID();
+
+	cout << "Your User ID is:" << UserID << endl;
+}
+
+void Client::inputDoB()
+{
+	cout << "Enter day of birth" << endl;
+	DoB.input();
+}
+
 void Client::output()
 {
 	cout << "/t/tClient information" << endl;

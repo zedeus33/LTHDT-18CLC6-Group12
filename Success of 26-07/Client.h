@@ -34,6 +34,8 @@ public:
 	Client(string name, string addr, string SocialID, string UserID, string email, Date dob, bool sex, float salary);	
 	Client(const Client& rha);
 	void input();
+	void input2(UserAccount *a);
+	void inputDoB();
 	void output();
 	bool OpenNewAccount();
 	bool CloseAccount();

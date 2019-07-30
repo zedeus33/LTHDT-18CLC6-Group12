@@ -17,18 +17,18 @@ Date::Date(int day, int month, int year)
 
 void Date::input() {
 	do {
-		cout << "Enter day of the date: ";
+		cout << "\tEnter day of the date: ";
 		cin >> m_day;
-		cout << "Enter month of the date: ";
+		cout << "\tEnter month of the date: ";
 		cin >> m_month;
-		cout << "Enter year of the date: ";
+		cout << "\tEnter year of the date: ";
 		cin >> m_year;
 		if (!this->isValid()) {
 			cout << "Wrong input!" << endl;
 			cout << "Try again " << endl;
 		}
 	} while (!this->isValid());
-	cout << this->output() << endl;
+	cout <<"\tYour date of birth is : "<< this->output() << endl;
 }
 
 int Date::getMDay() const {
