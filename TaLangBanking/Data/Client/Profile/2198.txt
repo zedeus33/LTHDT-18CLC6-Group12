@@ -3,5 +3,5 @@ SocialID: 100032209
 Mail: thithibich@gmail.com
 DoB: 3/9/1993
 Address: 379/40 Minh Khai, Ha Ba Trung, Ha Noi
-Sex: Female
+Sex: Male
 Salary: 34578900

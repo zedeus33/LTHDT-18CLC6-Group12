@@ -3,5 +3,5 @@ SocialID: 100013290
 Mail: laithiquy@gmail.com
 DoB: 8/2/1970
 Address: 233 Bach Dang, Da Nang
-Sex: Female
+Sex: Male
 Salary: 190000000

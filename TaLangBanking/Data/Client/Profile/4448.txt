@@ -3,5 +3,5 @@ SocialID: 100032391
 Mail: triquitho@gmail.com
 DoB: 3/7/1996
 Address: 87 Nguyen Minh Hoang , Phuong 12, Quan Tan Binh , Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 22000000

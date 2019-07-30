@@ -3,5 +3,5 @@ SocialID: 100016512
 Mail: minhngocphuong@gmail.com
 DoB: 13/2/1976
 Address: 248 Nguyen Thai Binh, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 20000000

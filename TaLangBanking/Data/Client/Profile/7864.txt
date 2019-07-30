@@ -3,5 +3,5 @@ SocialID: 100019169
 Mail: bangocvuong@gmail.com
 DoB: 29/8/1988
 Address: 157/14 Ho Van Hue, Phu Nhuan , Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 7000000

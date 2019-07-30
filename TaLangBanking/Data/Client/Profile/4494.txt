@@ -3,5 +3,5 @@ SocialID: 100028703
 Mail: letrongnguyen@gmail.com
 DoB: 15/7/1985
 Address: 34 Nguyen Ba Huan , quan 2, ho chi minh
-Sex: Female
+Sex: Male
 Salary: 43000000

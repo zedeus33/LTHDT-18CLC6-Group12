@@ -3,5 +3,5 @@ SocialID: 100017035
 Mail: huynhthianh@gmail.com
 DoB: 25/8/1980
 Address: Nguyen Van Tiet, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 19000000

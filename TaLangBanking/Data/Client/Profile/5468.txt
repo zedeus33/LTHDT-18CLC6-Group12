@@ -3,5 +3,5 @@ SocialID: 100006334
 Mail: chungdinhcanh@gmail.com
 DoB: 25/12/1978
 Address: Ap Phu Vien, Bo De, Long Bien , Ha Noi
-Sex: Female
+Sex: Male
 Salary: 97000000

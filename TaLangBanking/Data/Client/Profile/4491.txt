@@ -3,5 +3,5 @@ SocialID: 100019718
 Mail: ngutrongchien@gmail.com
 DoB: 4/12/1994
 Address: 226 Tran Hung Dao, Phan Thiet 
-Sex: Female
+Sex: Male
 Salary: 16000000

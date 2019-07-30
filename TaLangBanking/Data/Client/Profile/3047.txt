@@ -3,5 +3,5 @@ SocialID: 100018636
 Mail: kymanhtu@gmail.com
 DoB: 8/3/1974
 Address: 123 Le Thanh Nghi, Ha Ba Trung, Ha NOI
-Sex: Female
+Sex: Male
 Salary: 431934592

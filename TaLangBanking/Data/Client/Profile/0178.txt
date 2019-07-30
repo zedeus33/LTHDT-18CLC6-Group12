@@ -3,5 +3,5 @@ SocialID: 100011478
 Mail: tronthimy@gmail.com
 DoB: 20/12/1989
 Address: 190 Thuy Khue, Ha Noi
-Sex: Female
+Sex: Male
 Salary: 19000000

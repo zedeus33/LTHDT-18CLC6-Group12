@@ -3,5 +3,5 @@ SocialID: 100021538
 Mail: phuongdoantien@gmail.com
 DoB: 11/11/1991
 Address: 198 Co Giang, quan 1, ho chi minh
-Sex: Female
+Sex: Male
 Salary: 81000000
