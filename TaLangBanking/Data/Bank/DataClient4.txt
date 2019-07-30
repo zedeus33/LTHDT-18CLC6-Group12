@@ -1,6 +1,6 @@
 Bank: TaLangBank
 Addr: 181-183 Ham Nghi,P.Nguyen Thai Binh,Q.1
-Presiden: Lavan Thi Chi
+President: Lavan Thi Chi
 Phone: 3840 7556
 No|UserID
 1|0499

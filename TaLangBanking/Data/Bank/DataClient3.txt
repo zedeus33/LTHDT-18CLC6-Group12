@@ -1,6 +1,6 @@
 Bank: TaLangBank
 Addr: 136 Nguyen Thi Tan,P.2,Q.8
-Presiden: Cao Huu Tho
+President: Cao Huu Tho
 Phone: 3512 4767
 No|UserID
 1|2132

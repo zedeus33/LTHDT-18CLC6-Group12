@@ -11,6 +11,8 @@ public:
 	Bank& operator=(Bank&x);
 	string getAddress();
 	string getName();
+	string getPresident_name();
+	string getPhone_number();
 	void setAddress(string address);
 	void setName(string name);
 	void setPresident_name(string president_name);

@@ -67,6 +67,16 @@ string Bank::getName()
 	return name;
 }
 
+string Bank::getPresident_name()
+{
+	return president_name;
+}
+
+string Bank::getPhone_number()
+{
+	return phone_number;
+}
+
 void Bank::setAddress(string address)
 {
 	this->address = address;

@@ -1,6 +1,6 @@
 ﻿Bank: TaLangBank
 Addr: 49 Hoang Van Thu,P.15,Q.Phu Nhuan
-Presiden: Trach Huu Nguyen
+President: Trach Huu Nguyen
 Phone: 3942 4644
 No|UserID
 1|4494
