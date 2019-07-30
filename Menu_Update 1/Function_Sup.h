@@ -14,12 +14,12 @@ using namespace std;
 int chooseInt(int m);
 int toInt(string in);
 bool isNum(string in);
-//bool checkLogin(string& account, string& password, const char* path);
 void notice(string sentence, string horizontal, string vertical);
 void inputIDPassword(string& id, string& password);
 bool changePassword(UserAccount*& a);
 bool checkLoginAdmin(string& account, string& password, const char* path);
 UserAccount* checkLoginUser(string id, string password);
+
 
 void MenuSignIn();
 void MainMenu();
@@ -40,6 +40,7 @@ void MenuOtherTasksContinue(UserAccount*& cus);
 void UserMenuContinue(UserAccount*& cus);
 void MenuPaymentContinue(UserAccount *&cus);
 
+string deleteChar(string content, char character);
 bool alnum(string s);
 void checkSocialID(const string& id);
 void checkEmail(const string& email);

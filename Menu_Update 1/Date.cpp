@@ -28,7 +28,7 @@ void Date::input() {
 			cout << "Try again " << endl;
 		}
 	} while (!this->isValid());
-	cout << this->output() << endl;
+	cout <<"\tYour date of birth is : "<< this->output() << endl;
 }
 
 int Date::getMDay() const {

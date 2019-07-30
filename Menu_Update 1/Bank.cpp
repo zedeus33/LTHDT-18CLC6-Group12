@@ -1,4 +1,5 @@
 #include "Bank.h"
+
 Bank::Bank()
 {
 	name = address = president_name = phone_number = "Default";
@@ -25,7 +26,7 @@ void Bank::show_infor()
 
 void Bank::addNewUser()
 {
-	Client *x = new Client;
+	Client* x = new Client;
 	x->inputDoB();
 	int n = x->getDob().calcAge();
 	if (n >= 18)
@@ -45,7 +46,7 @@ void Bank::addNewUser()
 		cout << "Please log in with new username and password to use our service!Thank you!\n" << endl;
 	}
 	else if (n >= 16 && n < 18) {
-		UserAccount *p;
+		UserAccount* p;
 		cout << "Your age are enought to be our client! But your activities will be under your parent's control" << endl;
 		string a;
 		do {
@@ -104,6 +105,16 @@ string Bank::getAddress()
 string Bank::getName()
 {
 	return name;
+}
+
+string Bank::getPresident_name()
+{
+	return president_name;
+}
+
+string Bank::getPhone_number()
+{
+	return phone_number;
 }
 
 void Bank::setAddress(string address)

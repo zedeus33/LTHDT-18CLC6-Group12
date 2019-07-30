@@ -88,7 +88,7 @@ void loadDataBank(vector <Bank*> &bank)
 		string addr = readline(file_path.c_str(), 2);
 		addr.erase(addr.begin(), addr.begin() + 6);
 		string president = readline(file_path.c_str(), 3);
-		president.erase(president.begin(), president.begin() + 10);
+		president.erase(president.begin(), president.begin() + 11);
 		string phone = readline(file_path.c_str(), 4);
 		phone.erase(phone.begin(), phone.begin() + 7);
 		Bank *x = new Bank("TaLang iBanking", addr, president, phone);
@@ -130,7 +130,7 @@ void saveDataClient(Client *customer)
 	content1 << "Mail: " << customer->getEmail() << "\n";
 	content1 << "DoB: " << x.getMDay() << "/" << x.getMMonth() << "/" << x.getMYear() << "\n";
 	content1 << "Address: " << customer->getAddress() << "\n";
-	content1 << "Sex: " << (customer->getSex() != 0 ? "Male" : "Female") << "\n";
+	content1 << "Sex: " << (customer->getSex() != 0 ? "Female" : "Male") << "\n";
 	content1 << "Salary: " << to_string(long long(customer->getSalary()));
 	file_path = DATA_PROFILECLIENT + customer->getUserID() + ".txt";
 	write(file_path.c_str(), content1.str());
@@ -155,11 +155,21 @@ void saveDataBank(vector <Bank*> bank)
 	vector <Client*> cus;
 	for (int i = 0; i < bank.size(); i++)
 	{
+		stringstream context;
+		char temp = '0' + (i + 1);
+		string file_path = DATA_BANK + "DataClient" + temp + ".txt";
+		context << "Bank: " << bank[i]->getName() << "\n";
+		context << "Addr: " << bank[i]->getAddress() << "\n";
+		context << "President: " << bank[i]->getPresident_name() << "\n";
+		context << "Phone: " << bank[i]->getPhone_number() << "\n";
+		context << "No|UserID\n";
 		bank[i]->setCustomer(cus);
 		for (int j = 0; j < cus.size(); j++)
 		{
 			saveDataClient(cus[j]);
+			context << j + 1 << "|" << cus[j]->getUserID() << "\n";
 		}
+		write(file_path.c_str(), context.str());
 		bank[i]->setCustomer(cus);
 	}
 }

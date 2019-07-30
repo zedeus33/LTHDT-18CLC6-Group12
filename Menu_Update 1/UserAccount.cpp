@@ -85,21 +85,29 @@ Client* UserAccount::getRefClient()
 bool UserAccount::transfer(UserAccount *& to, double value)
 {
 
-	if (value > Balance || value > limit)
+	if (value > Balance || value > limit || value < 0)
 	{
 		return false;
 	}
 	else
 	{
-		Behaviors* p = new TransferBehavior(value);
-		p->sentOTP(this->getRefClient()->getEmail());
-		if (checkOTP(p) == true)
+		Behaviors* p;
+		do
 		{
-			p->saveLog(p->toString().c_str(), bh_mkdir(this).c_str());
-			to->Balance = to->Balance + value;
-			this->Balance = this->Balance - value;
-			return true;
-		}
+			p = new TransferBehavior(value);
+			p->sentOTP(this->getRefClient()->getEmail());
+			if (checkOTP(p) == true)
+			{
+				p->saveLog(p->toString().c_str(), bh_mkdir(this).c_str());
+				to->Balance = to->Balance + value;
+				this->Balance = this->Balance - value;
+				return true;
+			}
+			else
+			{
+				notice("Wrong OTP,please try again", ".", ".");
+			}
+		} while (checkOTP(p)==false);
 	}
 }
 
@@ -156,8 +164,6 @@ void UserAccount::Output()
 	cout << "Limit : " << fixed << setprecision(2) << limit << endl;
 	cout << "Level : " << this->getLevel() << endl;
 }
-
-
 
 UserAccount::~UserAccount()
 {

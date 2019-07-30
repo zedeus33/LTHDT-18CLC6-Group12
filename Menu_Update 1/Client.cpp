@@ -33,9 +33,9 @@ void Client::input()
 	cout << "Enter Address: ";
 	getline(cin, address, '\n');
 	Sex = InputBool(Sex, "Sex (0:Male,1:Female):");
-	/*cout << "Enter day of birth" << endl;
+	cout << "Enter day of birth" << endl;
 	DoB.input();
-	cin.ignore();*/
+	cin.ignore();
 	Salary = InputFloat(Salary, "Enter Salary: ");
 	SocialID = inputSocialID(SocialID, "Enter SocialID (9 numbers): ");
 	Email = inputEmail(Email, "Enter Email: ");
@@ -44,7 +44,7 @@ void Client::input()
 	cout << "Your User ID is:" << UserID << endl;
 }
 
-void Client::input2(UserAccount *a)
+void Client::input2(UserAccount* a)
 {
 	if (cin.get() != '\n')
 		cin.ignore();
@@ -64,6 +64,12 @@ void Client::input2(UserAccount *a)
 	UserID = createDefaultUserID();
 
 	cout << "Your User ID is:" << UserID << endl;
+}
+
+void Client::inputDoB()
+{
+	cout << "Enter day of birth" << endl;
+	DoB.input();
 }
 
 void Client::output()
@@ -93,27 +99,6 @@ void Client::output()
 }
 
 bool Client::OpenNewAccount()
-{
-	if (numOfAccount == MAX_ACCOUNT)
-	{
-		cout << "You already have the maximum number of account allowed!" << endl;
-		cout << "You can not create more" << endl;
-		cout << endl;
-		return 0;
-	}
-	else
-	{
-		UserAccount* _new = new UserAccount;
-		//_new->setClient(this);
-		_new->Input();
-		BankAccount.push_back(_new);
-		numOfAccount++;
-		cout << "Successfull" << endl;
-		return 1;
-	}
-}
-
-bool Client::OpenSubAccount()
 {
 	if (numOfAccount == MAX_ACCOUNT)
 	{
@@ -276,12 +261,6 @@ Client::Client(const Client& rha)
 	this->DoB = rha.DoB;
 	this->Sex = rha.Sex;
 	this->Salary = rha.Salary;
-}
-
-void Client::inputDoB()
-{
-	cout << "Enter day of birth" << endl;
-	DoB.input();
 }
 
 string Client::getAddress()
