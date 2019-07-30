@@ -3,5 +3,5 @@ SocialID: 100008942
 Mail: tronthinu@gmail.com
 DoB: 21/10/1991
 Address: 51/511A Nguyen Van Nghi, phuong 7, quan Go Vap, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 701771072

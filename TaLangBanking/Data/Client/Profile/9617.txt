@@ -3,5 +3,5 @@ SocialID: 100016413
 Mail: tramquithang@gmail.com
 DoB: 26/11/1990
 Address: 8D Tran Huu Trang , Q.Phu Nhuan, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 26000000

@@ -3,5 +3,5 @@ SocialID: 100002306
 Mail: dangngocquang@gmail.com
 DoB: 3/3/1999
 Address: 424 Thuy Khue, Tay Ho, Ha Noi
-Sex: Female
+Sex: Male
 Salary: 81000000

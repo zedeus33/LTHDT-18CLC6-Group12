@@ -3,5 +3,5 @@ SocialID: 100001869
 Mail: tramthitien@gmail.com
 DoB: 9/4/1992
 Address: 18-19 Lot O, Bau Cat, phuong 13, Tan Binh, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 2076934656

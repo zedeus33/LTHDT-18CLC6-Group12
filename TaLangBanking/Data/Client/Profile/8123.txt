@@ -3,5 +3,5 @@ SocialID: 100015574
 Mail: dungthiviet@gmail.com
 DoB: 4/12/1972
 Address: 678 Truong Chinh , Tan Binh, Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 69000000

@@ -3,5 +3,5 @@ SocialID: 100031107
 Mail: huangocdanh@gmail.com
 DoB: 27/12/1996
 Address: 271/163/122 Quang Trung, Go Vap , Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 52000000

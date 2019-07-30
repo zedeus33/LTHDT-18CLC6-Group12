@@ -3,5 +3,5 @@ SocialID: 100017673
 Mail: thanhduchai@gmail.com
 DoB: 10/1/1990
 Address: 422 Dong Den, Quan Tan Binh , Ho Chi Minh
-Sex: Female
+Sex: Male
 Salary: 190909
