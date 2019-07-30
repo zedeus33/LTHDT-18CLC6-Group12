@@ -201,21 +201,6 @@ void MenuSignIn()
 					MenuSignIn();
 				}
 			}
-			/*Transaction* p = new LoginBehavior();
-			p->Export(DATA_BEHAVIORS.c_str());
-			p->sentOTP(cus->getRefClient()->getEmail());
-			if (cus != NULL && checkOTP(p) == true)
-			{
-
-				UserMenu(cus);
-			}
-			else {
-				system("color c");
-				cout << "\n\nWrong id or password!! Please try again" << endl;
-				system("pause");
-				system("color f");
-				MenuSignIn();
-			}*/
 		}
 		else
 		{
@@ -370,7 +355,7 @@ void MenuPayment(UserAccount *& cus)
 		note = p->paymentBill(cus);
 		if (note!="return")
 		{
-			notice(note, "+", "+");
+			notice(note, "~", "|");
 		}
 		MenuPaymentContinue(cus);
 	}break;
@@ -380,7 +365,7 @@ void MenuPayment(UserAccount *& cus)
 		note = p->paymentBill(cus);
 		if (note != "return")
 		{
-			notice(note, "+", "+");
+			notice(note, "~", "|");
 		}
 		MenuPaymentContinue(cus);
 	}break;
@@ -557,7 +542,7 @@ void UserMenuContinue(UserAccount *& cus)
 }
 void MenuPaymentContinue(UserAccount *& cus)
 {
-	cout << "\nDo you want to continue? (y = Yes , n = No) : ";
+	cout << "Do you want to continue? (y = Yes , n = No) : ";
 	string YesOrNo;
 	cin >> YesOrNo;
 	if (YesOrNo == "y")
@@ -663,6 +648,19 @@ bool changePassword(UserAccount*& a)
 	}
 	else return false;
 	
+}
+
+string deleteChar(string content, char character)
+{
+	stringstream temp;
+	for (int i = 0; i < content.size(); i++)
+	{
+		if (content[i] != character)
+		{
+			temp << content[i];
+		}
+	}
+	return temp.str();
 }
 
 bool alnum(string s)
@@ -951,18 +949,24 @@ void transfer(UserAccount * &customer)
 	UserAccount *numIDTransferTo = findUserAccount(numID);
 	if (numIDTransferTo != NULL)
 	{
-		system("cls");
-		cout << "*************************************************************" << endl;
-		cout << "\t\t\tINFORMATION NUMBER ID" << endl;
-		cout << "      Name: " << numIDTransferTo->getRefClient()->getName() << endl;
-		cout << " Number ID: " << numIDTransferTo->getNumID() << endl;
-		cout << "*************************************************************" << endl << endl;
+		if (numIDTransferTo==customer)
+		{
+			notice("YOU SO STUPID,CAN'T TRANSFER TO YOUR OWN ACCOUNT =))))");
+			return;
+		}
+		string name = numIDTransferTo->getRefClient()->getName();
+		string numID = numIDTransferTo->getNumID();
+		cout << "--------------------------------------------------" << endl;
+		cout << "|" << setw(20+15) << "INFORMATION NUMBER ID" << setw(60-36-10)<< "|"<< endl;
+		cout << "--------------------------------------------------" << endl;
+		cout << "|     Name: " << name << setw(60-12-name.size()-10) << "|" << endl;
+		cout << "|Number ID: " << numID << setw(60-12-numID.size()-10) << "|" << endl;
+		cout << "--------------------------------------------------" << endl << endl;
 		string choice;
 		cout << "Are you sure to transfer(yes/no) >> ";
 		cin >> choice;
 		if (_stricmp(choice.c_str(), "yes") == 0)
 		{
-			system("cls");
 			bool ans;
 			double value;
 			do
@@ -983,22 +987,24 @@ void transfer(UserAccount * &customer)
 			ans = customer->transfer(numIDTransferTo, value);
 			if (ans == true)
 			{
-				notice("Transfer Successfully");
+				notice("TRANSFER SUCCESSFULLY ^.^");
 			}
 			else
 			{
-				notice("Your input value is not allowed", "+", "-");
-				notice("The transfer money need to be bigger than your balance and smaller than limit of transfer/time ", "+", "-");
+				notice("YOUR BALANCE IS NOT ENOUGH OR OVER THE LIMIT OF TRANSFER -.-", ".", ".");
 			}
 		}
-		else
+		else if(_stricmp(choice.c_str(), "no") == 0)
 		{
 			return;
 		}
-
+		else
+		{
+			notice("ERROR TYPE -.-");
+		}
 	}
 	else
 	{
-		notice("This ID number doesn't exist -.-", "+", "-");
+		notice("This ID number doesn't exist -.-", ".", ".");
 	}
 }

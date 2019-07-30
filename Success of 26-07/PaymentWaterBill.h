@@ -1,7 +1,7 @@
 #pragma once
 #include "Payment.h"
 
-const string DATA_WATERBILL = "D:/TaLangBanking/Data/Payment/Water Bill/";
+
 
 class PaymentWaterBill : public Payment
 {
@@ -24,63 +24,9 @@ PaymentWaterBill::~PaymentWaterBill()
 
 string PaymentWaterBill::paymentBill(UserAccount *& customer)
 {
-	int max = 0;
-	string code, context[BILL_LINE];
+	string code;
 	cout << "PLEASE ENTER BILL CODE: ";
 	cin >> code;
 	string file_path = DATA_WATERBILL + code + ".txt";
-	cout << endl;
-	for (int i = 0; i < BILL_LINE; i++)
-	{
-		context[i] = readline(file_path.c_str(), i + 1);
-		if (context[i] == "Can't open file\n")
-		{
-			return "THIS BILL CODE DOESN'T EXIST";
-		}
-		if (context[i].size() > max)
-		{
-			max = context[i].size();
-		}
-	}
-	for (int i = 0; i < max + 1; i++)
-	{
-		cout << "_";
-	}
-	cout << endl;
-	for (int i = 0; i < BILL_LINE; i++)
-	{
-		cout << context[i] << setw(max + 1 - context[i].size()) << "|" << endl;
-	}
-	for (int i = 0; i < max + 1; i++)
-	{
-		if (i == max)
-		{
-			cout << "|\n";
-		}
-		else
-		{
-			cout << "_";
-		}
-	}
-	string choice;
-	cout << "Are you sure to payment(yes/no): ";
-	cin >> choice;
-	if (_stricmp(choice.c_str(), "yes") == 0)
-	{
-		context[3].erase(context[3].begin(), context[3].begin() + 27);
-		context[3].erase(context[3].end() - 5, context[3].end());
-		context[3] = deleteChar(context[3], '.');
-		if (customer->changeBalance(-stod(context[3])) == true)
-		{
-			return "Payment successfully";
-		}
-		else
-		{
-			return "Your balance is not enough money";
-		}
-	}
-	else
-	{
-		return "return";
-	}
+	return function_paymentsup(file_path,code, customer);
 }
