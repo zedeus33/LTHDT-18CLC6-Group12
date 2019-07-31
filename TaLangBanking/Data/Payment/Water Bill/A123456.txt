@@ -1,5 +1,5 @@
 Bill code: A123456
-Name: Ta Huu Dien
+Name: Ta Huu Dien
 Address: 42 Dao Duy Anh, P.9, Q.Phu Nhuan
 Payment(10% VAT included): 222.870(VND)
 Water Used: 17(cubic meters)

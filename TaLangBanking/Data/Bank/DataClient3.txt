@@ -1,4 +1,4 @@
-Bank: TaLangBank
+Bank: TaLang iBanking
 Addr: 136 Nguyen Thi Tan,P.2,Q.8
 President: Cao Huu Tho
 Phone: 3512 4767

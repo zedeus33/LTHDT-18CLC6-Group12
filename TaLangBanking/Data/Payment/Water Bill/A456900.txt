@@ -1,5 +1,5 @@
 Bill code: A456900
-Name: Du Dinh Giang
+Name: Du Dinh Giang
 Address: 382E Tran Hung Dao, P.11, Q.5
 Payment(10% VAT included): 319.750(VND)
 Water Used: 25(cubic meters)

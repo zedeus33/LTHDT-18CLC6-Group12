@@ -1,5 +1,5 @@
 Bill code: PEC400006
-Name: Kha Manh Trieu
+Name: Kha Manh Trieu
 Address: 12/B24 Phan Huy ich, P.12, Q.Go Vap
 Payment(10% VAT included): 417.648(VND)
 Electric Used: 218(kWh)

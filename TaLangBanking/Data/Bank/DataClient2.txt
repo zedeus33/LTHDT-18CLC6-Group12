@@ -1,4 +1,4 @@
-﻿Bank: TaLangBank
+Bank: TaLang iBanking
 Addr: 49 Hoang Van Thu,P.15,Q.Phu Nhuan
 President: Trach Huu Nguyen
 Phone: 3942 4644

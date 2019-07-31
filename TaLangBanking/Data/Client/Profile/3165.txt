@@ -1,0 +1,7 @@
+Name: Hy phu quyen
+SocialID: 123456789
+Mail: phuquyen1504@gmail.com
+DoB: 15/4/2000
+Address: 123 di ia
+Sex: Female
+Salary: 50000000

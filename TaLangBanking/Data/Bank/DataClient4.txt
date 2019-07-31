@@ -1,4 +1,4 @@
-Bank: TaLangBank
+Bank: TaLang iBanking
 Addr: 181-183 Ham Nghi,P.Nguyen Thai Binh,Q.1
 President: Lavan Thi Chi
 Phone: 3840 7556

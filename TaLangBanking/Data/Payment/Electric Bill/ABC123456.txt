@@ -1,5 +1,5 @@
 Bill code: ABC123456
-Name: Hy Phu Quyen
+Name: Ki Ki Nhat
 Address: 190/80 Xom Dat,P.10,Q.11
 Payment(10% VAT included): 950.022(VND)
 Electric Used: 384(kWh)

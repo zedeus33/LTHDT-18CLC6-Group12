@@ -1,5 +1,5 @@
 Bill code: A660037
-Name: Nguyen Qui Phuoc
+Name: Nguyen Qui Phuoc
 Address: 7 Nguyen Thi Minh Khai, P.Ben Nghe, Q.1
 Payment(10% VAT included): 262.200(VND)
 Water Used: 20(cubic meters)

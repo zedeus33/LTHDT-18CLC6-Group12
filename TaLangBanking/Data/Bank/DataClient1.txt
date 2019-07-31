@@ -1,4 +1,4 @@
-Bank: TaLangBank
+Bank: TaLang iBanking
 Addr: 130 Pham Van Hai,P.3,Q.Tan Binh
 President: Luu Thi Hue
 Phone: 3942 4678
