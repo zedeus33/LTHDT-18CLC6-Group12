@@ -1,4 +1,5 @@
 #pragma once
+#include "Admin.h"
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -8,7 +9,7 @@
 #include <conio.h>
 #include "Bank.h" 
 using namespace std;
-
+class Admin;
 
 //#include "sha1.h"
 int chooseInt(int m);
@@ -24,7 +25,7 @@ UserAccount* checkLoginUser(string id, string password);
 void MenuSignIn();
 void MainMenu();
 void UserMenu(UserAccount*& customer);
-void AdminMenu(string id);
+void AdminMenu(Admin* p);
 //void MenuUserInfor();
 //void MenuTransfer();
 void MenuPayment(UserAccount *&cus);
@@ -40,7 +41,7 @@ void MenuOtherTasksContinue(UserAccount*& cus);
 void UserMenuContinue(UserAccount*& cus);
 void MenuPaymentContinue(UserAccount *&cus);
 void MenuSavingContinue(UserAccount* cus);
-
+void MenuAdminContinue(Admin* a);
 
 string deleteChar(string content, char character);
 bool alnum(string s);

@@ -14,6 +14,8 @@ const string DATA_BANK = "D:/TaLangBanking/Data/Bank/";
 const string DATA_ACCOUNTCLIENT = "D:/TaLangBanking/Data/Client/Account/";
 const string DATA_PROFILECLIENT = "D:/TaLangBanking/Data/Client/Profile/";
 const string DATA_BEHAVIORS = "D:/TaLangBanking/Data/Behaviors";
+const string BLACK_LIST = "D:/TaLangBanking/Data/BlackList/BlackList.txt";
+
 
 // Load Data
 Date convertToDate(string x)
@@ -114,10 +116,6 @@ void loadDataBank(vector <Bank*> &bank)
 	}
 }
 
-void loadDataBlackList()
-{
-
-}
 // Save Data
 void saveDataClient(Client *customer)
 {

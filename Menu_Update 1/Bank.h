@@ -17,6 +17,7 @@ public:
 	void setName(string name);
 	void setPresident_name(string president_name);
 	void setPhone_number(string phone_number);
+	vector <Client*> getClient();
 	void setCustomer(vector <Client*> &temp);
 	~Bank();
 

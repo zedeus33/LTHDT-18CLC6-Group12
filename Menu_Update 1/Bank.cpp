@@ -137,6 +137,11 @@ void Bank::setPhone_number(string phone_number)
 	this->phone_number = phone_number;
 }
 
+vector<Client*> Bank::getClient()
+{
+	return cus;
+}
+
 void Bank::setCustomer(vector<Client*> & temp)
 {
 	this->cus.swap(temp);

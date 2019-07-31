@@ -5,6 +5,7 @@
 #include "LoadSaveData.h"
 #include "PaymentElectricBill.h"
 #include "PaymentWaterBill.h"
+#include "BlackList.h"
 vector <Bank*> b;
 
 void notice(string sentence, string horizontal = "=", string vertical = "=")
@@ -82,6 +83,8 @@ int chooseInt(int m)
 }
 void MainMenu()
 {
+	BlackList* bl = BlackList::getBlackList();
+	bl->loadBlackList(BLACK_LIST.c_str());
 	if (b.empty())
 	{
 		loadDataBank(b);
@@ -153,7 +156,8 @@ void MenuSignIn()
 			if (CheckPass)
 			{
 				system("cls");
-				AdminMenu(id);
+				Admin* p = new Admin(id, password);
+				AdminMenu(p);
 			}
 			else {
 				system("color c");
@@ -280,6 +284,7 @@ void UserMenu(UserAccount*& customer)
 	}
 }
 
+
 bool checkLoginAdmin(string& account, string& password, const char* path)
 {
 	ifstream fout;
@@ -300,6 +305,11 @@ bool checkLoginAdmin(string& account, string& password, const char* path)
 }
 UserAccount* checkLoginUser(string id, string password)
 {
+	BlackList::clear();
+	BlackList* bl = BlackList::getBlackList();
+	bl->loadBlackList(BLACK_LIST.c_str());
+	if (bl->isBlock(id))
+		return nullptr;
 	vector <Client*> User;
 	vector <UserAccount*> bankAccount;
 	UserAccount* temp = NULL;
@@ -326,9 +336,83 @@ UserAccount* checkLoginUser(string id, string password)
 	}
 	return temp;
 }
-void AdminMenu(string id)
+void AdminMenu(Admin *p)
 {
-
+	system("cls");
+	cout << "[1]. Block User" << endl;
+	cout << "[2]. View User History" << endl;
+	cout << "[3]. View User Account create Request" << endl;
+	cout << "[4]. UnLock User" << endl;
+	cout << "[5]. Return " << endl;
+	int choose = chooseInt(5);
+	switch (choose)
+	{
+	case 1:
+	{
+		system("cls");
+		string numID;
+		cout << "Please enter numID of Account to block: ";
+		cin >> numID;
+		UserAccount* rha = p->searchUserAccount(b, numID);
+		BlackList::clear();
+		BlackList* bl = BlackList::getBlackList();
+		bl->loadBlackList(BLACK_LIST.c_str());
+		bool ans = p->blockUser(rha);
+		if (ans)
+		{
+			cout << "Block user " << numID << "successfully!" << endl;
+		}
+		else
+			cout << "Num ID is not exist or something went wrong!" << endl;
+		bl->saveBlackList(BLACK_LIST.c_str());
+		MenuAdminContinue(p);
+		
+	}break;
+	case 2:
+	{
+		system("cls");
+		string numID;
+		cout << "Please enter User Account ID to view history: ";
+		cin >> numID;
+		UserAccount* rha = p->searchUserAccount(b, numID);
+		p->viewUserHistoryLog(rha);
+		MenuAdminContinue(p);
+		
+	}break;
+	case 3:
+	{
+		system("cls");
+		p->viewRequestLog(b);
+		MenuAdminContinue(p);
+		
+	}break;
+	case 4:
+	{
+		system("cls");
+		string numID;
+		cout << "Please enter numID of Account to unlock: ";
+		cin >> numID;
+		UserAccount* rha = p->searchUserAccount(b, numID);
+		BlackList::clear();
+		BlackList* bl = BlackList::getBlackList();
+		bl->loadBlackList(BLACK_LIST.c_str());
+		bool ans = p->unBlockUser(rha);
+		if (ans)
+		{
+			cout << "Unlock user " << numID << "successfully!" << endl;
+		}
+		else
+			cout << "Num ID is not exist or something went wrong!" << endl;
+		bl->saveBlackList(BLACK_LIST.c_str());
+		MenuAdminContinue(p);
+	}break;
+	case 5:
+	{
+		system("cls");
+		MenuSignIn();
+		break;
+	}
+	}
 }
 void MenuPayment(UserAccount *& cus)
 {
@@ -377,8 +461,9 @@ void MenuOthertasks(UserAccount*& customer)
 	cout << "[3]. News" << endl;
 	cout << "[4]. Exchange rate" << endl;
 	cout << "[5]. Interest rate" << endl;
-	cout << "[6]. Return" << endl;
-	int n = chooseInt(6);
+	cout << "[6]. Create new Account" << endl;
+	cout << "[7]. Return" << endl;
+	int n = chooseInt(7);
 	switch (n)
 	{
 		case 1:
@@ -418,6 +503,13 @@ void MenuOthertasks(UserAccount*& customer)
 
 		}break;
 		case 6:
+		{
+			system("cls");
+			Client* p = customer->getRefClient();
+			saveRequireNewUserAccount(p);
+			cout << "Your request have been sent to our server. We will sent you a messege when the task finish" << endl;
+		}break;
+		case 7:
 		{
 			system("cls");
 			UserMenu(customer);
@@ -637,6 +729,29 @@ void MenuSavingContinue(UserAccount* cus)
 		notice("Wrong input! Please try again", "+", "+");
 		system("pause");
 		MenuSavingContinue(cus);
+	}
+}
+void MenuAdminContinue(Admin* a)
+{
+	cout << "Do you want to continue? (y = Yes , n = No) : ";
+	string YesOrNo;
+	cin >> YesOrNo;
+	if (YesOrNo == "y")
+	{
+		system("cls");
+		AdminMenu(a);
+	}
+	else if (YesOrNo == "n")
+	{
+		system("cls");
+		MenuSignIn();
+	}
+	else
+	{
+		system("cls");
+		notice("Wrong input! Please try again", "+", "+");
+		system("pause");
+		MenuAdminContinue(a);
 	}
 }
 void inputIDPassword(string& id, string& password)

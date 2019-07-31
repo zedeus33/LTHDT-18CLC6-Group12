@@ -12,6 +12,11 @@ Client::Client()
 	UserID = "";
 }
 
+vector<UserAccount*> Client::getBackAccount()
+{
+	return BankAccount;
+}
+
 Client::Client(string name, string addr, string SocialID, string UserID, string email, Date dob, bool sex, float salary)
 {
 	this->name = name;
