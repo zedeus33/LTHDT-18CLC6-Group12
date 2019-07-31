@@ -219,7 +219,7 @@ void UserMenu(UserAccount*& customer)
 	cout << "[1]. User's information" << endl;
 	cout << "[2]. Transfer" << endl;
 	cout << "[3]. Payment" << endl;
-	cout << "[4]. Deal history" << endl;
+	cout << "[4]. Deal and login history" << endl;
 	cout << "[5]. Other tasks" << endl;
 	cout << "[6]. Adjust limit" << endl;
 	cout << "[7]. Saving" << endl;
@@ -508,6 +508,7 @@ void MenuOthertasks(UserAccount*& customer)
 			Client* p = customer->getRefClient();
 			saveRequireNewUserAccount(p);
 			cout << "Your request have been sent to our server. We will sent you a messege when the task finish" << endl;
+			MenuOtherTasksContinue(customer);
 		}break;
 		case 7:
 		{
@@ -536,7 +537,7 @@ void MenuSaving(UserAccount *cur)
 		int period;
 		cout << "Input your period(month) : ";
 		cin >> period;
-		period = period * 30;
+		period = period;
 		if (cur->CreateSavingPeriod(money, period))
 		{
 			cout << "Create saving book with period " << period << " day successfully!" << endl;
@@ -622,6 +623,7 @@ void exit()
 
 void MainMenuContinue()
 {
+
 	cout << "\nDo you want to continue? (y = Yes , n = No)";
 	string YesOrNo;
 	cin >> YesOrNo;

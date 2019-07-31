@@ -36,6 +36,7 @@ public:
 	bool CreateSavingPeriod(double money, int period);
 	bool CreateSavingNoPeriod(double money);
 	int getListsize();
+	void setListSaving(vector <Saving*>& list);
 	void outputList();
 	~UserAccount();
 
