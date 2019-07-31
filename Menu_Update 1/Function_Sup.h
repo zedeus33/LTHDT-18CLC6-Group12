@@ -4,7 +4,7 @@
 #include <cstring>
 #include <sstream>
 #include <vector>
-#include<iomanip>
+#include <iomanip>
 #include <conio.h>
 #include "Bank.h" 
 using namespace std;
@@ -31,7 +31,7 @@ void MenuPayment(UserAccount *&cus);
 //void MenuDealHistory();
 void MenuOthertasks(UserAccount*& customer);
 //void MenuAdjustLimit();
-//void MenuSaving();
+void MenuSaving(UserAccount *cur);
 void MenuSignUp();
 void exit();
 
@@ -39,6 +39,8 @@ void MainMenuContinue();
 void MenuOtherTasksContinue(UserAccount*& cus);
 void UserMenuContinue(UserAccount*& cus);
 void MenuPaymentContinue(UserAccount *&cus);
+void MenuSavingContinue(UserAccount* cus);
+
 
 string deleteChar(string content, char character);
 bool alnum(string s);

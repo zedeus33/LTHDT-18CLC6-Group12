@@ -40,6 +40,8 @@ public:
 	bool OpenNewAccount();
 	bool CloseAccount();
 	//bool Deposit(float value);
+
+
 	//bool WithDraw(float value);
 	//bool Transfer(float value, string AccountID);
 	void createDefaultUserAccount();
