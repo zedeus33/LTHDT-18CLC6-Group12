@@ -232,8 +232,9 @@ void MainMenu()
 	}break;
 	case 5:
 	{
-
-
+		system("cls");
+		outputInterestRate("D:/TaLangBanking/InterestRate.txt");
+		MainMenuContinue();
 	}break;
 	case 6:
 	{
@@ -975,3 +976,55 @@ void outPutContact(const char* path)
 	file.close();
 }
 
+void outputInterestRate(const char* path)
+{
+	fstream file;
+	file.open(path);
+	if (_access(path, 0) == -1)
+	{
+		cout << "ERROR:COUND NOT FOUND  " << path << " File" << endl;
+		return;
+	}
+	cout << "\t\t\t\t\t\t----------------" << endl;
+	cout << "\t\t\t\t\t\t|Interest Rates|" << endl;
+	cout << "\t\t\t\t\t\t----------------" << endl;
+	string object1;
+	string object2;
+	string tenor;
+	string vnd1, usd1, eur1;
+	string vnd2, usd2, eur2;
+	getline(file, tenor, ',');
+	getline(file, object1, ',');
+	file.ignore();
+	file.ignore();
+	getline(file, object2, '\n');
+	cout << setw(18) << left << tenor << '|' << setw(54) << left << object1 << "|" << object2 << endl;
+	cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	file.ignore();
+	getline(file, vnd1, ',');
+	getline(file, usd1, ',');
+	getline(file, eur1, ',');
+	getline(file, vnd2, ',');
+	getline(file, usd2, ',');
+	getline(file, eur2, '\n');
+	cout << setw(18) << left << "" << '|' << setw(18) << left << vnd1 << setw(18) << left << usd1 << setw(18) << left << eur2
+		<< '|' << setw(18) << left << vnd2 << setw(18) << left << usd2 << eur2 << endl;
+	cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+
+	while (!file.eof())
+	{
+
+		getline(file, tenor, ',');
+		getline(file, vnd1, ',');
+		getline(file, usd1, ',');
+		getline(file, eur1, ',');
+		getline(file, vnd2, ',');
+		getline(file, usd2, ',');
+		getline(file, eur2, '\n');
+		cout << setw(18) << left << tenor << '|' << setw(18) << left << vnd1 << setw(18) << left << usd1 << setw(18) << left << eur2 << '|' << setw(18) << left
+			<< vnd2 << setw(18) << left << usd2 << eur2 << endl;
+		cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	}
+	cout << "Unit: %" << endl;
+	file.close();
+}

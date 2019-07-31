@@ -54,3 +54,4 @@ string createDefaultNumID();
 
 void outPutExchangeRates(const char* path);
 void outPutContact(const char* path);
+void outputInterestRate(const char* path);
