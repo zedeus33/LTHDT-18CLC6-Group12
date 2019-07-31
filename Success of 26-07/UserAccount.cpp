@@ -2,7 +2,7 @@
 #include "Client.h"
 #include "Account.h"
 #include "Behaviors.h"
-
+#include "Saving.h"
 UserAccount::UserAccount() : Account()
 {
 	numID = "";
@@ -139,6 +139,11 @@ bool UserAccount::changeBalance(double value)
 	}
 }
 
+void UserAccount::changeToSaving(double money)
+{
+	Balance = Balance - money;
+}
+
 void UserAccount::Input()
 {
 	//Account::Input();
@@ -163,6 +168,74 @@ void UserAccount::Output()
 	cout << "Balance : " << fixed << setprecision(2) << Balance << endl;
 	cout << "Limit : " << fixed << setprecision(2) << limit << endl;
 	cout << "Level : " << this->getLevel() << endl;
+}
+
+bool UserAccount::CreateSavingPeriod(double money, int period)
+{
+	if (list.size() >= 1)
+	{
+		cout << "You can not create more saving book" << endl;
+		return false;
+	}
+	else if(money>=(Balance-50000)){
+
+		cout << "Your balance is not enought money to open new Saving book!" << endl;
+		return false;
+	}
+	else
+	{
+		Saving* a = new Saving(money, period, this);
+		Balance = Balance - money;
+		cout << "Your accrued interest after period is : " << a->calcInterestAfterPeriod() << endl;
+		list.push_back(a);
+		return true;
+	}
+}
+
+bool UserAccount::CreateSavingNoPeriod(double money)
+{
+	if (list.size() >= 1) {
+		cout << "You can not create more saving book!" << endl;
+		return false;
+	}
+	else if(money>=(Balance-50000)){
+		cout << "Your balance is not enought to open new Saving book!" << endl;
+		return false;
+	}
+	else
+	{
+		Saving* a = new Saving(money, this);
+		Balance = Balance - money;
+		cout << "Your interest per month is : " << a->calcInterestPerMonth() << endl;
+		list.push_back(a);
+		return true;
+	}
+}
+
+void UserAccount::setListSaving(vector <Saving*> &list)
+{
+	this->list.swap(list);
+}
+
+int UserAccount::getListsize()
+{
+	return list.size();
+}
+
+void UserAccount::outputList()
+{
+	for (int i = 0; i < list.size(); i++)
+	{
+		cout << "Saving book 1 :" << endl;
+		if (list[i]->getRate() == 0.01)
+		{
+			list[i]->output1();
+		}
+		else if (list[i]->getRate() == 0.005)
+		{
+			list[i]->output2();
+		}
+	}
 }
 
 UserAccount::~UserAccount()

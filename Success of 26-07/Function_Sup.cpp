@@ -270,9 +270,7 @@ void UserMenu(UserAccount*& customer)
 	case 7:
 	{
 		system("cls");
-		//MenuSaving();
-
-
+		MenuSaving(customer);
 	}break;
 	case 8:
 	{
@@ -428,6 +426,65 @@ void MenuOthertasks(UserAccount*& customer)
 	}
 
 }
+void MenuSaving(UserAccount *cur)
+{
+	
+	cout << "[1]. Create saving with period." << endl;
+	cout << "[2]. Create saving without period" << endl;
+	cout << "[3]. Check saving book" << endl;
+	cout << "[4]. Return" << endl;
+	int n = chooseInt(4);
+	switch (n)
+	{
+	case 1:
+	{
+		double money;
+		cout << "Input money you want to saving : ";
+		cin >> money;
+		int period;
+		cout << "Input your period(month) : ";
+		cin >> period;
+		
+		if (cur->CreateSavingPeriod(money, period*30))
+		{
+			cout << "Create saving book with period " << period*30 << " day successfully!" << endl;
+		}
+		else
+		{
+			MenuSavingContinue(cur);
+		}
+		MenuSavingContinue(cur);
+	}break;
+	case 2:
+	{
+		double money;
+		cout << "Input money you want to saving : ";
+		cin >> money;
+		if (cur->CreateSavingNoPeriod(money))
+		{
+			cout << "Create saving book without period successfully!" << endl;
+		}
+		else
+		{
+			MenuSavingContinue(cur);
+		}
+		MenuSavingContinue(cur);
+	}break;
+	case 3:
+	{
+		cout << "You have " << cur->getListsize() << " saving book!" << endl;
+		cur->outputList();
+		system("pause");
+		MenuSavingContinue(cur);
+	}break;
+	case 4:
+	{
+		system("cls");
+		UserMenu(cur);
+	}
+	}
+
+}
 void MenuSignUp()
 {
 	for (int i = 0; i < b.size(); i++)
@@ -557,6 +614,29 @@ void MenuPaymentContinue(UserAccount *& cus)
 		notice("Wrong input! Please try again", "+", "+");
 		system("pause");
 		MenuPaymentContinue(cus);
+	}
+}
+void MenuSavingContinue(UserAccount* cus)
+{
+	cout << "Do you want to continue? (y = Yes , n = No) : ";
+	string YesOrNo;
+	cin >> YesOrNo;
+	if (YesOrNo == "y")
+	{
+		system("cls");
+		MenuSaving(cus);
+	}
+	else if (YesOrNo == "n")
+	{
+		system("cls");
+		UserMenu(cus);
+	}
+	else
+	{
+		system("cls");
+		notice("Wrong input! Please try again", "+", "+");
+		system("pause");
+		MenuSavingContinue(cus);
 	}
 }
 void inputIDPassword(string& id, string& password)

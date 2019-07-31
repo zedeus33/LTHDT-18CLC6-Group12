@@ -8,12 +8,14 @@
 #include "sstream"
 #include "Bank.h"
 #include "File.h"
+#include "Saving.h"
 
 #define STAFF_PASSWORD "D:/StaffPassword.txt"
 const string DATA_BANK = "D:/TaLangBanking/Data/Bank/";
 const string DATA_ACCOUNTCLIENT = "D:/TaLangBanking/Data/Client/Account/";
 const string DATA_PROFILECLIENT = "D:/TaLangBanking/Data/Client/Profile/";
 const string DATA_BEHAVIORS = "D:/TaLangBanking/Data/Behaviors";
+const string DATA_SAVINGCLIENT = "D:/TaLangBanking/Data/Client/Saving/";
 
 // Load Data
 Date convertToDate(string x)
@@ -36,6 +38,26 @@ Date convertToDate(string x)
 	year = stoi(x);
 	return Date(day, month, year);
 }
+// Load Data Saving
+Saving* loadDataSaving(string numID)
+{
+	string file_path = DATA_SAVINGCLIENT + numID + ".txt";
+	if (checkFileExist(file_path.c_str()) == true)
+	{
+		string temp = readline(file_path.c_str(), 3);
+		auto x = temp.find_first_of('|');
+		double balance = stod(temp.substr(0, x));
+		temp.erase(temp.begin(), temp.begin() + x + 1);
+		x = temp.find_first_of('|');
+		double rate = stod(temp.substr(0, x - 1));
+		temp.erase(temp.begin(), temp.begin() + x + 1);
+		double period = stod(temp);
+		Saving *s = new Saving(balance, rate, period);
+		return s;
+	}
+	return NULL;
+}
+// Load Data Client
 Client * loadDataClient(string UserID)
 {
 	// Load information of Cus
@@ -72,13 +94,22 @@ Client * loadDataClient(string UserID)
 			line.erase(line.begin(), line.begin() + stop + 1);
 		}
 		UserAccount *useracc = new UserAccount(work[0], work[1], work[0], stod(work[2]), stod(line), cl);
+		
 		bankAcc.push_back(useracc);
+		Saving* sav = loadDataSaving(work[0]);
+		if (sav!=NULL)
+		{
+			vector <Saving*> list;
+			list.push_back(sav);
+			useracc->setListSaving(list);
+			list.clear();
+		}
 	}
 
 	cl->setBankAccount(bankAcc);
 	return cl;
 }
-
+// Load Data Bank
 void loadDataBank(vector <Bank*> &bank)
 {
 	for (int i = 0; i < 4; i++)
@@ -114,11 +145,38 @@ void loadDataBank(vector <Bank*> &bank)
 	}
 }
 
-void loadDataBlackList()
-{
 
+// Save Data Saving
+void saveDataSaving(UserAccount *&userAcc)
+{
+	vector <Saving*> list;
+	userAcc->setListSaving(list);
+	if (list.size()==0)
+	{
+		userAcc->setListSaving(list);
+		return;
+	}
+	string file_path = DATA_SAVINGCLIENT + userAcc->getNumID() + ".txt";
+	stringstream context;
+	context << list.size() << "\n";
+	context << "Balance|Rate|Period\n";
+	string Rate = to_string(list[0]->getRate());
+	if (Rate == "0.005000")
+	{
+		Rate.erase(Rate.end() - 3, Rate.end());
+	}
+	else
+	{
+		Rate.erase(Rate.end() - 4, Rate.end());
+	}
+	Rate = Rate + "%";
+	context << long long(list[0]->getSbalance()) << "|" << Rate << "|" << int(list[0]->getPeriod());
+	write(file_path.c_str(), context.str());
+	userAcc->setListSaving(list);
+	list.clear();
 }
-// Save Data
+
+// Save Data Client
 void saveDataClient(Client *customer)
 {
 	// Save information of Customer
@@ -146,10 +204,12 @@ void saveDataClient(Client *customer)
 		content2 << bankAccount[i]->getPassword() << "|";
 		content2 << to_string(long long (bankAccount[i]->getBalance())) << "|";
 		content2 << to_string(long long (bankAccount[i]->getLimit())) << "\n";
+		saveDataSaving(bankAccount[i]);
 	}
 	write(file_path.c_str(), content2.str());
 	customer->setBankAccount(bankAccount);
 }
+// Save Data Bank
 void saveDataBank(vector <Bank*> bank)
 {
 	vector <Client*> cus;

@@ -16,5 +16,6 @@ void main()
 	x->OpenNewAccount();
 	x->output();
 	x->CloseAccount();*/
+
 	system("pause");
 }
