@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include<iomanip>
+#include <iomanip>
 #include <conio.h>
 #include "sstream"
 #include "Bank.h"

@@ -12,6 +12,7 @@ public:
 	Saving(double money, int period, UserAccount *cur);
 	Saving(double money, UserAccount* cur);
 	Saving(double sbalance, UserAccount *a, double rate, double period);
+	Saving(double sbalance, double rate, double period);
 	UserAccount* getRefUserAccount();
 	void setUserAccount(UserAccount* a);
 	void setSbalance(double s);

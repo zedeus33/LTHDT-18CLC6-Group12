@@ -172,7 +172,7 @@ void UserAccount::Output()
 
 bool UserAccount::CreateSavingPeriod(double money, int period)
 {
-	if (list.size() > 1)
+	if (list.size() >= 1)
 	{
 		cout << "You can not create more saving book" << endl;
 		return false;
@@ -194,7 +194,7 @@ bool UserAccount::CreateSavingPeriod(double money, int period)
 
 bool UserAccount::CreateSavingNoPeriod(double money)
 {
-	if (list.size() > 1) {
+	if (list.size() >= 1) {
 		cout << "You can not create more saving book!" << endl;
 		return false;
 	}
@@ -215,6 +215,11 @@ bool UserAccount::CreateSavingNoPeriod(double money)
 int UserAccount::getListsize()
 {
 	return list.size();
+}
+
+void UserAccount::setListSaving(vector<Saving*>& list)
+{
+	this->list.swap(list);
 }
 
 void UserAccount::outputList()

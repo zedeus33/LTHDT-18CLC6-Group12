@@ -33,6 +33,14 @@ Saving::Saving(double sbalance, UserAccount* a, double rate, double period)
 	Period = period;
 }
 
+Saving::Saving(double sbalance, double rate, double period)
+{
+	S_balance = sbalance;
+	Rate = rate;
+	Period = period;
+	RefUserAccount = NULL;
+}
+
 UserAccount* Saving::getRefUserAccount()
 {
 	return RefUserAccount;
@@ -60,7 +68,7 @@ double Saving::calcInterestPerMonth()
 
 double Saving::calcInterestNoPeriod(int day)
 {
-	return S_balance*(Rate/365)*double(day);
+	return S_balance*(Rate/12)*double(day);
 }
 
 double Saving::getSbalance()
