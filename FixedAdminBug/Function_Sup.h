@@ -8,7 +8,9 @@
 #include <iomanip>
 #include <conio.h>
 #include "Bank.h" 
+#include <Windows.h>
 using namespace std;
+
 class Admin;
 
 //#include "sha1.h"
@@ -61,3 +63,7 @@ bool isDouble(string in);
 double toDouble(string);
 UserAccount* findUserAccount(string numID);
 void transfer(UserAccount* &customer);
+
+void outputInterestRate(const char* path);
+void outPutContact(const char* path);
+void exchangeRate();

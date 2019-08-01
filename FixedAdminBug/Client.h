@@ -26,7 +26,7 @@ private:
 	//	Bank*
 public:
 	Client();
-	vector <UserAccount*> getBackAccount();
+	vector <UserAccount*>& getBackAccount();
 	void setBankAccount(vector <UserAccount*> &x) 
 	{
 		this->numOfAccount = x.size();

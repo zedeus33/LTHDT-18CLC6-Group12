@@ -12,7 +12,7 @@ Client::Client()
 	UserID = "";
 }
 
-vector<UserAccount*> Client::getBackAccount()
+vector<UserAccount*>& Client::getBackAccount()
 {
 	return BankAccount;
 }

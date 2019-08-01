@@ -16,7 +16,8 @@ const string DATA_PROFILECLIENT = "D:/TaLangBanking/Data/Client/Profile/";
 const string DATA_BEHAVIORS = "D:/TaLangBanking/Data/Behaviors";
 const string BLACK_LIST = "D:/TaLangBanking/Data/BlackList/BlackList.txt";
 const string DATA_SAVINGCLIENT = "D:/TaLangBanking/Data/Client/Saving/";
-
+const char* CONTACT_FILE = "D:/TaLangBanking/Data/contact.txt";
+const char* INTEREST_RATES_FILE = "D:/TaLangBanking/Data/InterestRate.txt";
 
 // Load Data
 // Load Data Saving

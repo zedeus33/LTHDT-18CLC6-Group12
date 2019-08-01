@@ -6,6 +6,8 @@
 #include "PaymentElectricBill.h"
 #include "PaymentWaterBill.h"
 #include "BlackList.h"
+#include <io.h>
+const string DATA_EXRATE = "Exrate.txt";
 vector <Bank*> b;
 
 void notice(string sentence, string horizontal = "=", string vertical = "=")
@@ -117,15 +119,20 @@ void MainMenu()
 	}break;
 	case 4:
 	{
-
+		exchangeRate();
+		MainMenuContinue();
 	}break;
 	case 5:
 	{
-
+		system("cls");
+		outputInterestRate(INTEREST_RATES_FILE);
+		MainMenuContinue();
 	}break;
 	case 6:
 	{
-
+		system("cls");
+		outPutContact(CONTACT_FILE);
+		MainMenuContinue();
 	}break;
 	case 7:
 	{
@@ -516,11 +523,15 @@ void MenuOthertasks(UserAccount*& customer)
 		}break;
 		case 4:
 		{
-
+			system("cls");
+			exchangeRate();
+			MenuOtherTasksContinue(customer);
 		}break;
 		case 5:
 		{
-
+			system("cls");
+			outputInterestRate(INTEREST_RATES_FILE);
+			MenuOtherTasksContinue(customer);
 		}break;
 		case 6:
 		{
@@ -1230,4 +1241,120 @@ void transfer(UserAccount * &customer)
 	{
 		notice("This ID number doesn't exist -.-", ".", ".");
 	}
+}
+
+void outPutContact(const char* path)
+{
+	fstream file;
+	file.open(path);
+	if (_access(path, 0) == -1)
+	{
+		cout << "ERROR:COUND NOT FOUND" << path << "FILE" << endl;
+		return;
+	}
+	cout << "\t\t\t|Contact|" << endl;
+	cout << "\t\t\t---------" << endl;
+	cout << "|Name|" << "\t\t\t" << "|Phone number|" << endl;
+	cout << "------" << "\t\t\t" << "--------------" << endl;
+	while (!file.eof())
+	{
+		string name;
+		string phoneNum;
+		getline(file, name, '/');
+		getline(file, phoneNum, '\n');
+		cout << setw(25) << left << name << setw(25) << left << phoneNum << endl;
+		cout << "======================================" << endl;
+	}
+	file.close();
+}
+
+void exchangeRate()
+{
+	system("wget -O Exrate.txt https://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx");
+	system("cls");
+	string time;
+	string date = readline((DATA_EXRATE.c_str()), 4);
+	cout << "\t\t\t\t\tEXCHAGE RATE\n";
+	date.erase(date.begin(), date.begin() + 12);
+	auto x = date.find_first_of(' ');
+	time = date.substr(x + 1, date.size());
+	date.erase(date.begin() + x, date.end());
+	time.erase(time.end() - 11, time.end());
+	cout << "Date: " << date << " Time: " << time << endl;
+	cout << "-----------------------------------------------------------------" << endl;
+	cout << setw(14) << "|Currency Code|" << setw(20) << "Currency Name|" << setw(10) << "Buy|" << setw(10) << "Transfer|" << setw(10) << "Sell|" << endl;
+	cout << "-----------------------------------------------------------------" << endl;
+	for (int i = 0; i < 19; i++)
+	{
+		string temp = readline(DATA_EXRATE.c_str(), i + 5);
+		string Code = temp.substr(24, 3);
+		temp.erase(temp.begin(), temp.begin() + 29);
+		x = temp.find("Buy");
+		string Name = temp.substr(14, x - 16);
+		temp.erase(temp.begin(), temp.begin() + x);
+		x = temp.find_first_of(' ');
+		string buy = temp.substr(5, x - 6);
+		temp.erase(temp.begin(), temp.begin() + x + 1);
+		x = temp.find_first_of(' ');
+		string transfer = temp.substr(10, x - 11);
+		temp.erase(temp.begin(), temp.begin() + x + 1);
+		x = temp.find_first_of(' ');
+		string sell = temp.substr(6, x - 7);
+		cout << "|" << setw(13) << Code << "|" << setw(19) << Name << "|" << setw(9) << buy << "|" << setw(9) << transfer << "|" << setw(9) << sell << "|" << endl;
+		cout << "-----------------------------------------------------------------" << endl;
+	}
+	system("del /f Exrate.txt");
+}
+
+void outputInterestRate(const char* path)
+{
+	fstream file;
+	file.open(path);
+	if (_access(path, 0) == -1)
+	{
+		cout << "ERROR:COUND NOT FOUND  " << path << " File" << endl;
+		return;
+	}
+	cout << "\t\t\t\t\t\t----------------" << endl;
+	cout << "\t\t\t\t\t\t|Interest Rates|" << endl;
+	cout << "\t\t\t\t\t\t----------------" << endl;
+	string object1;
+	string object2;
+	string tenor;
+	string vnd1, usd1, eur1;
+	string vnd2, usd2, eur2;
+	getline(file, tenor, ',');
+	getline(file, object1, ',');
+	file.ignore();
+	file.ignore();
+	getline(file, object2, '\n');
+	cout << setw(18) << left << tenor << '|' << setw(54) << left << object1 << "|" << object2 << endl;
+	cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	file.ignore();
+	getline(file, vnd1, ',');
+	getline(file, usd1, ',');
+	getline(file, eur1, ',');
+	getline(file, vnd2, ',');
+	getline(file, usd2, ',');
+	getline(file, eur2, '\n');
+	cout << setw(18) << left << "" << '|' << setw(18) << left << vnd1 << setw(18) << left << usd1 << setw(18) << left << eur2
+		<< '|' << setw(18) << left << vnd2 << setw(18) << left << usd2 << eur2 << endl;
+	cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+
+	while (!file.eof())
+	{
+
+		getline(file, tenor, ',');
+		getline(file, vnd1, ',');
+		getline(file, usd1, ',');
+		getline(file, eur1, ',');
+		getline(file, vnd2, ',');
+		getline(file, usd2, ',');
+		getline(file, eur2, '\n');
+		cout << setw(18) << left << tenor << '|' << setw(18) << left << vnd1 << setw(18) << left << usd1 << setw(18) << left << eur2 << '|' << setw(18) << left
+			<< vnd2 << setw(18) << left << usd2 << eur2 << endl;
+		cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	}
+	cout << "Unit: %" << endl;
+	file.close();
 }
