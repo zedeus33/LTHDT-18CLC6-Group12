@@ -1,7 +1,7 @@
-Name: Bui Ta Duc Tuan
+Name: Duong Trung Nhat
 SocialID: 100032757
 Mail: zed331996@gmail.com
-DoB: 15/6/2000
-Address: 500 Le Van Quoi, Binh Tan, TPHCM
+DoB: 3/3/1996
+Address: 66 Nguyen Truong To, P.Tan Thanh, Q.Tan Phu
 Sex: Male
 Salary: 1000000
