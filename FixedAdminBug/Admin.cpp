@@ -20,7 +20,7 @@ Admin::~Admin()
 
 bool Admin::createUser(Client*& p, string numID)
 {	
-	UserAccount* lamda = new UserAccount("","",numID,0,0,p);
+	UserAccount* lamda = new UserAccount(numID,p->createPassword(),numID,0,0,p);
 	vector<UserAccount*> rha = p->getBackAccount();
 	if (binary_search(rha.begin(), rha.end(), lamda))
 	{

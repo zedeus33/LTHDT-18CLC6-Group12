@@ -94,13 +94,12 @@ void MainMenu()
 	cout << "***TA LANG iBANKING***" << endl;
 	cout << "\n[1]. Sign in" << endl;
 	cout << "[2]. Sign up" << endl;
-	cout << "[3]. News" << endl;
-	cout << "[4]. Exchange rate" << endl;
-	cout << "[5]. Interest rate" << endl;
-	cout << "[6]. Contact" << endl;
-	cout << "[7]. Exit" << endl;
+	cout << "[3]. Exchange rate" << endl;
+	cout << "[4]. Interest rate" << endl;
+	cout << "[5]. Contact" << endl;
+	cout << "[6]. Exit" << endl;
 	int  choose;
-	choose = chooseInt(7);
+	choose = chooseInt(6);
 	switch (choose)
 	{
 	case 1:
@@ -115,26 +114,22 @@ void MainMenu()
 	}break;
 	case 3:
 	{
-
-	}break;
-	case 4:
-	{
 		exchangeRate();
 		MainMenuContinue();
 	}break;
-	case 5:
+	case 4:
 	{
 		system("cls");
 		outputInterestRate(INTEREST_RATES_FILE);
 		MainMenuContinue();
 	}break;
-	case 6:
+	case 5:
 	{
 		system("cls");
 		outPutContact(CONTACT_FILE);
 		MainMenuContinue();
 	}break;
-	case 7:
+	case 6:
 	{
 		exit();
 	}
@@ -484,12 +479,11 @@ void MenuOthertasks(UserAccount*& customer)
 {
 	cout << "[1]. Change password" << endl;
 	cout << "[2]. Bank system's address" << endl;
-	cout << "[3]. News" << endl;
-	cout << "[4]. Exchange rate" << endl;
-	cout << "[5]. Interest rate" << endl;
-	cout << "[6]. Create new Account" << endl;
-	cout << "[7]. Block this Account" << endl;
-	cout << "[8]. Return" << endl;
+	cout << "[3]. Exchange rate" << endl;
+	cout << "[4]. Interest rate" << endl;
+	cout << "[5]. Create new Account" << endl;
+	cout << "[6]. Block this Account" << endl;
+	cout << "[7]. Return" << endl;
 	int n = chooseInt(8);
 	switch (n)
 	{
@@ -519,21 +513,17 @@ void MenuOthertasks(UserAccount*& customer)
 		}break;
 		case 3:
 		{
-
-		}break;
-		case 4:
-		{
 			system("cls");
 			exchangeRate();
 			MenuOtherTasksContinue(customer);
 		}break;
-		case 5:
+		case 4:
 		{
 			system("cls");
 			outputInterestRate(INTEREST_RATES_FILE);
 			MenuOtherTasksContinue(customer);
 		}break;
-		case 6:
+		case 5:
 		{
 			system("cls");
 			Client* p = customer->getRefClient();
@@ -541,7 +531,7 @@ void MenuOthertasks(UserAccount*& customer)
 			cout << "Your request have been sent to our server. We will sent you a messege when the task finish!" << endl;
 			MenuOtherTasksContinue(customer);
 		}break;
-		case 7:
+		case 6:
 		{
 			system("cls");
 			Client* p = customer->getRefClient();
@@ -549,7 +539,7 @@ void MenuOthertasks(UserAccount*& customer)
 			cout << "Your request have been sent to our server. We will sent you a messege when the task finish!" << endl;
 			MenuOtherTasksContinue(customer);
 		}break;
-		case 8:
+		case 7:
 		{
 			system("cls");
 			UserMenu(customer);
