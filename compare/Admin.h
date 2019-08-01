@@ -22,13 +22,10 @@ public:
 
 	Client* searchUser(vector<Bank*> glo,string numID);
 	void viewRequestLog(vector<Bank*> glo);
-	void viewBlockRequestLog(vector<Bank*> glo);
 	void viewUserHistoryLog(UserAccount *&p);
 	bool comfirmRequest(Client*& rha);
 	UserAccount* searchUserAccount(vector<Bank*> glo, string numID);
 };
 
 void saveRequireNewUserAccount(Client *&customer);
-void saveRequiredBlockUserAccount(Client*& customer, UserAccount*& usacc);
 bool LoadRequireNewUserAccount(vector <string> &UserID, vector <string> &numID); // If have require return true else return false
-bool loadRequiredBlockUserAccount(vector<string>& UserID, vector<string>& numID);

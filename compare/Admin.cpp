@@ -3,7 +3,6 @@
 #include "BlackList.h"
 #include "Behaviors.h"
 #include <fstream>
-const string BLACK_LIST = "D:/TaLangBanking/Data/BlackList/BlackList.txt";
 using namespace std;
 string readline2(const char* path, int line);
 
@@ -28,7 +27,7 @@ bool Admin::createUser(Client*& p, string numID)
 	}
 	if (rha.size() < 10)
 	{
-		p->getBackAccount().push_back(lamda);
+		rha.push_back(lamda);
 		return true;
 	}
 	else
@@ -116,49 +115,6 @@ void Admin::viewRequestLog(vector<Bank*> glo)
 	
 }
 
-void Admin::viewBlockRequestLog(vector<Bank*> glo)
-{
-	vector <string> UserID;
-	vector <string> numID;
-	if (loadRequiredBlockUserAccount(UserID, numID))
-	{
-		vector<string>::iterator i = UserID.begin();
-		vector<string>::iterator j = numID.begin();
-		int t = 1;
-		for (i, j; i != UserID.end(); i++, j++)
-		{
-			Client* p = this->searchUser(glo, *i);
-			cout << t++ << ". " << p->getUserID() << "|" << *j << endl;
-			UserAccount* rha = this->searchUserAccount(glo, *j);
-			if (rha == nullptr)
-			{
-				cout << *j << " is not exist !" << endl;
-				continue;
-			}
-			BlackList::clear();
-			BlackList* bl = BlackList::getBlackList();
-			bl->loadBlackList(BLACK_LIST.c_str());
-			bool ans = this->blockUser(rha);
-			if (ans)
-			{
-				cout << "Block user " << *j << "successfully!" << endl;
-			}
-			else
-			{
-				cout << "User " << *j << "already have been on blacklist" << endl;
-			}
-			bl->saveBlackList(BLACK_LIST.c_str());
-			//bool is_good = this->blockUser();
-			//if (is_good)
-			//{
-			//	cout << "This request have been excuted successfully" << endl;
-			//}
-		}
-	}
-	else
-		cout << "There is no request :>" << endl;
-}
-
 void saveRequireNewUserAccount(Client*& customer)
 {
 	string file_path = "./RequireNewAccount.txt";
@@ -167,42 +123,9 @@ void saveRequireNewUserAccount(Client*& customer)
 	p->saveLog(context.c_str(),file_path.c_str());
 }
 
-void saveRequiredBlockUserAccount(Client*& customer,UserAccount *&useracc)
-{
-	string file_path = "./RequireBlockUserAccount.txt";
-	string context = customer->getUserID() + "|" + useracc->getNumID() + "\n";
-	Behaviors* p = new LoginBehavior();
-	p->saveLog(context.c_str(),file_path.c_str());
-}
-
 bool LoadRequireNewUserAccount(vector <string>& UserID, vector <string>& numID) // If have require return true else return false
 {
 	string file_path = "./RequireNewAccount.txt";
-	ifstream fin(file_path);
-	if (!fin.is_open())
-		return false;
-	fin.close();
-	string temp;
-	int i = 1;
-	do
-	{
-		temp = readline2(file_path.c_str(), i);
-		if (temp == "" || temp == "This line doesn't exist\n")
-		{
-			break;
-		}
-		auto pos = temp.find_first_of('|');
-		UserID.push_back(temp.substr(0, pos));
-		temp.erase(temp.begin(), temp.begin() + pos + 1);
-		numID.push_back(temp);
-		i++;
-	} while (true);
-	remove(file_path.c_str());
-	return true;
-}
-bool loadRequiredBlockUserAccount(vector <string>& UserID, vector <string>& numID) // If have require return true else return false
-{
-	string file_path = "./RequireBlockUserAccount.txt";
 	ifstream fin(file_path);
 	if (!fin.is_open())
 		return false;

@@ -1,5 +1,5 @@
 #include "Saving.h"
-#include <iomanip>
+
 Saving::Saving()
 {
 	S_balance = 0;
@@ -94,13 +94,13 @@ double Saving::getPeriod()
 void Saving::output1()
 {
 	cout << "\tYour saving's current type is : With Period" << endl;
-	cout << "\tYour deposits : " << fixed << setprecision(2) << S_balance << endl;
-	cout << "\tInterest After period : " << fixed << setprecision(2)<< calcInterestAfterPeriod() << endl;
+	cout << "\tYour deposits : " << S_balance << endl;
+	cout << "\tInterest After period : " << calcInterestAfterPeriod() << endl;
 }
 
 void Saving::output2()
 {
 	cout << "\tYour saving's current type is : Without Period" << endl;
-	cout << "\tYour deposits : " << fixed << setprecision(2) << S_balance << endl;
-	cout << "\tInterest per month : " << fixed << setprecision(2) << calcInterestPerMonth() << endl;
+	cout << "\tYour deposits : " << S_balance << endl;
+	cout << "\tInterest per month : " << calcInterestPerMonth() << endl;
 }
