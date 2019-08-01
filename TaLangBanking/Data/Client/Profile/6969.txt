@@ -1,7 +1,0 @@
-Name: Khuu Thi Hanh
-SocialID: 172120299
-Mail: khuuthihanh@gmail.com
-DoB: 19/1/1982
-Address: 16/47 Nguyen Thien Thuat, Q.3, Ho Chi Minh 
-Sex: Female
-Salary: 12000000

@@ -1,7 +1,0 @@
-Name: Nguyen Thai Y Nhi
-SocialID: 100005436
-Mail: nguyenthaiynhi@gmail.com
-DoB: 18/10/2002
-Address: 227 Nguyen Van Cu, Quan 5 , Ho Chi Minh
-Sex: Female
-Salary: 8999999488

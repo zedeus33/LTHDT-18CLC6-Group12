@@ -1,7 +1,0 @@
-Name: Vuu Qui Lan
-SocialID: 100003902
-Mail: vuuquilan@gmail.com
-DoB: 12/1/1989
-Address: Dai Co Viet St., 8C Building, Bach Khoa Ward, Hai Ba Trung, Ha Noi
-Sex: Male
-Salary: 28000000

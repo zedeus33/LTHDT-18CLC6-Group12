@@ -1,7 +1,0 @@
-Name: Banh Quang Trieu
-SocialID: 100000292
-Mail: banhquangtrieu@gmail.com
-DoB: 19/3/1976
-Address: Dong Cao, Lien Quan Townlet, Thach That Dist., Ha Noi
-Sex: Male
-Salary: 98000000

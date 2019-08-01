@@ -1,7 +1,0 @@
-Name: Vu Duc Canh
-SocialID: 100002082
-Mail: vuduccanh@gmail.com
-DoB: 19/12/1980
-Address: 114 Lang Ha, Dong Da, Ha Noi
-Sex: Female
-Salary: 6789000

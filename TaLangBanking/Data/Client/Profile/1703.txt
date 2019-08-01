@@ -1,7 +1,0 @@
-Name: Han Thi Sang
-SocialID: 100026299
-Mail: hanthisang@gmail.com
-DoB: 29/9/1995
-Address: 71/12 Bui Dinh Tuy, Quan 12, Ho Chi Minh
-Sex: Female
-Salary: 19000000

@@ -1,7 +1,0 @@
-Name: Don Xuan Bao
-SocialID: 100013931
-Mail: donxuanbao@gmail.com
-DoB: 17/7/1986
-Address: 100/564 Thich Quang Duc, Phu Nhuan, Ho Chi Minh
-Sex: Male
-Salary: 63000000

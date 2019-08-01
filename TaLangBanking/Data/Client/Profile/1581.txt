@@ -1,7 +1,0 @@
-Name: Hua Cong Chien
-SocialID: 100005447
-Mail: huacongchien@gmail.com
-DoB: 18/4/1988
-Address: 14/Alley 234, Truong Chinh, Dong Da, Ha Noi
-Sex: Male
-Salary: 19000000

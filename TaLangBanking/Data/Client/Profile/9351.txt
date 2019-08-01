@@ -1,7 +1,0 @@
-Name: Trinh Trong Lan
-SocialID: 100024221
-Mail: trinhtronglan@gmail.com
-DoB: 29/4/1977
-Address: 15/16 ngo quyen, quan 5, ho chi minh
-Sex: Male
-Salary: 56000000

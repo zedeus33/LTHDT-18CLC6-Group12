@@ -1,7 +1,0 @@
-Name: Dam Cong Duong
-SocialID: 100022355
-Mail: damcongduong@gmail.com
-DoB: 23/1/1994
-Address: 189Q/20 Ton That Thuyet , quan 4, Ho Chi Minh
-Sex: Female
-Salary: 9000000

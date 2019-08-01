@@ -1,5 +1,0 @@
-Bill code: ZED123456
-Name: Duong Trung Nhat
-Address: 66 Nguyen Truong To, P.Tan Thanh, Q.Tan Phu
-Payment(10% VAT included): 1.331.529(VND)
-Electric Used: 503(kWh)

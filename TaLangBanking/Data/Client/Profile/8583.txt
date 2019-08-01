@@ -1,7 +1,0 @@
-Name: Don Dinh Thu
-SocialID: 100024370
-Mail: dondinhthu@gmail.com
-DoB: 16/4/1976
-Address: Floor 5, 18 Yen Phu Street, Tay Ho Dis, Ha Noi
-Sex: Female
-Salary: 52000000

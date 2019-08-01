@@ -1,7 +1,0 @@
-Name: Phong Thi Truc
-SocialID: 100001150
-Mail: phongthitruc@gmail.com
-DoB: 6/6/1967
-Address: 187B Giang Vo, Cat Linh , Dong Da, Ha Noi
-Sex: Female
-Salary: 40000000

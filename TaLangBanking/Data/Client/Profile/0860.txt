@@ -1,7 +1,0 @@
-Name: Tran Quang Dung
-SocialID: 100004664
-Mail: tranquangdung@gmail.com
-DoB: 19/1/1982
-Address: 90 Tinh Lo 10, Binh Tan , Ho Chi Minh
-Sex: Male
-Salary: 80000000

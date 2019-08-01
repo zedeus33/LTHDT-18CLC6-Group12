@@ -1,7 +1,0 @@
-Name: Tu Thi Ai
-SocialID: 100032439
-Mail: tuthiai@gmail.com
-DoB: 13/6/1979
-Address: 35 Nha Chung, Hoan Kiem, Ha Noi
-Sex: Female
-Salary: 113934592

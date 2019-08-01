@@ -1,7 +1,0 @@
-Name: Huynh Qui Tho
-SocialID: 100024464
-Mail: huynhquitho@gmail.com
-DoB: 9/9/1977
-Address: Unit 511, C8 Ta Quang Buu St., Hai Ba Trung, Ha Noi
-Sex: Female
-Salary: 34000000

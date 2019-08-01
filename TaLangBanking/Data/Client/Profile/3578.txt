@@ -1,7 +1,0 @@
-Name: Lac Thi Suong
-SocialID: 100013966
-Mail: lacthisuong@gmail.com
-DoB: 7/10/1993
-Address: 47 Vo Thi Sau, Hai Ba Trung, Ha Noi
-Sex: Female
-Salary: 16000000

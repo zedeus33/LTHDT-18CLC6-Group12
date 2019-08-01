@@ -1,7 +1,0 @@
-Name: Trang Van Hien
-SocialID: 100019954
-Mail: trangvanhien@gmail.com
-DoB: 25/1/1982
-Address: 250/1 Block 2,Quan Thong Nhat, Dong Nai
-Sex: Female
-Salary: 11000000

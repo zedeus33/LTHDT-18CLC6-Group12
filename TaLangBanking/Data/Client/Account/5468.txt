@@ -1,3 +1,0 @@
-1
-NumberID|password|balance|limit
-365706953089|63342512|608363000|463781504

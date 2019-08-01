@@ -1,7 +1,0 @@
-Name: Dau Manh Thu
-SocialID: 100019072
-Mail: daumanhthu@gmail.com
-DoB: 20/9/1989
-Address: 37 Ho Bieu Chanh, Phu Nhuan, Ho Chi Minh
-Sex: Female
-Salary: 109000000

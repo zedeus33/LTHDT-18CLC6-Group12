@@ -1,7 +1,0 @@
-Name: Kha Quang Hoc
-SocialID: 100012316
-Mail: khaquanghoc@gmail.com
-DoB: 8/4/1985
-Address: 187A Nguyen Van Luong, Quan 6, Ho Chi Minh
-Sex: Female
-Salary: 85000000

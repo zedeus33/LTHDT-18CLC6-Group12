@@ -1,3 +1,0 @@
-1
-Balance|Rate|Period
-1500000000|0.005%|0

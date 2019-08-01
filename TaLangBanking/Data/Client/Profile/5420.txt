@@ -1,7 +1,0 @@
-Name: Ba Hanh Lang
-SocialID: 100006729
-Mail: bahanhlang@gmail.com
-DoB: 20/4/1993
-Address: 352 Lang Thuong , Dong Da , Ha NOi
-Sex: Female
-Salary: 57000000

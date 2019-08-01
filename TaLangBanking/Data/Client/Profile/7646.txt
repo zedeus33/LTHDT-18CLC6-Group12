@@ -1,7 +1,0 @@
-Name: Chung Huu Cuong
-SocialID: 100018762
-Mail: chunghuucuong@gmail.com
-DoB: 10/1/1971
-Address: 72 Vo Thi Sau
-Sex: Female
-Salary: 95000000

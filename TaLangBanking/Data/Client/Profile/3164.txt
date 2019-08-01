@@ -1,7 +1,0 @@
-Name: Quach Thi Hoa
-SocialID: 100022929
-Mail: quachthihoa@gmail.com
-DoB: 20/4/1997
-Address: 33 Ho Dac Di, Dong Da, Ha Noi
-Sex: Male
-Salary: 9000000

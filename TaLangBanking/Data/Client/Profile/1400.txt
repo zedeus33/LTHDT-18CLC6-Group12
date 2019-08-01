@@ -1,7 +1,0 @@
-Name: Kieu Vu Duc Ngu
-SocialID: 123456789
-Mail: kvmduc3@gmail.com
-DoB: 1/1/1999
-Address: 66 di ia
-Sex: Female
-Salary: 1000

@@ -1,7 +1,0 @@
-Name: Trach Dinh Lan
-SocialID: 100011538
-Mail: trachdinhlan@gmail.com
-DoB: 8/3/1987
-Address: 1A Nguyen Phong Sac, Cau Giay, Ha Noi
-Sex: Female
-Salary: 65000000

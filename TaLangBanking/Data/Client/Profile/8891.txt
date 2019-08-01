@@ -1,7 +1,0 @@
-Name: Phung Qui Tho
-SocialID: 100005021
-Mail: phungquitho@gmail.com
-DoB: 8/5/1988
-Address: 20 Cua Bac, Truc Bach , Ba Dinh, Ha Noi
-Sex: Female
-Salary: 67000000

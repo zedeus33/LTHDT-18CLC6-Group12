@@ -1,7 +1,0 @@
-Name: Tieu Manh Dung
-SocialID: 100006270
-Mail: tieumanhdung@gmail.com
-DoB: 25/5/1989
-Address: 50 Mai Hac De, Hai Ba Trung , Ha Noi
-Sex: Male
-Salary: 182032704

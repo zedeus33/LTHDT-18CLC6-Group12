@@ -1,7 +1,0 @@
-Name: Dinn Thi Truc
-SocialID: 100031101
-Mail: dinnthitruc@gmail.com
-DoB: 22/12/1992
-Address: 10 Dang Van Ngu, Dong Da, Ha Noi
-Sex: Male
-Salary: 83000000

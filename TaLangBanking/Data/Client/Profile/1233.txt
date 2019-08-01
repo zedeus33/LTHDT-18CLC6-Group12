@@ -1,7 +1,0 @@
-Name: Tram Thi Tien
-SocialID: 100026962
-Mail: tramthitien@gmail.com
-DoB: 9/4/1992
-Address: 18-19 Lot O, Bau Cat Area, quan Tan Binh, Ho Chi Minh
-Sex: Female
-Salary: 80000000

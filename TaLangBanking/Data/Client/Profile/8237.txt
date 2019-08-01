@@ -1,7 +1,0 @@
-Name: Doan Huu Chinh
-SocialID: 100004833
-Mail: doanhuuchinh@gmail.com
-DoB: 22/9/1974
-Address: 522Bis/D11 Nguyen Tri Phuong, Quan 10 , Ho Chi Minh
-Sex: Male
-Salary: 47000000

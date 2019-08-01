@@ -1,7 +1,0 @@
-Name: Tuan Manh Phuoc
-SocialID: 100027446
-Mail: tuanmanhphuoc@gmail.com
-DoB: 25/12/1994
-Address: 142/19 Nguyen Thi Thap ,Quan 7, Ho Chi Minh
-Sex: Male
-Salary: 87000000

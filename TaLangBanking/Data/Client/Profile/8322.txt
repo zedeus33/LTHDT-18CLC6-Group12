@@ -1,7 +1,0 @@
-Name: Nguy Ket Phuc
-SocialID: 100024084
-Mail: nguyketphuc@gmail.com
-DoB: 23/6/1970
-Address: 26 Le Ngoc Han, Hai Ba Trung, Ha Noi
-Sex: Female
-Salary: 57000000
