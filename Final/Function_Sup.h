@@ -33,7 +33,7 @@ void AdminMenu(Admin* p);
 void MenuPayment(UserAccount *&cus);
 //void MenuDealHistory();
 void MenuOthertasks(UserAccount*& customer);
-//void MenuAdjustLimit();
+void MenuAdjustLimit(UserAccount *&cus);
 void MenuSaving(UserAccount *cur);
 void MenuSignUp();
 void exit();

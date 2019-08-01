@@ -271,7 +271,8 @@ void UserMenu(UserAccount*& customer)
 	case 6:
 	{
 		system("cls");
-		//MenuAdjustLimit();
+		MenuAdjustLimit(customer);
+		UserMenuContinue(customer);
 	}break;
 	case 7:
 	{
@@ -547,6 +548,22 @@ void MenuOthertasks(UserAccount*& customer)
 	
 	}
 
+}
+void MenuAdjustLimit(UserAccount *&cus)
+{
+	cout << "Input new limit : ";
+	double l;
+	cin >> l;
+	if (cus->setLimit(l))
+	{
+		notice("Change limit successfully!", "+", "+");
+		cout << "Your new level is : " << cus->getLevel() << endl;
+	}
+	else
+	{
+		notice("Invalid type!!", "+", "+");
+	}
+	
 }
 void MenuSaving(UserAccount *cur)
 {

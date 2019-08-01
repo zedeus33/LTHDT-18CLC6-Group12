@@ -2,9 +2,6 @@
 
 void main()
 {
-
-
 	MainMenu();
-	
 	system("pause");
 }

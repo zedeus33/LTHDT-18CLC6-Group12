@@ -126,6 +126,19 @@ void UserAccount::setUserName()
 	username = numID;
 }
 
+bool UserAccount::setLimit(double l)
+{
+	if (l == limit || l<10000000)
+	{
+		return false;
+	}
+	else
+	{
+		limit = l;
+		return true;
+	}
+}
+
 bool UserAccount::changeBalance(double value)
 {
 	if (-value > Balance)

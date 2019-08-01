@@ -29,6 +29,7 @@ public:
 	/*string getPassword();*/
 	void setPassword(string pass);
 	void setUserName();
+	bool setLimit(double l);
 	bool changeBalance(double value);
 	void changeToSaving(double money);
 	void Input();
